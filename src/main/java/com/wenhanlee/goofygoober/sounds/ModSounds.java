@@ -13,8 +13,14 @@ public class ModSounds {
     public static final DeferredRegister<SoundEvent> SOUND_EVENTS =
             DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, GoofyGoober.MOD_ID);
 
-    public static final RegistryObject<SoundEvent> TOM_SCREAM =
-            registerSoundEvent("tom_scream");
+    public static final RegistryObject<SoundEvent> SCREAM =
+            registerSoundEvent("scream");
+
+    public static final RegistryObject<SoundEvent> SNORE_LOUD =
+            registerSoundEvent("snore_loud");
+
+    public static final RegistryObject<SoundEvent> SNORE_MIMIMI =
+            registerSoundEvent("snore_mimimi");
 
     private static RegistryObject<SoundEvent> registerSoundEvent(String name) {
         return SOUND_EVENTS.register(name, () -> new SoundEvent(new ResourceLocation(GoofyGoober.MOD_ID, name)));

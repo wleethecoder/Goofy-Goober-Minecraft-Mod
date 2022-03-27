@@ -2,6 +2,7 @@ package com.wenhanlee.goofygoober;
 
 import com.mojang.logging.LogUtils;
 import com.wenhanlee.goofygoober.item.ModItems;
+import com.wenhanlee.goofygoober.sounds.ModSounds;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
@@ -31,6 +32,7 @@ public class GoofyGoober {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         ModItems.register(eventBus);
+        ModSounds.register(eventBus);
 
         // Register the setup method for modloading
         eventBus.addListener(this::setup);

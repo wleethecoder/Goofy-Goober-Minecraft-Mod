@@ -1,8 +1,21 @@
 {
-  "tom_scream": {
-    "subtitle": "sounds.goofygoober.tom_scream",
+  "scream": {
+    "subtitle": "sounds.goofygoober.scream",
     "sounds": [
-      "goofygoober:tom_scream"
+      "goofygoober:tom_scream",
+      "goofygoober:goofy_scream"
+    ]
+  },
+  "snore_loud": {
+    "subtitle": "sounds.goofygoober.snore_loud",
+    "sounds": [
+      "goofygoober:snore_loud"
+    ]
+  },
+  "snore_mimimi": {
+    "subtitle": "sounds.goofygoober.snore_mimimi",
+    "sounds": [
+      "goofygoober:snore_mimimi"
     ]
   }
 }

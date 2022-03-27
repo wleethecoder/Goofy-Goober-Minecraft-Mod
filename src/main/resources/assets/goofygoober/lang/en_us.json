@@ -1,5 +1,7 @@
 {
   "item.goofygoober.paper_test": "Thank you so much for downloading Goofy Goober!",
 
-  "sounds.goofygoober.tom_scream": "Player screams"
+  "sounds.goofygoober.scream": "Screaming",
+  "sounds.goofygoober.snore_loud": "Loud snoring",
+  "sounds.goofygoober.snore_mimimi": "Mimimi snoring"
 }
