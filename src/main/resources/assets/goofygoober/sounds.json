@@ -17,5 +17,11 @@
     "sounds": [
       "goofygoober:snore_mimimi"
     ]
+  },
+  "player_gorge": {
+    "subtitle": "sounds.goofygoober.player_gorge",
+    "sounds": [
+      "goofygoober:player_gorge"
+    ]
   }
 }

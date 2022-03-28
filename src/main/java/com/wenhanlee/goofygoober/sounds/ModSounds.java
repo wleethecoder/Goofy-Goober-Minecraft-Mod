@@ -22,6 +22,9 @@ public class ModSounds {
     public static final RegistryObject<SoundEvent> SNORE_MIMIMI =
             registerSoundEvent("snore_mimimi");
 
+    public static final RegistryObject<SoundEvent> PLAYER_GORGE =
+            registerSoundEvent("player_gorge");
+
     private static RegistryObject<SoundEvent> registerSoundEvent(String name) {
         return SOUND_EVENTS.register(name, () -> new SoundEvent(new ResourceLocation(GoofyGoober.MOD_ID, name)));
     }
