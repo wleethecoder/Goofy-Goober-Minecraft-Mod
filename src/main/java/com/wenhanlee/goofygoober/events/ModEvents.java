@@ -1,14 +1,12 @@
 package com.wenhanlee.goofygoober.events;
 
 import com.wenhanlee.goofygoober.GoofyGoober;
-import com.wenhanlee.goofygoober.PlayersAndVillagersTickCounter;
 import com.wenhanlee.goofygoober.capabilities.ModCapabilities;
 import com.wenhanlee.goofygoober.capabilities.time.ITimeCounter;
 import com.wenhanlee.goofygoober.capabilities.time.TimeCounter;
 import com.wenhanlee.goofygoober.capabilities.time.TimeCounterProvider;
 import com.wenhanlee.goofygoober.sounds.ModSounds;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -20,19 +18,11 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.AABB;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
-import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.event.entity.EntityEvent;
-import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Random;
 
 @Mod.EventBusSubscriber(modid = GoofyGoober.MOD_ID)
 public class ModEvents {
