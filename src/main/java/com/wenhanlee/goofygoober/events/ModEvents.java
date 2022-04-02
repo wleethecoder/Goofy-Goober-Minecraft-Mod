@@ -2,7 +2,12 @@ package com.wenhanlee.goofygoober.events;
 
 import com.wenhanlee.goofygoober.GoofyGoober;
 import com.wenhanlee.goofygoober.PlayersAndVillagersTickCounter;
+import com.wenhanlee.goofygoober.capabilities.ModCapabilities;
+import com.wenhanlee.goofygoober.capabilities.time.ITimeCounter;
+import com.wenhanlee.goofygoober.capabilities.time.TimeCounter;
+import com.wenhanlee.goofygoober.capabilities.time.TimeCounterProvider;
 import com.wenhanlee.goofygoober.sounds.ModSounds;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -13,6 +18,8 @@ import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.AABB;
+import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
+import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
@@ -30,21 +37,23 @@ import java.util.Random;
 @Mod.EventBusSubscriber(modid = GoofyGoober.MOD_ID)
 public class ModEvents {
 
-    // TODO: implement hashmap (please)
-//    static List<PlayersAndVillagersTickCounter> playersAndVillagers = new ArrayList<PlayersAndVillagersTickCounter>();
-    static HashMap<String, PlayersAndVillagersTickCounter> playersAndVillagers = new HashMap<>();
+    @SubscribeEvent
+    public void registerCapabilities(RegisterCapabilitiesEvent event) {
+        event.register(ITimeCounter.class);
+    }
 
-//    public static int indexPlayerOrVillager(String UUID, List<PlayersAndVillagersTickCounter> playersAndVillagers) {
-//        for (int i = 0; i < playersAndVillagers.size(); i++) {
-//            if (UUID.equals(playersAndVillagers.get(i).getUUID())) {
-//                return i;
-//            }
-//        }
-//        return -1;
-//    }
+    @SubscribeEvent
+    public static void onAttachCapabilitiesEvent(AttachCapabilitiesEvent<Entity> event) {
+        if ((event.getObject() instanceof Player || event.getObject() instanceof Villager) && !event.getObject().getCommandSenderWorld().isClientSide) {
+            TimeCounterProvider timeCounterProvider = new TimeCounterProvider();
+            event.addCapability(new ResourceLocation(GoofyGoober.MOD_ID, "counter"), timeCounterProvider);
+            event.addCapability(new ResourceLocation(GoofyGoober.MOD_ID, "limit"), timeCounterProvider);
+            event.addListener(timeCounterProvider::invalidate);
+        }
+    }
 
     // sharp scream of pain whenever touching a painful object
-    // will throw the mob high up in the air
+    // throws the mob high up in the air
     @SubscribeEvent
     public static void screamingPain(LivingDamageEvent event) {
         LivingEntity entity = event.getEntityLiving();
@@ -58,59 +67,34 @@ public class ModEvents {
                 if (source.equals("lava")) yMovement = 5.0F;
                 entity.setDeltaMovement(entity.getDeltaMovement().add(0.0D, yMovement, 0.0D));
                 entity.level.playSound(null, entity.getX(), entity.getY(), entity.getZ(), ModSounds.SCREAM.get(), SoundSource.AMBIENT, 1.0F, 1.0F);
-//                if (entity instanceof Player) {
-//                    Player player = (Player) entity;
-//                    player.level.playSound(null, player.getX(), player.getY(), player.getZ(), ModSounds.SCREAM.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
-//                }
-//                else entity.playSound(ModSounds.SCREAM.get(), 1.0F, 1.0F);
             }
         }
     }
 
-    @SubscribeEvent
-    public static void trackPlayersAndVillagers(EntityJoinWorldEvent event) {
-        Entity entity = event.getEntity();
-        if (entity instanceof Player || entity instanceof Villager) {
-//            playersAndVillagers.add(new PlayersAndVillagersTickCounter(entity));
-            playersAndVillagers.put(entity.getStringUUID(), new PlayersAndVillagersTickCounter(entity));
-        }
-
-    }
-
-    // TODO: make villager and player play sound in a loop while sleeping
-    // TODO: polish the timing of noises
-    // TODO: polish the noises themselves
+    // Players and Villagers snore when they sleep
     @SubscribeEvent
     public static void snore(LivingEvent.LivingUpdateEvent event) {
         LivingEntity entity = event.getEntityLiving();
-        String entityUUID = entity.getStringUUID();
-//        int index = indexPlayerOrVillager(entity.getStringUUID(), playersAndVillagers);
-        PlayersAndVillagersTickCounter playerOrVillagerTickCounter = playersAndVillagers.get(entityUUID);
-        if (playerOrVillagerTickCounter != null) {
-            if (entity.isRemoved()) {
-                playersAndVillagers.remove(entityUUID);
-            }
-            else {
-                playersAndVillagers.get(entityUUID).incrementTickCount();
-                if (playersAndVillagers.get(entityUUID).getTickCount() >= 200) {
+        if ((entity instanceof Player || entity instanceof Villager) && !entity.level.isClientSide()) {
+            entity.getCapability(ModCapabilities.TIME_COUNTER_CAPABILITY).ifPresent(iTimeCounter -> {
+                TimeCounter timeCounter = (TimeCounter) iTimeCounter;
+                timeCounter.incrementCounter();
+                if (timeCounter.counter >= timeCounter.limit) {
                     if (entity.isSleeping()) {
-                        SoundEvent sound = playersAndVillagers.get(entityUUID).getSleepingNoise();
-                        entity.playSound(sound, 1.0F, 1.0F);
-                        entity.level.playSound(null, entity.getX(), entity.getY(), entity.getZ(), sound, SoundSource.AMBIENT, 1.0F, 1.0F);
-                        playersAndVillagers.get(entityUUID).resetTickCount();
+                        entity.level.playSound(null, entity.getX(), entity.getY(), entity.getZ(), timeCounter.sleepingNoise, SoundSource.AMBIENT, 1.0F, 1.0F);
+                        timeCounter.resetCounter();
+                        timeCounter.rollLimit();
                     }
                     else {
-                        playersAndVillagers.get(entityUUID).rollSleepingNoise();
+                        timeCounter.rollSleepingNoise();
                     }
                 }
-            }
+            });
         }
     }
 
     // player eats all the food at once
     // can become comically fat, changing the player's appearance and giving it slowness and resistance
-    // TODO: debug hunger and saturation levels
-    // TODO: decide if you need .Start or .Finish
     @SubscribeEvent
     public static void eat(LivingEntityUseItemEvent.Finish event) {
         Entity entity = event.getEntity();
@@ -122,7 +106,7 @@ public class ModEvents {
                     handItem = player.getOffhandItem();
                 }
                 int count = handItem.getCount();
-                if (count > 1 && handItem.getItem().getFoodProperties() != null) {
+                if (count > 1 && handItem.getItem().getFoodProperties() != null) { // unsure if the second condition is necessary
                     // play sound
                     player.level.playSound(null, player.getX(), player.getY(), player.getZ(), ModSounds.PLAYER_GORGE.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
 
@@ -137,7 +121,6 @@ public class ModEvents {
                     int newPlayerNutrition = Math.min(newPlayerNutritionRaw, 20);
 //                    player.getFoodData().setFoodLevel(totalNutrition + player.getFoodData().getFoodLevel());
                     player.getFoodData().setFoodLevel(newPlayerNutrition);
-                    System.out.println(player.getFoodData().getFoodLevel());
 
                     // increase player saturation
                     float saturation = handItem.getItem().getFoodProperties().getSaturationModifier() * 2 * nutrition;
@@ -147,7 +130,6 @@ public class ModEvents {
                     player.getFoodData().setSaturation(newPlayerSaturation);
                     float saturationMultiplier = totalSaturation / 200;
 //                    int saturationAmplifier = (int) totalSaturation - 1;
-                    System.out.println(player.getFoodData().getSaturationLevel());
 
                     // add slowness and resistance
                     // resistance amplifier is capped at 3

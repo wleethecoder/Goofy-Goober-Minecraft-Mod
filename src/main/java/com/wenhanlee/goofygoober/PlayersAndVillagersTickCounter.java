@@ -2,7 +2,6 @@ package com.wenhanlee.goofygoober;
 
 import com.wenhanlee.goofygoober.sounds.ModSounds;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.world.entity.Entity;
 
 import java.util.Random;
 
@@ -12,7 +11,7 @@ public class PlayersAndVillagersTickCounter {
 //    private String UUID;
     private SoundEvent sleepingNoise;
 
-    public PlayersAndVillagersTickCounter(Entity entity) {
+    public PlayersAndVillagersTickCounter() {
 //        playerOrVillager = entity;
         tickCount = 0;
 //        UUID = entity.getStringUUID();
