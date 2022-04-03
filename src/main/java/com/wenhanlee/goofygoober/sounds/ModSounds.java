@@ -16,6 +16,9 @@ public class ModSounds {
     public static final RegistryObject<SoundEvent> SCREAM =
             registerSoundEvent("scream");
 
+    public static final RegistryObject<SoundEvent> SKEDADDLE =
+            registerSoundEvent("skedaddle");
+
     public static final RegistryObject<SoundEvent> SNORE_LOUD =
             registerSoundEvent("snore_loud");
 

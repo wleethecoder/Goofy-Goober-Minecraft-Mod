@@ -5,27 +5,36 @@ import com.wenhanlee.goofygoober.capabilities.ModCapabilities;
 import com.wenhanlee.goofygoober.capabilities.time.ITimeCounter;
 import com.wenhanlee.goofygoober.capabilities.time.TimeCounter;
 import com.wenhanlee.goofygoober.capabilities.time.TimeCounterProvider;
+import com.wenhanlee.goofygoober.sounds.CustomMobNoise;
 import com.wenhanlee.goofygoober.sounds.ModSounds;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.damagesource.IndirectEntityDamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.schedule.Activity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.AABB;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
+import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
+import java.util.HashMap;
+import java.util.Random;
+
 @Mod.EventBusSubscriber(modid = GoofyGoober.MOD_ID)
 public class ModEvents {
+
+    static CustomMobNoise customMobNoise = new CustomMobNoise();
 
     @SubscribeEvent
     public void registerCapabilities(RegisterCapabilitiesEvent event) {
@@ -34,7 +43,7 @@ public class ModEvents {
 
     @SubscribeEvent
     public static void onAttachCapabilitiesEvent(AttachCapabilitiesEvent<Entity> event) {
-        if ((event.getObject() instanceof Player || event.getObject() instanceof Villager) && !event.getObject().getCommandSenderWorld().isClientSide) {
+        if (event.getObject() instanceof LivingEntity && !event.getObject().getCommandSenderWorld().isClientSide) {
             TimeCounterProvider timeCounterProvider = new TimeCounterProvider();
             event.addCapability(new ResourceLocation(GoofyGoober.MOD_ID, "counter"), timeCounterProvider);
             event.addCapability(new ResourceLocation(GoofyGoober.MOD_ID, "limit"), timeCounterProvider);
@@ -42,45 +51,22 @@ public class ModEvents {
         }
     }
 
+    @SubscribeEvent
+    public static void onJoin(EntityJoinWorldEvent event) {
+        customMobNoise = new CustomMobNoise();
+    }
+
     // sharp scream of pain whenever touching a painful object
     // throws the mob high up in the air
     @SubscribeEvent
-    public static void screamingPain(LivingDamageEvent event) {
-        LivingEntity entity = event.getEntityLiving();
-        if (!entity.level.isClientSide()) {
-            String source = event.getSource().getMsgId();
-            float yMovement = 1.5F;
-            // TODO: add more sources of damage
-            // TODO: add more screaming sounds
-            if (source.equals("cactus") || source.equals("inFire") || source.equals("lava")) {
-                if (source.equals("inFire")) yMovement = 2.5F;
-                if (source.equals("lava")) yMovement = 5.0F;
-                entity.setDeltaMovement(entity.getDeltaMovement().add(0.0D, yMovement, 0.0D));
-                entity.level.playSound(null, entity.getX(), entity.getY(), entity.getZ(), ModSounds.SCREAM.get(), SoundSource.AMBIENT, 1.0F, 1.0F);
-            }
-        }
+    public static void scream(LivingDamageEvent event) {
+        customMobNoise.scream(event);
     }
 
     // Players and Villagers snore when they sleep
     @SubscribeEvent
-    public static void snore(LivingEvent.LivingUpdateEvent event) {
-        LivingEntity entity = event.getEntityLiving();
-        if ((entity instanceof Player || entity instanceof Villager) && !entity.level.isClientSide()) {
-            entity.getCapability(ModCapabilities.TIME_COUNTER_CAPABILITY).ifPresent(iTimeCounter -> {
-                TimeCounter timeCounter = (TimeCounter) iTimeCounter;
-                timeCounter.incrementCounter();
-                if (timeCounter.counter >= timeCounter.limit) {
-                    if (entity.isSleeping()) {
-                        entity.level.playSound(null, entity.getX(), entity.getY(), entity.getZ(), timeCounter.sleepingNoise, SoundSource.AMBIENT, 1.0F, 1.0F);
-                        timeCounter.resetCounter();
-                        timeCounter.rollLimit();
-                    }
-                    else {
-                        timeCounter.rollSleepingNoise();
-                    }
-                }
-            });
-        }
+    public static void playCustomAmbientNoise(LivingEvent.LivingUpdateEvent event) {
+        customMobNoise.ambient(event.getEntityLiving());
     }
 
     // player eats all the food at once
@@ -88,8 +74,7 @@ public class ModEvents {
     @SubscribeEvent
     public static void eat(LivingEntityUseItemEvent.Finish event) {
         Entity entity = event.getEntity();
-        if (!entity.level.isClientSide() && entity instanceof Player) {
-            Player player = (Player) entity;
+        if (!entity.level.isClientSide() && entity instanceof Player player) {
             if (event.getItem().isEdible()) {
                 ItemStack handItem = player.getMainHandItem();
                 if (player.getOffhandItem() == event.getItem()) {

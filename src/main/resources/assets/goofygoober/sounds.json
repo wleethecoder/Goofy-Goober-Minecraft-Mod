@@ -3,7 +3,19 @@
     "subtitle": "sounds.goofygoober.scream",
     "sounds": [
       "goofygoober:tom_scream",
-      "goofygoober:goofy_scream"
+      "goofygoober:goofy_scream",
+      "goofygoober:flight_scream",
+      "goofygoober:keemstar_scream"
+    ]
+  },
+  "skedaddle": {
+    "subtitle": "sounds.goofygoober.skedaddle",
+    "sounds": [
+      "goofygoober:run",
+      "goofygoober:slip1",
+      "goofygoober:slip2",
+      "goofygoober:slip3",
+      "goofygoober:takeoff1"
     ]
   },
   "snore_loud": {
