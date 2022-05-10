@@ -1,24 +1,16 @@
 package com.wenhanlee.goofygoober;
 
 import com.mojang.logging.LogUtils;
-import com.wenhanlee.goofygoober.item.ModItems;
+import com.wenhanlee.goofygoober.effects.ModEffects;
+import com.wenhanlee.goofygoober.items.ModItems;
 import com.wenhanlee.goofygoober.sounds.ModSounds;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
-import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
-import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
-
-import java.util.stream.Collectors;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(GoofyGoober.MOD_ID)
@@ -33,6 +25,7 @@ public class GoofyGoober {
 
         ModItems.register(eventBus);
         ModSounds.register(eventBus);
+        ModEffects.register(eventBus);
 
         // Register the setup method for modloading
         eventBus.addListener(this::setup);

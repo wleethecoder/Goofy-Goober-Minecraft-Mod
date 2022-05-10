@@ -34,42 +34,38 @@ public class CustomMobNoise {
     // don't add @SubscribeEvent here!
     public void scream(LivingDamageEvent event) {
         LivingEntity entity = event.getEntityLiving();
-        if (!entity.level.isClientSide()) {
-            String source = event.getSource().getMsgId();
-//            if (event.getSource() instanceof IndirectEntityDamageSource ieds) {
-//                if (ieds.getDirectEntity() != null) {
-//                    source = ieds.getDirectEntity().getType().toShortString();
-//                }
+        String source = event.getSource().getMsgId();
+//        if (event.getSource() instanceof IndirectEntityDamageSource ieds) {
+//            if (ieds.getDirectEntity() != null) {
+//                source = ieds.getDirectEntity().getType().toShortString();
 //            }
-            if (damageSourceKnockback.get(source) != null) {
-                entity.setDeltaMovement(entity.getDeltaMovement().add(0.0D, damageSourceKnockback.get(source), 0.0D));
-                entity.level.playSound(null, entity.getX(), entity.getY(), entity.getZ(), ModSounds.SCREAM.get(), SoundSource.AMBIENT, 1.0F, 0.9F + random.nextFloat(0.2F));
-            }
+//        }
+        if (damageSourceKnockback.get(source) != null) {
+            entity.setDeltaMovement(entity.getDeltaMovement().add(0.0D, damageSourceKnockback.get(source), 0.0D));
+            entity.level.playSound(null, entity.getX(), entity.getY(), entity.getZ(), ModSounds.SCREAM.get(), SoundSource.AMBIENT, 1.0F, 0.9F + random.nextFloat(0.2F));
         }
     }
 
     // custom ambient noises for players or villagers
     public void ambient(LivingEntity entity) {
-        if (!entity.level.isClientSide()) {
-            entity.getCapability(ModCapabilities.TIME_COUNTER_CAPABILITY).ifPresent(iTimeCounter -> {
-                TimeCounter timeCounter = (TimeCounter) iTimeCounter;
-                timeCounter.incrementCounter();
-                if (timeCounter.counter >= timeCounter.limit) {
+        entity.getCapability(ModCapabilities.TIME_COUNTER_CAPABILITY).ifPresent(iTimeCounter -> {
+            TimeCounter timeCounter = (TimeCounter) iTimeCounter;
+            timeCounter.incrementCounter();
+            if (timeCounter.counter >= timeCounter.limit) {
 
-                    // ambient panicking noise
-                    // for non-player mobs that can panic
-                    // TODO make this work for every mob that can panic, not just villagers
-                    if (entity instanceof Mob mob) {
-                        panic(timeCounter, mob);
-                    }
-
-                    // ambient snoring noise
-                    // for players and villagers
-                    snore(timeCounter, entity);
-
+                // ambient panicking noise
+                // for non-player mobs that can panic
+                // TODO make this work for every mob that can panic, not just villagers
+                if (entity instanceof Mob mob) {
+                    panic(timeCounter, mob);
                 }
-            });
-        }
+
+                // ambient snoring noise
+                // for players and villagers
+                snore(timeCounter, entity);
+
+            }
+        });
     }
 
     public void panic(TimeCounter timeCounter, Mob mob) {
