@@ -16,7 +16,10 @@ public class TimeCounterProvider implements ICapabilitySerializable<CompoundTag>
 
     @NotNull
     @Override
-    public <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) { return timeCounterLazyOptional.cast(); }
+    public <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
+//        return timeCounterLazyOptional.cast();
+        return ModCapabilities.TIME_COUNTER_CAPABILITY.orEmpty(cap, timeCounterLazyOptional);
+    }
 
     @Override
     public CompoundTag serializeNBT() {
