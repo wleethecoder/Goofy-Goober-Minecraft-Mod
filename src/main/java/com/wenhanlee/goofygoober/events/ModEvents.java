@@ -57,7 +57,6 @@ public class ModEvents {
             event.addCapability(new ResourceLocation(GoofyGoober.MOD_ID, "fat"), fatProvider);
             event.addListener(fatProvider::invalidate);
         }
-
     }
     @SubscribeEvent
     public static void onJoin(EntityJoinWorldEvent event) {
@@ -101,11 +100,12 @@ public class ModEvents {
 //                        PacketDistributor.ALL.noArg(),
 //                        new ClientboundMobSizeUpdatePacket(fat.getFat()));
 //            });
-            boolean isFat = player.getActiveEffectsMap() != null && player.hasEffect(ModEffects.FAT.get());
-            PacketHandler.INSTANCE.send(
-                    PacketDistributor.ALL.noArg(),
-                    new ClientboundMobSizeUpdatePacket(isFat)
-            );
+
+//            boolean isFat = player.getActiveEffectsMap() != null && player.hasEffect(ModEffects.FAT.get());
+//            PacketHandler.INSTANCE.send(
+//                    PacketDistributor.ALL.noArg(),
+//                    new ClientboundMobSizeUpdatePacket(isFat)
+//            );
         }
     }
 

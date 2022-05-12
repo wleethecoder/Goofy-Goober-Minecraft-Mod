@@ -18,8 +18,6 @@ public class FatProvider implements ICapabilitySerializable<CompoundTag> {
     @Override
     public <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
 //        return fatLazyOptional.cast();
-        System.out.println("fat getCapability()");
-        System.out.println(ModCapabilities.FAT_CAPABILITY == null);
         return ModCapabilities.FAT_CAPABILITY.orEmpty(cap, fatLazyOptional);
     }
 
