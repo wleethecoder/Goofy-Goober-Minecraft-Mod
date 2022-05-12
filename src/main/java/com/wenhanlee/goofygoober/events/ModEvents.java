@@ -1,15 +1,9 @@
 package com.wenhanlee.goofygoober.events;
 
 import com.wenhanlee.goofygoober.GoofyGoober;
-import com.wenhanlee.goofygoober.capabilities.ModCapabilities;
-import com.wenhanlee.goofygoober.capabilities.fat.Fat;
-import com.wenhanlee.goofygoober.capabilities.fat.FatProvider;
-import com.wenhanlee.goofygoober.capabilities.fat.IFat;
 import com.wenhanlee.goofygoober.capabilities.time.ITimeCounter;
 import com.wenhanlee.goofygoober.capabilities.time.TimeCounterProvider;
 import com.wenhanlee.goofygoober.effects.ModEffects;
-import com.wenhanlee.goofygoober.packets.PacketHandler;
-import com.wenhanlee.goofygoober.packets.mobSize.ClientboundMobSizeUpdatePacket;
 import com.wenhanlee.goofygoober.sounds.CustomMobNoise;
 import com.wenhanlee.goofygoober.sounds.ModSounds;
 import net.minecraft.resources.ResourceLocation;
@@ -28,7 +22,6 @@ import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.network.PacketDistributor;
 
 @Mod.EventBusSubscriber(modid = GoofyGoober.MOD_ID)
 public class ModEvents {
@@ -38,7 +31,6 @@ public class ModEvents {
     @SubscribeEvent
     public static void registerCapabilities(RegisterCapabilitiesEvent event) {
         event.register(ITimeCounter.class);
-        event.register(IFat.class);
     }
 
     @SubscribeEvent
@@ -50,14 +42,7 @@ public class ModEvents {
             event.addListener(timeCounterProvider::invalidate);
         }
     }
-    @SubscribeEvent
-    public static void onAttachCapabilitiesEventFat(AttachCapabilitiesEvent<Entity> event) {
-        if (event.getObject() instanceof Player && !event.getObject().getCommandSenderWorld().isClientSide) {
-            FatProvider fatProvider = new FatProvider();
-            event.addCapability(new ResourceLocation(GoofyGoober.MOD_ID, "fat"), fatProvider);
-            event.addListener(fatProvider::invalidate);
-        }
-    }
+
     @SubscribeEvent
     public static void onJoin(EntityJoinWorldEvent event) {
         customMobNoise = new CustomMobNoise();
@@ -90,18 +75,8 @@ public class ModEvents {
     public static void fatTick(LivingEvent.LivingUpdateEvent event) {
         LivingEntity entity = event.getEntityLiving();
         if (entity instanceof Player player && !player.level.isClientSide()) {
-//            boolean isFat = player.getActiveEffectsMap() != null && player.hasEffect(ModEffects.FAT.get());
-
-//            System.out.println("fatTick() present? " + player.getCapability(ModCapabilities.FAT_CAPABILITY).isPresent());
-//            player.getCapability(ModCapabilities.FAT_CAPABILITY).ifPresent(iFat -> {
-//                Fat fat = (Fat) iFat;
-//                System.out.println("is player fat? " + fat.getFat());
-//                PacketHandler.INSTANCE.send(
-//                        PacketDistributor.ALL.noArg(),
-//                        new ClientboundMobSizeUpdatePacket(fat.getFat()));
-//            });
-
-//            boolean isFat = player.getActiveEffectsMap() != null && player.hasEffect(ModEffects.FAT.get());
+            // server player sends to (all) clients its fat status
+            boolean isFat = player.getActiveEffectsMap() != null && player.hasEffect(ModEffects.FAT.get());
 //            PacketHandler.INSTANCE.send(
 //                    PacketDistributor.ALL.noArg(),
 //                    new ClientboundMobSizeUpdatePacket(isFat)
