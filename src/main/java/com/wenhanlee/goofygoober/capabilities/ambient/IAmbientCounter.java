@@ -1,6 +1,6 @@
-package com.wenhanlee.goofygoober.capabilities.time;
+package com.wenhanlee.goofygoober.capabilities.ambient;
 
-public interface ITimeCounter {
+public interface IAmbientCounter {
     void incrementCounter();
     void resetCounter();
     void rollLimit();
