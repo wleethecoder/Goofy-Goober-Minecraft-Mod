@@ -13,9 +13,9 @@ public class FatEffect extends MobEffect {
     @Override
     public void applyEffectTick(LivingEntity pLivingEntity, int pAmplifier) {
 //        if (!pLivingEntity.level.isClientSide()) {
-            Double x = pLivingEntity.getX();
-            Double y = pLivingEntity.getY();
-            Double z = pLivingEntity.getZ();
+            double x = pLivingEntity.getX();
+            double y = pLivingEntity.getY();
+            double z = pLivingEntity.getZ();
 
             pLivingEntity.setBoundingBox(new AABB(x + 0.9, y + 1.8, z + 0.9, x - 0.9, y, z - 0.9));
 //        }

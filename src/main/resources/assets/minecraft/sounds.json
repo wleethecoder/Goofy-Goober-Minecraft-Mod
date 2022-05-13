@@ -1,6 +1,7 @@
 {
   "entity.creeper.primed": {
     "replace": true,
+    "subtitle": "subtitles.entity.creeper.primed",
     "sounds": [
       {
         "name": "random/fuse1",
@@ -22,6 +23,7 @@
   },
   "entity.tnt.primed": {
     "replace": true,
+    "subtitle": "subtitles.entity.tnt.primed",
     "sounds": [
       {
         "name": "random/fuse1",
@@ -43,6 +45,7 @@
   },
   "entity.generic.explode": {
     "replace": true,
+    "subtitle": "subtitles.entity.generic.explode",
     "sounds": [
       {
         "name": "random/explode1",
