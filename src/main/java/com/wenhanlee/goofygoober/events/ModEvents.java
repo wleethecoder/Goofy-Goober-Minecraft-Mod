@@ -21,7 +21,7 @@ public class ModEvents {
     @SubscribeEvent
     public static void eat(LivingEntityUseItemEvent.Finish event) {
         Entity entity = event.getEntity();
-        if (!entity.level.isClientSide() && entity instanceof Player player) {
+        if (entity instanceof Player player && !player.level.isClientSide()) {
             if (event.getItem().isEdible()) {
                 ItemStack handItem = player.getMainHandItem();
                 if (player.getOffhandItem() == event.getItem()) {
