@@ -30,19 +30,17 @@ public class TomfooleryHelper {
 
     public TomfooleryHelper() {
         scallywags = new ArrayList<>();
-        // 12 monsters that can spawn during tomfoolery
-        scallywags.add(EntityType.DROWNED);
-        scallywags.add(EntityType.HUSK);
+        // 10 monsters that can spawn during tomfoolery
         scallywags.add(EntityType.SKELETON);
         scallywags.add(EntityType.STRAY);
         scallywags.add(EntityType.WITHER_SKELETON);
         scallywags.add(EntityType.SPIDER);
         scallywags.add(EntityType.CAVE_SPIDER);
         scallywags.add(EntityType.GUARDIAN);
-        scallywags.add(EntityType.ZOGLIN);
         scallywags.add(EntityType.MAGMA_CUBE);
         scallywags.add(EntityType.SLIME);
         scallywags.add(EntityType.WITCH);
+        scallywags.add(EntityType.SHULKER);
     }
 
     private EntityType<?> getRandom(ArrayList<EntityType<?>> scallywags) {
@@ -66,7 +64,7 @@ public class TomfooleryHelper {
         ArrayList<Mob> eligibleMonsters = new ArrayList<>();
         for (Entity entity : list) {
 
-            // maybe add more to the if statement (i.e. slime, magma cube)
+            // TODO maybe add more to the if statement (i.e. slime, magma cube)
             if (entity instanceof Monster monster) {
                 AtomicBoolean isEligible = new AtomicBoolean(true);
                 monster.getCapability(ModCapabilities.TOMFOOLERY_ELIGIBILITY_CAPABILITY).ifPresent(iTomfooleryEligibility -> {
