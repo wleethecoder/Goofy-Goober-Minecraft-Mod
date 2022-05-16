@@ -28,12 +28,10 @@ public class ClientboundFatPacket {
     }
 
     public void handle(Supplier<NetworkEvent.Context> ctx) {
-        System.out.println("handling clientbound packet...");
         ctx.get().enqueueWork(() -> {
             DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> ClientboundFatPacketHandler.handlePacket(this.uuid, this.isFat));
         });
         ctx.get().setPacketHandled(true);
-        System.out.println("clientbound packet handled successfully (so it seems)");
     }
 
 }

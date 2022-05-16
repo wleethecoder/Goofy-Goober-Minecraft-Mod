@@ -32,10 +32,6 @@ public class ModEvents {
                     // play sound
                     player.level.playSound(null, player.getX(), player.getY(), player.getZ(), ModSounds.PLAYER_GORGE.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
 
-                    // TODO: make player wider
-//                    player.STANDING_DIMENSIONS.scale(5.0f, 1.0f);
-//                    player.setBoundingBox(new AABB(player.getX() - 0.3, player.getY() - 0.3, player.getZ() - 0.3, player.getX() + 0.3, player.getY() + 0.3, player.getZ() + 0.3));
-
                     // fill hunger bar, capped at 20
                     int nutrition = handItem.getItem().getFoodProperties().getNutrition();
                     int totalNutrition = nutrition * count;

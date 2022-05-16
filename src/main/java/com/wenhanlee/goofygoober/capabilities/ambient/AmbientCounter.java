@@ -28,16 +28,18 @@ public class AmbientCounter implements IAmbientCounter {
 
     @Override
     public void rollLimit() {
+        // adds randomness to how long it takes for the mob to make another noise
         Random random = new Random();
         this.limit = random.nextInt(100) + 100;
     }
 
     @Override
     public void rollSleepingNoise() {
-        // adds randomness to how long it takes for the mob to make another noise
         Random random = new Random();
+        int randInt = random.nextInt(3);
         this.sleepingNoise = ModSounds.SNORE_LOUD.get();
-        if (random.nextInt(2) == 1) this.sleepingNoise = ModSounds.SNORE_MIMIMI.get();
+        if (randInt == 1) this.sleepingNoise = ModSounds.SNORE_MIMIMI.get();
+        if (randInt == 2) this.sleepingNoise = ModSounds.SNORE_WHISTLE.get();
     }
 
 }

@@ -16,13 +16,16 @@ import java.util.function.Supplier;
 @Mod.EventBusSubscriber(modid = GoofyGoober.MOD_ID, value = Dist.CLIENT)
 public class ClientboundFatPacketHandler {
 
-    static HashMap<UUID, Boolean> trackedPlayersFatEffects;
+    private static HashMap<UUID, Boolean> trackedPlayersFatEffects;
+
+    private static void initializeIfNull() {
+        if (trackedPlayersFatEffects == null) trackedPlayersFatEffects = new HashMap<>();
+    }
 
     public static void handlePacket(UUID uuid, boolean isFat) {
         initializeIfNull();
-        System.out.println("uuid: " + uuid);
-        System.out.println("isFat: " + isFat);
-
+//        System.out.println("uuid: " + uuid);
+//        System.out.println("isFat: " + isFat);
         trackedPlayersFatEffects.put(uuid, isFat);
     }
 
@@ -30,19 +33,12 @@ public class ClientboundFatPacketHandler {
     public static void fat(RenderPlayerEvent.Pre event) {
         Player player = event.getPlayer();
         if (player != null) {
-//            boolean isFat = player.getActiveEffectsMap() != null && player.hasEffect(ModEffects.FAT.get());
-            System.out.println(trackedPlayersFatEffects == null);
-            if (trackedPlayersFatEffects != null) System.out.println(trackedPlayersFatEffects.get(player.getUUID()) == null);
             initializeIfNull();
             boolean isFat = trackedPlayersFatEffects.getOrDefault(player.getUUID(), false);
             isFat = isFat || (player.getActiveEffectsMap() != null && player.hasEffect(ModEffects.FAT.get()));
-            System.out.println("[CLIENT] " + player.getDisplayName().getString() + " (" + player.getStringUUID() + ")" + " is fat: " + isFat);
+//            System.out.println("[CLIENT] " + player.getDisplayName().getString() + " (" + player.getStringUUID() + ")" + " is fat: " + isFat);
             if (isFat) event.getPoseStack().scale(3.0F, 1.0F, 3.0F);
         }
-    }
-
-    private static void initializeIfNull() {
-        if (trackedPlayersFatEffects == null) trackedPlayersFatEffects = new HashMap<>();
     }
 
 }

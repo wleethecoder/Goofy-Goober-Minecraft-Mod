@@ -15,14 +15,10 @@ import java.util.Random;
 
 public class CustomMobNoiseHelper {
 
-    static Random random = new Random();
-    public HashMap<String, Float> damageSourceKnockback;
+    private static final Random random = new Random();
+    private static HashMap<String, Float> damageSourceKnockback;
 
-    public CustomMobNoiseHelper() {
-        initializeDamageSourceKnockback();
-    }
-
-    public void initializeDamageSourceKnockback() {
+    private static void initializeIfNull() {
         damageSourceKnockback = new HashMap<>();
         damageSourceKnockback.put("hotFloor", 0.75F);
         damageSourceKnockback.put("sweetBerryBush", 1.5F);
@@ -33,9 +29,10 @@ public class CustomMobNoiseHelper {
     }
 
     // don't add @SubscribeEvent here!
-    public void scream(LivingDamageEvent event) {
+    public static void scream(LivingDamageEvent event) {
         LivingEntity entity = event.getEntityLiving();
         String source = event.getSource().getMsgId();
+        initializeIfNull();
         if (damageSourceKnockback.get(source) != null) {
             entity.setDeltaMovement(entity.getDeltaMovement().add(0.0D, damageSourceKnockback.get(source), 0.0D));
             entity.level.playSound(null, entity.getX(), entity.getY(), entity.getZ(), ModSounds.SCREAM.get(), SoundSource.AMBIENT, 1.0F, 0.9F + random.nextFloat(0.2F));
@@ -43,7 +40,7 @@ public class CustomMobNoiseHelper {
     }
 
     // custom ambient noises for players or villagers
-    public void ambient(LivingEntity entity) {
+    public static void ambient(LivingEntity entity) {
         entity.getCapability(ModCapabilities.AMBIENT_COUNTER_CAPABILITY).ifPresent(iAmbientCounter -> {
             AmbientCounter ambientCounter = (AmbientCounter) iAmbientCounter;
             ambientCounter.incrementCounter();
@@ -64,17 +61,16 @@ public class CustomMobNoiseHelper {
         });
     }
 
-    public void panic(AmbientCounter ambientCounter, Mob mob) {
+    public static void panic(AmbientCounter ambientCounter, Mob mob) {
         Optional<Activity> activity = mob.getBrain().getActiveNonCoreActivity();
         if (activity.isPresent() && activity.get().getName().equals("panic")) {
-            // TODO add more mob panic noises
             mob.playSound(ModSounds.SKEDADDLE.get(), 1.0F, 0.9F + random.nextFloat(0.2F));
             ambientCounter.resetCounter();
             ambientCounter.rollLimit();
         }
     }
 
-    public void snore(AmbientCounter ambientCounter, LivingEntity entity) {
+    public static void snore(AmbientCounter ambientCounter, LivingEntity entity) {
         if (entity.isSleeping()) {
             entity.level.playSound(null, entity.getX(), entity.getY(), entity.getZ(), ambientCounter.sleepingNoise, SoundSource.AMBIENT, 1.0F, 0.9F + random.nextFloat(0.6F));
             ambientCounter.resetCounter();

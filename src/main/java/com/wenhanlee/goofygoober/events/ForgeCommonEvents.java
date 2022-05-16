@@ -18,15 +18,15 @@ public class ForgeCommonEvents {
 
     @SubscribeEvent
     public static void startTracking(PlayerEvent.StartTracking event) {
+
         // the (player) entity whose fat status is being tracked
         Entity entity = event.getTarget();
-        System.out.println("startTracking " + entity.getType());
 
         // the player tracking the player's fat status will be sent packets
         ServerPlayer target = (ServerPlayer) event.getPlayer();
         if (entity instanceof Player player && !player.level.isClientSide()) {
             boolean isFat = player.getActiveEffectsMap() != null && player.hasEffect(ModEffects.FAT.get());
-            System.out.println("[FORGE COMMON] " + player.getDisplayName().getString() + " will tell " + target.getDisplayName().getString() + " that their fat status is " + isFat);
+//            System.out.println("[FORGE COMMON] " + player.getDisplayName().getString() + " will tell " + target.getDisplayName().getString() + " that their fat status is " + isFat);
             PacketHandler.INSTANCE.send(
                     PacketDistributor.PLAYER.with(() -> target),
                     new ClientboundFatPacket(player.getUUID(), isFat)

@@ -38,7 +38,6 @@ public class FatEffect extends MobEffect {
                     PacketDistributor.TRACKING_ENTITY_AND_SELF.with(() -> player),
                     new ClientboundFatPacket(player.getUUID(), true)
             );
-            System.out.println("addAttributeModifiers");
         }
         super.addAttributeModifiers(pLivingEntity, pAttributeMap, pAmplifier);
     }
@@ -50,7 +49,6 @@ public class FatEffect extends MobEffect {
                     PacketDistributor.TRACKING_ENTITY_AND_SELF.with(() -> player),
                     new ClientboundFatPacket(player.getUUID(), false)
             );
-            System.out.println("removeAttributeModifiers");
         }
         super.removeAttributeModifiers(pLivingEntity, pAttributeMap, pAmplifier);
     }

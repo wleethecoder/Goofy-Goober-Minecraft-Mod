@@ -16,8 +16,6 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber(modid = GoofyGoober.MOD_ID)
 public class CustomMobNoiseEvents {
 
-    static CustomMobNoiseHelper customMobNoiseHelper = new CustomMobNoiseHelper();
-
     @SubscribeEvent
     public static void registerCapabilities(RegisterCapabilitiesEvent event) {
         event.register(IAmbientCounter.class);
@@ -43,7 +41,7 @@ public class CustomMobNoiseEvents {
     @SubscribeEvent
     public static void scream(LivingDamageEvent event) {
         if (!event.getEntity().level.isClientSide()) {
-            customMobNoiseHelper.scream(event);
+            CustomMobNoiseHelper.scream(event);
         }
     }
 
@@ -52,7 +50,7 @@ public class CustomMobNoiseEvents {
     public static void tick(LivingEvent.LivingUpdateEvent event) {
         LivingEntity entity = event.getEntityLiving();
         if (!entity.level.isClientSide()) {
-            customMobNoiseHelper.ambient(entity);
+            CustomMobNoiseHelper.ambient(entity);
         }
     }
 

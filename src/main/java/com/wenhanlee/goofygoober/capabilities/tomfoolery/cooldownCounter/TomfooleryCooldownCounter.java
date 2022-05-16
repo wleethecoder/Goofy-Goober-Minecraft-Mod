@@ -1,15 +1,15 @@
-package com.wenhanlee.goofygoober.capabilities.tomfoolery.counter;
+package com.wenhanlee.goofygoober.capabilities.tomfoolery.cooldownCounter;
 
-public class TomfooleryCounter implements ITomfooleryCounter {
+public class TomfooleryCooldownCounter implements ITomfooleryCooldownCounter {
 
     public int counter;
     public final int limit;
     public boolean cooldown;
 
-    public TomfooleryCounter() {
+    public TomfooleryCooldownCounter() {
         this.counter = 0;
-//        this.limit = 2400;
-        this.limit = 300;
+//        this.limit = 2400; // 2 minutes
+        this.limit = 300; // 15 seconds
         this.cooldown = false;
     }
 
