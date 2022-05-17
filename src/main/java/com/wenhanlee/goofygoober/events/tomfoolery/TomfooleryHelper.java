@@ -9,11 +9,18 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.animal.PolarBear;
 import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.monster.Slime;
+import net.minecraft.world.entity.monster.Spider;
+import net.minecraft.world.entity.monster.ZombifiedPiglin;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
+import net.minecraftforge.fml.util.ObfuscationReflectionHelper;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -80,7 +87,7 @@ public class TomfooleryHelper {
         return mobs;
     }
 
-    public static boolean spawnScallywag(Player player) {
+    public static boolean spawnScallywag(Player player) throws InvocationTargetException, IllegalAccessException {
         boolean success = false;
         ServerLevel serverLevel = (ServerLevel) player.level;
         int j = 0;
@@ -94,10 +101,13 @@ public class TomfooleryHelper {
                 Mob mob = (Mob) mobType.create(serverLevel, null, null, null, blockPos, MobSpawnType.MOB_SUMMONED, false, false);
                 if (mob != null) {
                     if (mob.checkSpawnObstruction(serverLevel)) {
+
+                        setScallywagStats(mob);
+
                         serverLevel.addFreshEntityWithPassengers(mob);
 
                         // scallywags glow (which is convenient, considering all the smoke they generate)
-                        mob.addEffect(new MobEffectInstance(MobEffects.GLOWING, 1000000, 1));
+                        mob.addEffect(new MobEffectInstance(MobEffects.GLOWING, 1000000));
 
                         youreAScallywag(mob);
 
@@ -190,6 +200,26 @@ public class TomfooleryHelper {
                 || mob.getType() == EntityType.MAGMA_CUBE
                 || mob.getType() == EntityType.SHULKER
                 || mob.getType() == EntityType.HOGLIN;
+    }
+
+    public static void setScallywagStats(Mob mob) throws InvocationTargetException, IllegalAccessException {
+
+        if (mob instanceof Spider spider) { // CaveSpider extends Spider
+            spider.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 1000000));
+            spider.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 1000000));
+        }
+
+        // Slime and Magma cube scallywags are always size 3
+        if (mob instanceof Slime slime) { // MagmaCube extends Slime
+            Method method = ObfuscationReflectionHelper.findMethod(Slime.class, "setSize", int.class, boolean.class);
+            method.setAccessible(true);
+            method.invoke(slime, 4, true);
+        }
+
+        if (mob instanceof PolarBear || mob instanceof ZombifiedPiglin) {
+            mob.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 1000000));
+        }
+
     }
 
 }

@@ -20,16 +20,16 @@
     },
     "done": true
   },
+  "minecraft:nether/obtain_crying_obsidian": {
+    "criteria": {
+      "crying_obsidian": "2022-05-13 23:57:07 -0500"
+    },
+    "done": true
+  },
   "minecraft:recipes/redstone/acacia_button": {
     "criteria": {
       "has_the_recipe": "2022-05-13 23:57:08 -0500",
       "has_planks": "2022-05-13 23:57:08 -0500"
-    },
-    "done": true
-  },
-  "minecraft:nether/obtain_crying_obsidian": {
-    "criteria": {
-      "crying_obsidian": "2022-05-13 23:57:07 -0500"
     },
     "done": true
   },

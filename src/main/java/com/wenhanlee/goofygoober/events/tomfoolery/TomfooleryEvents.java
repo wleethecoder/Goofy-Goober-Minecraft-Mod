@@ -92,7 +92,11 @@ public class TomfooleryEvents {
 
                         boolean anyScallywagSpawned = false;
                         for (int i = 0; i < TomfooleryHelper.NUM_MOBS_TO_SUMMON; i++) {
-                            if (TomfooleryHelper.spawnScallywag(player)) anyScallywagSpawned = true;
+                            try {
+                                if (TomfooleryHelper.spawnScallywag(player)) anyScallywagSpawned = true;
+                            } catch (InvocationTargetException | IllegalAccessException e) {
+                                e.printStackTrace();
+                            }
                         }
 
                         if (anyScallywagSpawned) tomfooleryCooldownCounter.cooldown = true;
