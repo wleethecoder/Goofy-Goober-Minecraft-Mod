@@ -3,11 +3,13 @@
 
   "sounds.goofygoober.scream": "Screaming",
   "sounds.goofygoober.skedaddle": "Skedaddling",
-  "sounds.goofygoober.snore_loud": "Snoring",
-  "sounds.goofygoober.snore_mimimi": "Snoring",
-  "sounds.goofygoober.snore_whistle": "Snoring",
+  "sounds.goofygoober.snore_loud": "Loud Snoring",
+  "sounds.goofygoober.snore_mimimi": "Mimimi Snoring",
+  "sounds.goofygoober.snore_whistle": "Whistle Snoring",
   "sounds.goofygoober.player_gorge": "Player gorges",
   "sounds.goofygoober.tomfoolery": "Scallywag causes mischief",
+  "sounds.goofygoober.death": "Sad noise",
 
-  "effects.goofygoober.fat": "Fat"
+  "effect.goofygoober.fat": "Fat",
+  "effect.goofygoober.squashed": "Squashed"
 }

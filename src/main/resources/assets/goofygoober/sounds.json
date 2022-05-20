@@ -52,26 +52,35 @@
       "goofygoober:tomfoolery/bonk",
       "goofygoober:tomfoolery/car_horn",
       "goofygoober:tomfoolery/chipmunk",
+      "goofygoober:tomfoolery/combo",
       "goofygoober:tomfoolery/cuckoo",
       "goofygoober:tomfoolery/fail",
       "goofygoober:tomfoolery/fart",
       "goofygoober:tomfoolery/flight",
       "goofygoober:tomfoolery/glass_break",
       "goofygoober:tomfoolery/hee_hee",
+      "goofygoober:tomfoolery/ignore_yawn",
       "goofygoober:tomfoolery/impact1",
       "goofygoober:tomfoolery/impact2",
       "goofygoober:tomfoolery/impact3",
       "goofygoober:tomfoolery/impact4",
+      "goofygoober:tomfoolery/moon_lounge_omicron_prime_by_kevin_macleod",
       "goofygoober:tomfoolery/piano_riff",
       "goofygoober:tomfoolery/poke",
       "goofygoober:tomfoolery/reverb_fart",
       "goofygoober:tomfoolery/slip1",
       "goofygoober:tomfoolery/slip2",
       "goofygoober:tomfoolery/sneak",
-      "goofygoober:tomfoolery/tuba",
       "goofygoober:tomfoolery/ugly_laugh",
       "goofygoober:tomfoolery/violin",
       "goofygoober:tomfoolery/woaaow"
+    ]
+  },
+  "death": {
+    "subtitle": "sounds.goofygoober.death",
+    "sounds": [
+      "goofygoober:death/spongebob_fail",
+      "goofygoober:death/squirrel_laugh"
     ]
   }
 }

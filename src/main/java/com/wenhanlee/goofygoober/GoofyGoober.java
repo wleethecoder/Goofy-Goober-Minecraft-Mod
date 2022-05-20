@@ -1,9 +1,9 @@
 package com.wenhanlee.goofygoober;
 
 import com.mojang.logging.LogUtils;
-import com.wenhanlee.goofygoober.effects.ModEffects;
-import com.wenhanlee.goofygoober.items.ModItems;
-import com.wenhanlee.goofygoober.sounds.ModSounds;
+import com.wenhanlee.goofygoober.common.effects.ModEffects;
+import com.wenhanlee.goofygoober.common.items.ModItems;
+import com.wenhanlee.goofygoober.common.sounds.ModSounds;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
