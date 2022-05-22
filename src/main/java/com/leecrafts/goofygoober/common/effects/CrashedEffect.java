@@ -26,7 +26,7 @@ public class CrashedEffect extends MobEffect {
                         new ClientboundUpdateMobEffectPacket(pLivingEntity.getId(), mobEffectInstance)
                 );
             }
-//            pLivingEntity.refreshDimensions();
+            pLivingEntity.refreshDimensions();
         }
         super.addAttributeModifiers(pLivingEntity, pAttributeMap, pAmplifier);
     }
@@ -37,7 +37,7 @@ public class CrashedEffect extends MobEffect {
             PacketDistributor.TRACKING_ENTITY.with(() -> pLivingEntity).send(
                     new ClientboundRemoveMobEffectPacket(pLivingEntity.getId(), ModEffects.CRASHED.get())
             );
-//            pLivingEntity.refreshDimensions();
+            pLivingEntity.refreshDimensions();
         }
         super.removeAttributeModifiers(pLivingEntity, pAttributeMap, pAmplifier);
     }
