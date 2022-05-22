@@ -6,7 +6,7 @@ Description: Ticking entity
 
 net.minecraftforge.fml.util.ObfuscationReflectionHelper$UnableToFindMethodException: java.lang.NoSuchMethodException: net.minecraft.world.entity.monster.MagmaCube.dealDamage(net.minecraft.world.entity.LivingEntity)
 	at net.minecraftforge.fml.util.ObfuscationReflectionHelper.findMethod(ObfuscationReflectionHelper.java:165) ~[fmlcore-1.18.2-40.0.31.jar%2378!/:?] {}
-	at com.wenhanlee.goofygoober.events.tomfoolery.TomfooleryEvents.slimeMagmaCubeDamage(TomfooleryEvents.java:117) ~[%2379!/:?] {re:classloading}
+	at com.leecrafts.goofygoober.events.tomfoolery.TomfooleryEvents.slimeMagmaCubeDamage(TomfooleryEvents.java:117) ~[%2379!/:?] {re:classloading}
 	at net.minecraftforge.eventbus.ASMEventHandler_9_TomfooleryEvents_slimeMagmaCubeDamage_LivingUpdateEvent.invoke(.dynamic) ~[?:?] {}
 	at net.minecraftforge.eventbus.ASMEventHandler.invoke(ASMEventHandler.java:85) ~[eventbus-5.0.7.jar%239!/:?] {}
 	at net.minecraftforge.eventbus.EventBus.post(EventBus.java:302) ~[eventbus-5.0.7.jar%239!/:?] {}
@@ -39,7 +39,7 @@ A detailed walkthrough of the error, its code path and all known details is as f
 Thread: Server thread
 Stacktrace:
 	at net.minecraftforge.fml.util.ObfuscationReflectionHelper.findMethod(ObfuscationReflectionHelper.java:165) ~[fmlcore-1.18.2-40.0.31.jar%2378!/:?] {}
-	at com.wenhanlee.goofygoober.events.tomfoolery.TomfooleryEvents.slimeMagmaCubeDamage(TomfooleryEvents.java:117) ~[%2379!/:?] {re:classloading}
+	at com.leecrafts.goofygoober.events.tomfoolery.TomfooleryEvents.slimeMagmaCubeDamage(TomfooleryEvents.java:117) ~[%2379!/:?] {re:classloading}
 	at net.minecraftforge.eventbus.ASMEventHandler_9_TomfooleryEvents_slimeMagmaCubeDamage_LivingUpdateEvent.invoke(.dynamic) ~[?:?] {}
 	at net.minecraftforge.eventbus.ASMEventHandler.invoke(ASMEventHandler.java:85) ~[eventbus-5.0.7.jar%239!/:?] {}
 	at net.minecraftforge.eventbus.EventBus.post(EventBus.java:302) ~[eventbus-5.0.7.jar%239!/:?] {}

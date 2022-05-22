@@ -4,8 +4,8 @@
 Time: 5/14/22, 11:28 PM
 Description: Rendering entity in world
 
-java.lang.NullPointerException: Cannot invoke "java.util.HashMap.getOrDefault(Object, Object)" because "com.wenhanlee.goofygoober.packets.fat.ClientboundFatPacketHandler.trackedPlayersFatEffects" is null
-	at com.wenhanlee.goofygoober.packets.fat.ClientboundFatPacketHandler.fat(ClientboundFatPacketHandler.java:37) ~[%2379!/:?] {re:classloading}
+java.lang.NullPointerException: Cannot invoke "java.util.HashMap.getOrDefault(Object, Object)" because "com.leecrafts.goofygoober.packets.fat.ClientboundFatPacketHandler.trackedPlayersFatEffects" is null
+	at com.leecrafts.goofygoober.packets.fat.ClientboundFatPacketHandler.fat(ClientboundFatPacketHandler.java:37) ~[%2379!/:?] {re:classloading}
 	at net.minecraftforge.eventbus.ASMEventHandler_1_ClientboundFatPacketHandler_fat_Pre.invoke(.dynamic) ~[?:?] {}
 	at net.minecraftforge.eventbus.ASMEventHandler.invoke(ASMEventHandler.java:85) ~[eventbus-5.0.7.jar%239!/:?] {}
 	at net.minecraftforge.eventbus.EventBus.post(EventBus.java:302) ~[eventbus-5.0.7.jar%239!/:?] {}
@@ -47,7 +47,7 @@ A detailed walkthrough of the error, its code path and all known details is as f
 -- Head --
 Thread: Render thread
 Stacktrace:
-	at com.wenhanlee.goofygoober.packets.fat.ClientboundFatPacketHandler.fat(ClientboundFatPacketHandler.java:37) ~[%2379!/:?] {re:classloading}
+	at com.leecrafts.goofygoober.packets.fat.ClientboundFatPacketHandler.fat(ClientboundFatPacketHandler.java:37) ~[%2379!/:?] {re:classloading}
 	at net.minecraftforge.eventbus.ASMEventHandler_1_ClientboundFatPacketHandler_fat_Pre.invoke(.dynamic) ~[?:?] {}
 	at net.minecraftforge.eventbus.ASMEventHandler.invoke(ASMEventHandler.java:85) ~[eventbus-5.0.7.jar%239!/:?] {}
 	at net.minecraftforge.eventbus.EventBus.post(EventBus.java:302) ~[eventbus-5.0.7.jar%239!/:?] {}

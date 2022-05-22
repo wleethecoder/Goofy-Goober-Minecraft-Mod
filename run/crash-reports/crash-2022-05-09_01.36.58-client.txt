@@ -5,7 +5,7 @@ Time: 5/9/22, 1:36 AM
 Description: Unexpected error
 
 java.lang.ExceptionInInitializerError: null
-	at com.wenhanlee.goofygoober.events.ForgeClientEvents.clientTick(ForgeClientEvents.java:24) ~[%2379!/:?] {re:classloading}
+	at com.leecrafts.goofygoober.events.ForgeClientEvents.clientTick(ForgeClientEvents.java:24) ~[%2379!/:?] {re:classloading}
 	at net.minecraftforge.eventbus.ASMEventHandler_2_ForgeClientEvents_clientTick_ClientTickEvent.invoke(.dynamic) ~[?:?] {}
 	at net.minecraftforge.eventbus.ASMEventHandler.invoke(ASMEventHandler.java:85) ~[eventbus-5.0.7.jar%239!/:?] {}
 	at net.minecraftforge.eventbus.EventBus.post(EventBus.java:302) ~[eventbus-5.0.7.jar%239!/:?] {}
@@ -31,7 +31,7 @@ java.lang.ExceptionInInitializerError: null
 Caused by: java.lang.IllegalArgumentException: Registration of impl channels is locked
 	at net.minecraftforge.network.NetworkRegistry.createInstance(NetworkRegistry.java:135) ~[forge-1.18.2-40.0.31_mapped_parchment_2022.03.13-1.18.2-recomp.jar%2374%2380!/:?] {re:classloading}
 	at net.minecraftforge.network.NetworkRegistry.newSimpleChannel(NetworkRegistry.java:103) ~[forge-1.18.2-40.0.31_mapped_parchment_2022.03.13-1.18.2-recomp.jar%2374%2380!/:?] {re:classloading}
-	at com.wenhanlee.goofygoober.packets.PacketHandler.<clinit>(PacketHandler.java:14) ~[%2379!/:?] {re:classloading}
+	at com.leecrafts.goofygoober.packets.PacketHandler.<clinit>(PacketHandler.java:14) ~[%2379!/:?] {re:classloading}
 	... 23 more
 
 
@@ -41,7 +41,7 @@ A detailed walkthrough of the error, its code path and all known details is as f
 -- Head --
 Thread: Render thread
 Stacktrace:
-	at com.wenhanlee.goofygoober.events.ForgeClientEvents.clientTick(ForgeClientEvents.java:24) ~[%2379!/:?] {re:classloading}
+	at com.leecrafts.goofygoober.events.ForgeClientEvents.clientTick(ForgeClientEvents.java:24) ~[%2379!/:?] {re:classloading}
 	at net.minecraftforge.eventbus.ASMEventHandler_2_ForgeClientEvents_clientTick_ClientTickEvent.invoke(.dynamic) ~[?:?] {}
 	at net.minecraftforge.eventbus.ASMEventHandler.invoke(ASMEventHandler.java:85) ~[eventbus-5.0.7.jar%239!/:?] {}
 	at net.minecraftforge.eventbus.EventBus.post(EventBus.java:302) ~[eventbus-5.0.7.jar%239!/:?] {}

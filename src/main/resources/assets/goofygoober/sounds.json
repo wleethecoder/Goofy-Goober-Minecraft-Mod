@@ -82,5 +82,19 @@
       "goofygoober:death/spongebob_fail",
       "goofygoober:death/squirrel_laugh"
     ]
+  },
+  "impact": {
+    "subtitle": "sounds.goofygoober.impact",
+    "sounds": [
+      "goofygoober:impact/crash_smash",
+      "goofygoober:impact/hammer",
+      "goofygoober:impact/stun"
+    ]
+  },
+  "doit": {
+    "subtitle": "sounds.goofygoober.doit",
+    "sounds": [
+      "goofygoober:misc/doit"
+    ]
   }
 }

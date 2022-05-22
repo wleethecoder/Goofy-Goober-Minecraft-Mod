@@ -4,10 +4,10 @@
 Time: 5/9/22, 9:31 AM
 Description: Ticking player
 
-java.lang.ClassCastException: class com.wenhanlee.goofygoober.capabilities.fat.Fat cannot be cast to class com.wenhanlee.goofygoober.capabilities.ambient.IAmbientCounter (com.wenhanlee.goofygoober.capabilities.fat.Fat and com.wenhanlee.goofygoober.capabilities.ambient.IAmbientCounter are in module goofygoober@1.18.2 of loader 'TRANSFORMER' @44924587)
+java.lang.ClassCastException: class com.leecrafts.goofygoober.capabilities.fat.Fat cannot be cast to class com.leecrafts.goofygoober.capabilities.ambient.IAmbientCounter (com.leecrafts.goofygoober.capabilities.fat.Fat and com.leecrafts.goofygoober.capabilities.ambient.IAmbientCounter are in module goofygoober@1.18.2 of loader 'TRANSFORMER' @44924587)
 	at net.minecraftforge.common.util.LazyOptional.ifPresent(LazyOptional.java:150) ~[forge-1.18.2-40.0.31_mapped_parchment_2022.03.13-1.18.2-recomp.jar%2374%2380!/:?] {re:classloading}
-	at com.wenhanlee.goofygoober.events.customMobNoise.CustomMobNoiseHelper.ambient(CustomMobNoise.java:51) ~[%2379!/:?] {re:classloading}
-	at com.wenhanlee.goofygoober.events.ModEvents.timeCounterTick(ModEvents.java:87) ~[%2379!/:?] {re:classloading}
+	at com.leecrafts.goofygoober.events.customMobNoise.CustomMobNoiseHelper.ambient(CustomMobNoise.java:51) ~[%2379!/:?] {re:classloading}
+	at com.leecrafts.goofygoober.events.ModEvents.timeCounterTick(ModEvents.java:87) ~[%2379!/:?] {re:classloading}
 	at net.minecraftforge.eventbus.ASMEventHandler_8_ModEvents_timeCounterTick_LivingUpdateEvent.invoke(.dynamic) ~[?:?] {}
 	at net.minecraftforge.eventbus.ASMEventHandler.invoke(ASMEventHandler.java:85) ~[eventbus-5.0.7.jar%239!/:?] {}
 	at net.minecraftforge.eventbus.EventBus.post(EventBus.java:302) ~[eventbus-5.0.7.jar%239!/:?] {}
@@ -34,8 +34,8 @@ A detailed walkthrough of the error, its code path and all known details is as f
 Thread: Server thread
 Stacktrace:
 	at net.minecraftforge.common.util.LazyOptional.ifPresent(LazyOptional.java:150) ~[forge-1.18.2-40.0.31_mapped_parchment_2022.03.13-1.18.2-recomp.jar%2374%2380!/:?] {re:classloading}
-	at com.wenhanlee.goofygoober.events.customMobNoise.CustomMobNoiseHelper.ambient(CustomMobNoise.java:51) ~[%2379!/:?] {re:classloading}
-	at com.wenhanlee.goofygoober.events.ModEvents.timeCounterTick(ModEvents.java:87) ~[%2379!/:?] {re:classloading}
+	at com.leecrafts.goofygoober.events.customMobNoise.CustomMobNoiseHelper.ambient(CustomMobNoise.java:51) ~[%2379!/:?] {re:classloading}
+	at com.leecrafts.goofygoober.events.ModEvents.timeCounterTick(ModEvents.java:87) ~[%2379!/:?] {re:classloading}
 	at net.minecraftforge.eventbus.ASMEventHandler_8_ModEvents_timeCounterTick_LivingUpdateEvent.invoke(.dynamic) ~[?:?] {}
 	at net.minecraftforge.eventbus.ASMEventHandler.invoke(ASMEventHandler.java:85) ~[eventbus-5.0.7.jar%239!/:?] {}
 	at net.minecraftforge.eventbus.EventBus.post(EventBus.java:302) ~[eventbus-5.0.7.jar%239!/:?] {}

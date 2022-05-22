@@ -5,8 +5,8 @@ Time: 5/20/22, 1:31 PM
 Description: Ticking player
 
 java.lang.ClassCastException: class net.minecraft.world.entity.EntityDimensions cannot be cast to class java.lang.reflect.Field (net.minecraft.world.entity.EntityDimensions is in module minecraft@1.18.2 of loader 'TRANSFORMER' @2b037cfc)
-	at com.wenhanlee.goofygoober.common.events.temp.initializeDimensionsFieldIfNull(temp.java:32) ~[%2379!/:?] {re:classloading}
-	at com.wenhanlee.goofygoober.common.events.temp.entitySizeChange(temp.java:54) ~[%2379!/:?] {re:classloading}
+	at com.leecrafts.goofygoober.common.events.temp.initializeDimensionsFieldIfNull(temp.java:32) ~[%2379!/:?] {re:classloading}
+	at com.leecrafts.goofygoober.common.events.temp.entitySizeChange(temp.java:54) ~[%2379!/:?] {re:classloading}
 	at net.minecraftforge.eventbus.ASMEventHandler_1_temp_entitySizeChange_LivingUpdateEvent.invoke(.dynamic) ~[?:?] {}
 	at net.minecraftforge.eventbus.ASMEventHandler.invoke(ASMEventHandler.java:85) ~[eventbus-5.0.7.jar%239!/:?] {}
 	at net.minecraftforge.eventbus.EventBus.post(EventBus.java:302) ~[eventbus-5.0.7.jar%239!/:?] {}
@@ -32,8 +32,8 @@ A detailed walkthrough of the error, its code path and all known details is as f
 -- Head --
 Thread: Server thread
 Stacktrace:
-	at com.wenhanlee.goofygoober.common.events.temp.initializeDimensionsFieldIfNull(temp.java:32) ~[%2379!/:?] {re:classloading}
-	at com.wenhanlee.goofygoober.common.events.temp.entitySizeChange(temp.java:54) ~[%2379!/:?] {re:classloading}
+	at com.leecrafts.goofygoober.common.events.temp.initializeDimensionsFieldIfNull(temp.java:32) ~[%2379!/:?] {re:classloading}
+	at com.leecrafts.goofygoober.common.events.temp.entitySizeChange(temp.java:54) ~[%2379!/:?] {re:classloading}
 	at net.minecraftforge.eventbus.ASMEventHandler_1_temp_entitySizeChange_LivingUpdateEvent.invoke(.dynamic) ~[?:?] {}
 	at net.minecraftforge.eventbus.ASMEventHandler.invoke(ASMEventHandler.java:85) ~[eventbus-5.0.7.jar%239!/:?] {}
 	at net.minecraftforge.eventbus.EventBus.post(EventBus.java:302) ~[eventbus-5.0.7.jar%239!/:?] {}

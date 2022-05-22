@@ -5,10 +5,10 @@ Time: 5/12/22, 11:26 PM
 Description: Ticking player
 
 java.lang.ClassCastException: class net.minecraft.world.entity.monster.Slime cannot be cast to class net.minecraft.world.entity.monster.Monster (net.minecraft.world.entity.monster.Slime and net.minecraft.world.entity.monster.Monster are in module minecraft@1.18.2 of loader 'TRANSFORMER' @73d3e555)
-	at com.wenhanlee.goofygoober.events.tomfoolery.TomfooleryHelper.spawnRambunctiousFella(TomfooleryHelper.java:90) ~[%2379!/:?] {re:classloading}
-	at com.wenhanlee.goofygoober.events.tomfoolery.TomfooleryEvents.lambda$tick$0(TomfooleryEvents.java:67) ~[%2379!/:?] {re:classloading}
+	at com.leecrafts.goofygoober.events.tomfoolery.TomfooleryHelper.spawnRambunctiousFella(TomfooleryHelper.java:90) ~[%2379!/:?] {re:classloading}
+	at com.leecrafts.goofygoober.events.tomfoolery.TomfooleryEvents.lambda$tick$0(TomfooleryEvents.java:67) ~[%2379!/:?] {re:classloading}
 	at net.minecraftforge.common.util.LazyOptional.ifPresent(LazyOptional.java:150) ~[forge-1.18.2-40.0.31_mapped_parchment_2022.03.13-1.18.2-recomp.jar%2374%2380!/:?] {re:classloading}
-	at com.wenhanlee.goofygoober.events.tomfoolery.TomfooleryEvents.tick(TomfooleryEvents.java:54) ~[%2379!/:?] {re:classloading}
+	at com.leecrafts.goofygoober.events.tomfoolery.TomfooleryEvents.tick(TomfooleryEvents.java:54) ~[%2379!/:?] {re:classloading}
 	at net.minecraftforge.eventbus.ASMEventHandler_3_TomfooleryEvents_tick_LivingUpdateEvent.invoke(.dynamic) ~[?:?] {}
 	at net.minecraftforge.eventbus.ASMEventHandler.invoke(ASMEventHandler.java:85) ~[eventbus-5.0.7.jar%239!/:?] {}
 	at net.minecraftforge.eventbus.EventBus.post(EventBus.java:302) ~[eventbus-5.0.7.jar%239!/:?] {}
@@ -34,10 +34,10 @@ A detailed walkthrough of the error, its code path and all known details is as f
 -- Head --
 Thread: Server thread
 Stacktrace:
-	at com.wenhanlee.goofygoober.events.tomfoolery.TomfooleryHelper.spawnRambunctiousFella(TomfooleryHelper.java:90) ~[%2379!/:?] {re:classloading}
-	at com.wenhanlee.goofygoober.events.tomfoolery.TomfooleryEvents.lambda$tick$0(TomfooleryEvents.java:67) ~[%2379!/:?] {re:classloading}
+	at com.leecrafts.goofygoober.events.tomfoolery.TomfooleryHelper.spawnRambunctiousFella(TomfooleryHelper.java:90) ~[%2379!/:?] {re:classloading}
+	at com.leecrafts.goofygoober.events.tomfoolery.TomfooleryEvents.lambda$tick$0(TomfooleryEvents.java:67) ~[%2379!/:?] {re:classloading}
 	at net.minecraftforge.common.util.LazyOptional.ifPresent(LazyOptional.java:150) ~[forge-1.18.2-40.0.31_mapped_parchment_2022.03.13-1.18.2-recomp.jar%2374%2380!/:?] {re:classloading}
-	at com.wenhanlee.goofygoober.events.tomfoolery.TomfooleryEvents.tick(TomfooleryEvents.java:54) ~[%2379!/:?] {re:classloading}
+	at com.leecrafts.goofygoober.events.tomfoolery.TomfooleryEvents.tick(TomfooleryEvents.java:54) ~[%2379!/:?] {re:classloading}
 	at net.minecraftforge.eventbus.ASMEventHandler_3_TomfooleryEvents_tick_LivingUpdateEvent.invoke(.dynamic) ~[?:?] {}
 	at net.minecraftforge.eventbus.ASMEventHandler.invoke(ASMEventHandler.java:85) ~[eventbus-5.0.7.jar%239!/:?] {}
 	at net.minecraftforge.eventbus.EventBus.post(EventBus.java:302) ~[eventbus-5.0.7.jar%239!/:?] {}

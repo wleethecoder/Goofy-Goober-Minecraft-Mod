@@ -7,7 +7,7 @@ Description: Ticking player
 java.lang.NullPointerException: Registry Object not present: goofygoober:tom_scream
 	at java.util.Objects.requireNonNull(Objects.java:334) ~[?:?] {}
 	at net.minecraftforge.registries.RegistryObject.get(RegistryObject.java:175) ~[forge-1.18.2-40.0.31_mapped_parchment_2022.03.13-1.18.2-recomp.jar%2374%2380!/:?] {re:classloading}
-	at com.wenhanlee.goofygoober.events.ModEvents.screamingPain(ModEvents.java:26) ~[%2379!/:?] {re:classloading}
+	at com.leecrafts.goofygoober.events.ModEvents.screamingPain(ModEvents.java:26) ~[%2379!/:?] {re:classloading}
 	at net.minecraftforge.eventbus.ASMEventHandler_1_ModEvents_screamingPain_LivingDamageEvent.invoke(.dynamic) ~[?:?] {}
 	at net.minecraftforge.eventbus.ASMEventHandler.invoke(ASMEventHandler.java:85) ~[eventbus-5.0.7.jar%239!/:?] {}
 	at net.minecraftforge.eventbus.EventBus.post(EventBus.java:302) ~[eventbus-5.0.7.jar%239!/:?] {}
@@ -42,7 +42,7 @@ Thread: Server thread
 Stacktrace:
 	at java.util.Objects.requireNonNull(Objects.java:334) ~[?:?] {}
 	at net.minecraftforge.registries.RegistryObject.get(RegistryObject.java:175) ~[forge-1.18.2-40.0.31_mapped_parchment_2022.03.13-1.18.2-recomp.jar%2374%2380!/:?] {re:classloading}
-	at com.wenhanlee.goofygoober.events.ModEvents.screamingPain(ModEvents.java:26) ~[%2379!/:?] {re:classloading}
+	at com.leecrafts.goofygoober.events.ModEvents.screamingPain(ModEvents.java:26) ~[%2379!/:?] {re:classloading}
 	at net.minecraftforge.eventbus.ASMEventHandler_1_ModEvents_screamingPain_LivingDamageEvent.invoke(.dynamic) ~[?:?] {}
 	at net.minecraftforge.eventbus.ASMEventHandler.invoke(ASMEventHandler.java:85) ~[eventbus-5.0.7.jar%239!/:?] {}
 	at net.minecraftforge.eventbus.EventBus.post(EventBus.java:302) ~[eventbus-5.0.7.jar%239!/:?] {}

@@ -5,7 +5,7 @@ Time: 3/26/22, 3:34 AM
 Description: Ticking player
 
 java.lang.ClassCastException: class net.minecraft.server.level.ServerPlayer cannot be cast to class net.minecraft.client.player.LocalPlayer (net.minecraft.server.level.ServerPlayer and net.minecraft.client.player.LocalPlayer are in module minecraft@1.18.2 of loader 'TRANSFORMER' @2b289ac9)
-	at com.wenhanlee.goofygoober.events.ModEvents.screamingPain(ModEvents.java:27) ~[%2379!/:?] {re:classloading}
+	at com.leecrafts.goofygoober.events.ModEvents.screamingPain(ModEvents.java:27) ~[%2379!/:?] {re:classloading}
 	at net.minecraftforge.eventbus.ASMEventHandler_1_ModEvents_screamingPain_LivingDamageEvent.invoke(.dynamic) ~[?:?] {}
 	at net.minecraftforge.eventbus.ASMEventHandler.invoke(ASMEventHandler.java:85) ~[eventbus-5.0.7.jar%239!/:?] {}
 	at net.minecraftforge.eventbus.EventBus.post(EventBus.java:302) ~[eventbus-5.0.7.jar%239!/:?] {}
@@ -39,7 +39,7 @@ A detailed walkthrough of the error, its code path and all known details is as f
 -- Head --
 Thread: Server thread
 Stacktrace:
-	at com.wenhanlee.goofygoober.events.ModEvents.screamingPain(ModEvents.java:27) ~[%2379!/:?] {re:classloading}
+	at com.leecrafts.goofygoober.events.ModEvents.screamingPain(ModEvents.java:27) ~[%2379!/:?] {re:classloading}
 	at net.minecraftforge.eventbus.ASMEventHandler_1_ModEvents_screamingPain_LivingDamageEvent.invoke(.dynamic) ~[?:?] {}
 	at net.minecraftforge.eventbus.ASMEventHandler.invoke(ASMEventHandler.java:85) ~[eventbus-5.0.7.jar%239!/:?] {}
 	at net.minecraftforge.eventbus.EventBus.post(EventBus.java:302) ~[eventbus-5.0.7.jar%239!/:?] {}

@@ -6,10 +6,10 @@ Description: Ticking player
 
 net.minecraftforge.fml.util.ObfuscationReflectionHelper$UnableToFindMethodException: java.lang.NoSuchMethodException: net.minecraft.world.entity.monster.Slime.setSize(java.lang.Integer,java.lang.Boolean)
 	at net.minecraftforge.fml.util.ObfuscationReflectionHelper.findMethod(ObfuscationReflectionHelper.java:165) ~[fmlcore-1.18.2-40.0.31.jar%2378!/:?] {}
-	at com.wenhanlee.goofygoober.events.tomfoolery.TomfooleryHelper.spawnScallywag(TomfooleryHelper.java:127) ~[%2379!/:?] {re:classloading}
-	at com.wenhanlee.goofygoober.events.tomfoolery.TomfooleryEvents.lambda$playerTick$1(TomfooleryEvents.java:96) ~[%2379!/:?] {re:classloading}
+	at com.leecrafts.goofygoober.events.tomfoolery.TomfooleryHelper.spawnScallywag(TomfooleryHelper.java:127) ~[%2379!/:?] {re:classloading}
+	at com.leecrafts.goofygoober.events.tomfoolery.TomfooleryEvents.lambda$playerTick$1(TomfooleryEvents.java:96) ~[%2379!/:?] {re:classloading}
 	at net.minecraftforge.common.util.LazyOptional.ifPresent(LazyOptional.java:150) ~[forge-1.18.2-40.0.31_mapped_parchment_2022.03.13-1.18.2-recomp.jar%2374%2380!/:?] {re:classloading}
-	at com.wenhanlee.goofygoober.events.tomfoolery.TomfooleryEvents.playerTick(TomfooleryEvents.java:80) ~[%2379!/:?] {re:classloading}
+	at com.leecrafts.goofygoober.events.tomfoolery.TomfooleryEvents.playerTick(TomfooleryEvents.java:80) ~[%2379!/:?] {re:classloading}
 	at net.minecraftforge.eventbus.ASMEventHandler_7_TomfooleryEvents_playerTick_LivingUpdateEvent.invoke(.dynamic) ~[?:?] {}
 	at net.minecraftforge.eventbus.ASMEventHandler.invoke(ASMEventHandler.java:85) ~[eventbus-5.0.7.jar%239!/:?] {}
 	at net.minecraftforge.eventbus.EventBus.post(EventBus.java:302) ~[eventbus-5.0.7.jar%239!/:?] {}
@@ -40,10 +40,10 @@ A detailed walkthrough of the error, its code path and all known details is as f
 Thread: Server thread
 Stacktrace:
 	at net.minecraftforge.fml.util.ObfuscationReflectionHelper.findMethod(ObfuscationReflectionHelper.java:165) ~[fmlcore-1.18.2-40.0.31.jar%2378!/:?] {}
-	at com.wenhanlee.goofygoober.events.tomfoolery.TomfooleryHelper.spawnScallywag(TomfooleryHelper.java:127) ~[%2379!/:?] {re:classloading}
-	at com.wenhanlee.goofygoober.events.tomfoolery.TomfooleryEvents.lambda$playerTick$1(TomfooleryEvents.java:96) ~[%2379!/:?] {re:classloading}
+	at com.leecrafts.goofygoober.events.tomfoolery.TomfooleryHelper.spawnScallywag(TomfooleryHelper.java:127) ~[%2379!/:?] {re:classloading}
+	at com.leecrafts.goofygoober.events.tomfoolery.TomfooleryEvents.lambda$playerTick$1(TomfooleryEvents.java:96) ~[%2379!/:?] {re:classloading}
 	at net.minecraftforge.common.util.LazyOptional.ifPresent(LazyOptional.java:150) ~[forge-1.18.2-40.0.31_mapped_parchment_2022.03.13-1.18.2-recomp.jar%2374%2380!/:?] {re:classloading}
-	at com.wenhanlee.goofygoober.events.tomfoolery.TomfooleryEvents.playerTick(TomfooleryEvents.java:80) ~[%2379!/:?] {re:classloading}
+	at com.leecrafts.goofygoober.events.tomfoolery.TomfooleryEvents.playerTick(TomfooleryEvents.java:80) ~[%2379!/:?] {re:classloading}
 	at net.minecraftforge.eventbus.ASMEventHandler_7_TomfooleryEvents_playerTick_LivingUpdateEvent.invoke(.dynamic) ~[?:?] {}
 	at net.minecraftforge.eventbus.ASMEventHandler.invoke(ASMEventHandler.java:85) ~[eventbus-5.0.7.jar%239!/:?] {}
 	at net.minecraftforge.eventbus.EventBus.post(EventBus.java:302) ~[eventbus-5.0.7.jar%239!/:?] {}

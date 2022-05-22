@@ -41,10 +41,10 @@ Stacktrace:
 Details:
 	Mod File: main
 	Failure message: Goofy Goober (goofygoober) has failed to load correctly
-		java.lang.IllegalArgumentException: Method public static void com.wenhanlee.goofygoober.events.ModClientEvents.fat(net.minecraftforge.client.event.RenderPlayerEvent$Pre) has @SubscribeEvent annotation, but takes an argument that is not a subtype of the base type interface net.minecraftforge.fml.event.IModBusEvent: class net.minecraftforge.client.event.RenderPlayerEvent$Pre
+		java.lang.IllegalArgumentException: Method public static void com.leecrafts.goofygoober.events.ModClientEvents.fat(net.minecraftforge.client.event.RenderPlayerEvent$Pre) has @SubscribeEvent annotation, but takes an argument that is not a subtype of the base type interface net.minecraftforge.fml.event.IModBusEvent: class net.minecraftforge.client.event.RenderPlayerEvent$Pre
 	Mod Version: 1.18.2
 	Mod Issue URL: NOT PROVIDED
-	Exception message: java.lang.IllegalArgumentException: Method public static void com.wenhanlee.goofygoober.events.ModClientEvents.fat(net.minecraftforge.client.event.RenderPlayerEvent$Pre) has @SubscribeEvent annotation, but takes an argument that is not a subtype of the base type interface net.minecraftforge.fml.event.IModBusEvent: class net.minecraftforge.client.event.RenderPlayerEvent$Pre
+	Exception message: java.lang.IllegalArgumentException: Method public static void com.leecrafts.goofygoober.events.ModClientEvents.fat(net.minecraftforge.client.event.RenderPlayerEvent$Pre) has @SubscribeEvent annotation, but takes an argument that is not a subtype of the base type interface net.minecraftforge.fml.event.IModBusEvent: class net.minecraftforge.client.event.RenderPlayerEvent$Pre
 Stacktrace:
 	at net.minecraftforge.eventbus.EventBus.registerListener(EventBus.java:145) ~[eventbus-5.0.7.jar%239!/:?] {}
 	at net.minecraftforge.eventbus.EventBus.lambda$registerClass$2(EventBus.java:78) ~[eventbus-5.0.7.jar%239!/:?] {}

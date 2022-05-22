@@ -4,8 +4,8 @@
 Time: 5/9/22, 1:21 AM
 Description: Unexpected error
 
-java.lang.NoClassDefFoundError: Could not initialize class com.wenhanlee.goofygoober.packets.PacketHandler
-	at com.wenhanlee.goofygoober.events.ForgeClientEvents.clientTick(ForgeClientEvents.java:24) ~[%2379!/:?] {re:classloading}
+java.lang.NoClassDefFoundError: Could not initialize class com.leecrafts.goofygoober.packets.PacketHandler
+	at com.leecrafts.goofygoober.events.ForgeClientEvents.clientTick(ForgeClientEvents.java:24) ~[%2379!/:?] {re:classloading}
 	at net.minecraftforge.eventbus.ASMEventHandler_2_ForgeClientEvents_clientTick_ClientTickEvent.invoke(.dynamic) ~[?:?] {}
 	at net.minecraftforge.eventbus.ASMEventHandler.invoke(ASMEventHandler.java:85) ~[eventbus-5.0.7.jar%239!/:?] {}
 	at net.minecraftforge.eventbus.EventBus.post(EventBus.java:302) ~[eventbus-5.0.7.jar%239!/:?] {}
@@ -36,7 +36,7 @@ A detailed walkthrough of the error, its code path and all known details is as f
 -- Head --
 Thread: Render thread
 Stacktrace:
-	at com.wenhanlee.goofygoober.events.ForgeClientEvents.clientTick(ForgeClientEvents.java:24) ~[%2379!/:?] {re:classloading}
+	at com.leecrafts.goofygoober.events.ForgeClientEvents.clientTick(ForgeClientEvents.java:24) ~[%2379!/:?] {re:classloading}
 	at net.minecraftforge.eventbus.ASMEventHandler_2_ForgeClientEvents_clientTick_ClientTickEvent.invoke(.dynamic) ~[?:?] {}
 	at net.minecraftforge.eventbus.ASMEventHandler.invoke(ASMEventHandler.java:85) ~[eventbus-5.0.7.jar%239!/:?] {}
 	at net.minecraftforge.eventbus.EventBus.post(EventBus.java:302) ~[eventbus-5.0.7.jar%239!/:?] {}
