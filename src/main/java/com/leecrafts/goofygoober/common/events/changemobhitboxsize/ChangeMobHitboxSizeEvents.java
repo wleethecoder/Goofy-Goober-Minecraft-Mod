@@ -182,6 +182,7 @@ public class ChangeMobHitboxSizeEvents {
 //        }
 //    }
 
+    // Test for only the fat effect
     @SubscribeEvent
     public static void changeMobHitboxSize(EntityEvent.Size event) {
         if (event.getEntity() instanceof LivingEntity livingEntity && /*!livingEntity.level.isClientSide() && */livingEntity.getActiveEffectsMap() != null) {
