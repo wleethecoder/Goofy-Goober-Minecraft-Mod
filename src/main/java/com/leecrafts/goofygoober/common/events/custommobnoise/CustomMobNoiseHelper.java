@@ -31,18 +31,18 @@ public class CustomMobNoiseHelper {
 
     // don't add @SubscribeEvent here!
     public static void scream(LivingDamageEvent event) {
-        LivingEntity entity = event.getEntityLiving();
+        LivingEntity livingEntity = event.getEntityLiving();
         String source = event.getSource().getMsgId();
         initializeIfNull();
         if (damageSourceKnockback.get(source) != null) {
-            entity.setDeltaMovement(entity.getDeltaMovement().add(0, damageSourceKnockback.get(source), 0));
-            entity.level.playSound(null, entity.getX(), entity.getY(), entity.getZ(), ModSounds.SCREAM.get(), SoundSource.AMBIENT, 1, 0.9F + random.nextFloat(0.2F));
+            livingEntity.setDeltaMovement(livingEntity.getDeltaMovement().add(0, damageSourceKnockback.get(source), 0));
+            livingEntity.level.playSound(null, livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(), ModSounds.SCREAM.get(), SoundSource.AMBIENT, 1, 0.9F + random.nextFloat(0.2F));
         }
     }
 
     // custom ambient noises for players or villagers
-    public static void ambient(LivingEntity entity) {
-        entity.getCapability(ModCapabilities.AMBIENT_COUNTER_CAPABILITY).ifPresent(iAmbientCounter -> {
+    public static void ambient(LivingEntity livingEntity) {
+        livingEntity.getCapability(ModCapabilities.AMBIENT_COUNTER_CAPABILITY).ifPresent(iAmbientCounter -> {
             AmbientCounter ambientCounter = (AmbientCounter) iAmbientCounter;
             ambientCounter.incrementCounter();
             if (ambientCounter.counter >= ambientCounter.limit) {
@@ -50,13 +50,13 @@ public class CustomMobNoiseHelper {
                 // ambient panicking noise
                 // for non-player mobs that can panic
                 // TODO make this work for every mob that can panic, not just villagers
-                if (entity instanceof Mob mob) {
+                if (livingEntity instanceof Mob mob) {
                     panic(mob);
                 }
 
                 // ambient snoring noise
                 // for players and villagers
-                snore(entity, ambientCounter.sleepingNoise);
+                if (livingEntity.isSleeping()) snore(livingEntity, ambientCounter.sleepingNoise);
 
                 ambientCounter.resetCounter();
                 ambientCounter.rollLimit();
@@ -71,11 +71,9 @@ public class CustomMobNoiseHelper {
         }
     }
 
-    public static void snore(LivingEntity entity, SoundEvent sleepingNoise) {
-        if (entity.isSleeping()) {
-            float range = 0.6F;
-            if (sleepingNoise == ModSounds.SNORE_MIMIMI.get()) range = 0.2F;
-            entity.level.playSound(null, entity.getX(), entity.getY(), entity.getZ(), sleepingNoise, SoundSource.AMBIENT, 1, 0.9F + random.nextFloat(range));
-        }
+    public static void snore(LivingEntity livingEntity, SoundEvent sleepingNoise) {
+        float range = 0.6F;
+        if (sleepingNoise == ModSounds.SNORE_MIMIMI.get()) range = 0.2F;
+        livingEntity.level.playSound(null, livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(), sleepingNoise, SoundSource.AMBIENT, 1, 0.9F + random.nextFloat(range));
     }
 }

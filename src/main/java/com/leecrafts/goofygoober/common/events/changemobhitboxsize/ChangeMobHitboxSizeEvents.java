@@ -37,31 +37,33 @@ public class ChangeMobHitboxSizeEvents {
     // player eats all the food at once
     // can become comically fat, changing the player's appearance and giving it slowness and resistance
     @SubscribeEvent
-    public static void eat(LivingEntityUseItemEvent.Finish event) {
+    public static void gorge(LivingEntityUseItemEvent.Finish event) {
         Entity entity = event.getEntity();
         if (entity instanceof Player player && !player.level.isClientSide()) {
-            if (event.getItem().isEdible()) {
-                ItemStack handItem = player.getMainHandItem();
-                if (player.getOffhandItem() == event.getItem()) {
-                    handItem = player.getOffhandItem();
+            ItemStack previousItemStack = event.getItem();
+            ItemStack currentItemStack = event.getResultStack();
+            if (previousItemStack.isEdible()) {
+                ItemStack handItemStack = player.getOffhandItem();
+                if (ItemStack.matches(player.getMainHandItem(), currentItemStack)) {
+                    handItemStack = player.getMainHandItem();
                 }
-                int count = handItem.getCount();
-                if (count > 1 && handItem.getItem().getFoodProperties() != null) {
+                int previousCount = previousItemStack.getCount();
+                if (previousCount > 1 && handItemStack.getItem().getFoodProperties() != null) {
                     // play sound
                     player.level.playSound(null, player.getX(), player.getY(), player.getZ(), ModSounds.PLAYER_GORGE.get(), SoundSource.PLAYERS, 1, 1);
 
                     // fill hunger bar, capped at 20
-                    int nutrition = handItem.getItem().getFoodProperties().getNutrition();
-                    int totalNutrition = nutrition * count;
+                    int nutrition = handItemStack.getItem().getFoodProperties().getNutrition();
+                    int totalNutrition = nutrition * previousCount;
                     int newPlayerNutritionRaw = totalNutrition + player.getFoodData().getFoodLevel();
                     int newPlayerNutrition = Math.min(newPlayerNutritionRaw, 20);
 //                    player.getFoodData().setFoodLevel(totalNutrition + player.getFoodData().getFoodLevel());
                     player.getFoodData().setFoodLevel(newPlayerNutrition);
 
                     // increase player saturation
-                    float saturation = handItem.getItem().getFoodProperties().getSaturationModifier() * 2 * nutrition;
+                    float saturation = handItemStack.getItem().getFoodProperties().getSaturationModifier() * 2 * nutrition;
                     // saturation effect would not work in this case because every tick of its duration it instantly adds saturation, making it broken
-                    float totalSaturation = saturation * count;
+                    float totalSaturation = saturation * previousCount;
                     float newPlayerSaturation = totalSaturation + player.getFoodData().getSaturationLevel();
                     player.getFoodData().setSaturation(newPlayerSaturation);
                     float saturationMultiplier = totalSaturation / 200;
@@ -78,7 +80,7 @@ public class ChangeMobHitboxSizeEvents {
                     player.addEffect(new MobEffectInstance(ModEffects.FAT.get(), duration));
 
                     // remove all food items from hand
-                    handItem.setCount(0);
+                    handItemStack.setCount(0);
                 }
             }
         }
@@ -137,62 +139,62 @@ public class ChangeMobHitboxSizeEvents {
         }
     }
 
-//    @SubscribeEvent
-//    public static void changeMobHitboxSize(LivingEvent.LivingUpdateEvent event) throws IllegalAccessException {
-//        LivingEntity livingEntity = event.getEntityLiving();
-//        if (/*!livingEntity.level.isClientSide() && */livingEntity.getActiveEffectsMap() != null) {
-//
-//            EntityDimensions entityDimensions = livingEntity.getDimensions(livingEntity.getPose());
-//
-//            boolean isFat = livingEntity.hasEffect(ModEffects.FAT.get());
-//            boolean isSquashed = livingEntity.hasEffect(ModEffects.SQUASHED.get());
-//            boolean isCrashed = livingEntity.hasEffect(ModEffects.CRASHED.get());
-//            boolean isSmashed = livingEntity.hasEffect(ModEffects.SMASHED.get());
-//
-//            // When the fat/squashed effect wears off, the living entity still maintains its changed AABB.
-//            // To solve this, refresh dimensions if the living entity does not have the fat/squashed effect AND its AABB has not changed back to normal.
-//            double aabbWidth = ChangeMobHitboxSizeHelper.roundDigits(livingEntity.getBoundingBox().getXsize(), 4);
-//            double aabbHeight = ChangeMobHitboxSizeHelper.roundDigits(livingEntity.getBoundingBox().getYsize(), 2);
-//            double fatWidth = ChangeMobHitboxSizeHelper.roundDigits(3 * entityDimensions.width, 4);
-//            double squashedHeight = 0.25;
-//            double crashedSmashedWidth = 0.25;
-//            boolean needToRevertFatChange = !isFat && aabbWidth == fatWidth;
-//            boolean needToRevertSquashedChange = !isSquashed && aabbHeight == squashedHeight;
-//            boolean needToRevertCrashedChange = !isCrashed && aabbWidth == crashedSmashedWidth;
-//            boolean needToRevertSmashedChange = !isSmashed && aabbWidth == crashedSmashedWidth;
-//            if (needToRevertFatChange || needToRevertSquashedChange || needToRevertCrashedChange || needToRevertSmashedChange) {
-//                livingEntity.refreshDimensions();
-//            }
-//
-//            // change dimensions of living entity using reflections
-//            if (isFat || isSquashed || isCrashed || isSmashed) {
-////                dimensionsField.setAccessible(true);
-//                if (isFat) entityDimensions = entityDimensions.scale(3, 1);
-//                if (isSquashed) entityDimensions = entityDimensions.scale(1, (float) (0.25/entityDimensions.height));
-//                if (isCrashed || isSmashed) entityDimensions = entityDimensions.scale((float) (0.25/entityDimensions.width), 1);
-//                dimensionsField.set(livingEntity, entityDimensions);
-//                EntityDimensions newEntityDimensions = (EntityDimensions) dimensionsField.get(livingEntity);
-//                livingEntity.setBoundingBox(newEntityDimensions.makeBoundingBox(
-//                        livingEntity.getX(),
-//                        livingEntity.getY(),
-//                        livingEntity.getZ()
-//                ));
-//            }
-//
-//        }
-//    }
-
-    // Test for only the fat effect
     @SubscribeEvent
-    public static void changeMobHitboxSize(EntityEvent.Size event) {
-        if (event.getEntity() instanceof LivingEntity livingEntity && /*!livingEntity.level.isClientSide() && */livingEntity.getActiveEffectsMap() != null) {
+    public static void changeMobHitboxSize(LivingEvent.LivingUpdateEvent event) throws IllegalAccessException {
+        LivingEntity livingEntity = event.getEntityLiving();
+        if (/*!livingEntity.level.isClientSide() && */livingEntity.getActiveEffectsMap() != null) {
+
             EntityDimensions entityDimensions = livingEntity.getDimensions(livingEntity.getPose());
-            if (livingEntity.hasEffect(ModEffects.FAT.get())) {
-                event.setNewSize(entityDimensions.scale(3, 1));
+
+            boolean isFat = livingEntity.hasEffect(ModEffects.FAT.get());
+            boolean isSquashed = livingEntity.hasEffect(ModEffects.SQUASHED.get());
+            boolean isCrashed = livingEntity.hasEffect(ModEffects.CRASHED.get());
+            boolean isSmashed = livingEntity.hasEffect(ModEffects.SMASHED.get());
+
+            // When the fat/squashed effect wears off, the living entity still maintains its changed AABB.
+            // To solve this, refresh dimensions if the living entity does not have the fat/squashed effect AND its AABB has not changed back to normal.
+            double aabbWidth = ChangeMobHitboxSizeHelper.roundDigits(livingEntity.getBoundingBox().getXsize(), 4);
+            double aabbHeight = ChangeMobHitboxSizeHelper.roundDigits(livingEntity.getBoundingBox().getYsize(), 2);
+            double fatWidth = ChangeMobHitboxSizeHelper.roundDigits(3 * entityDimensions.width, 4);
+            double squashedHeight = 0.25;
+            double crashedSmashedWidth = 0.25;
+            boolean needToRevertFatChange = !isFat && aabbWidth == fatWidth;
+            boolean needToRevertSquashedChange = !isSquashed && aabbHeight == squashedHeight;
+            boolean needToRevertCrashedChange = !isCrashed && aabbWidth == crashedSmashedWidth;
+            boolean needToRevertSmashedChange = !isSmashed && aabbWidth == crashedSmashedWidth;
+            if (needToRevertFatChange || needToRevertSquashedChange || needToRevertCrashedChange || needToRevertSmashedChange) {
+                livingEntity.refreshDimensions();
             }
-            else event.setNewSize(entityDimensions);
+
+            // change dimensions of living entity using reflections
+            if (isFat || isSquashed || isCrashed || isSmashed) {
+//                dimensionsField.setAccessible(true);
+                if (isFat) entityDimensions = entityDimensions.scale(3, 1);
+                if (isSquashed) entityDimensions = entityDimensions.scale(1, (float) (0.25/entityDimensions.height));
+                if (isCrashed || isSmashed) entityDimensions = entityDimensions.scale((float) (0.25/entityDimensions.width), 1);
+                dimensionsField.set(livingEntity, entityDimensions);
+                EntityDimensions newEntityDimensions = (EntityDimensions) dimensionsField.get(livingEntity);
+                livingEntity.setBoundingBox(newEntityDimensions.makeBoundingBox(
+                        livingEntity.getX(),
+                        livingEntity.getY(),
+                        livingEntity.getZ()
+                ));
+            }
+
         }
     }
+
+//    // Test for only the fat effect
+//    @SubscribeEvent
+//    public static void changeMobHitboxSize(EntityEvent.Size event) {
+//        if (event.getEntity() instanceof LivingEntity livingEntity && /*!livingEntity.level.isClientSide() && */livingEntity.getActiveEffectsMap() != null) {
+//            EntityDimensions entityDimensions = livingEntity.getDimensions(livingEntity.getPose());
+//            if (livingEntity.hasEffect(ModEffects.FAT.get())) {
+//                event.setNewSize(entityDimensions.scale(3, 1));
+//            }
+//            else event.setNewSize(entityDimensions);
+//        }
+//    }
 
     @SubscribeEvent
     public static void preventSquashedPlayerFromCrawling(LivingEvent.LivingUpdateEvent event) {

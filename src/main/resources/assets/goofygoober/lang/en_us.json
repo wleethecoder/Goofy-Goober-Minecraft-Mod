@@ -15,5 +15,8 @@
   "effect.goofygoober.fat": "Fat",
   "effect.goofygoober.squashed": "Squashed",
   "effect.goofygoober.crashed": "Crashed",
-  "effect.goofygoober.smashed": "Smashed"
+  "effect.goofygoober.smashed": "Smashed",
+  "effect.goofygoober.hallucinating": "I'm so hungry, I could eat a horse!",
+
+  "entity.goofygoober.steak": "Steak"
 }

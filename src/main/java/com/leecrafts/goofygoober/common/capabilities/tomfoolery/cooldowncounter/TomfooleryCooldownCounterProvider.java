@@ -37,6 +37,6 @@ public class TomfooleryCooldownCounterProvider implements ICapabilitySerializabl
         }
     }
 
-    public void invalidate() { tomfooleryCooldownCounterLazyOptional.invalidate(); }
+//    public void invalidate() { tomfooleryCooldownCounterLazyOptional.invalidate(); }
 
 }

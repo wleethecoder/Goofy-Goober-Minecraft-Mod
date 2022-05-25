@@ -25,6 +25,9 @@ public class ModEffects {
     public static final RegistryObject<MobEffect> SMASHED = EFFECTS.register("smashed",
             () -> new SmashedEffect(MobEffectCategory.HARMFUL, 0xfff54));
 
+    public static final RegistryObject<MobEffect> HALLUCINATING = EFFECTS.register("hallucinating",
+            () -> new HallucinatingEffect(MobEffectCategory.HARMFUL, 0xfff54));
+
     public static void register(IEventBus eventBus) { EFFECTS.register(eventBus); }
 
 }

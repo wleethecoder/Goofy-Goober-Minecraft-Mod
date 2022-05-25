@@ -5,6 +5,7 @@ import com.leecrafts.goofygoober.common.capabilities.ModCapabilities;
 import com.leecrafts.goofygoober.common.capabilities.tomfoolery.cooldowncounter.ITomfooleryCooldownCounter;
 import com.leecrafts.goofygoober.common.capabilities.tomfoolery.cooldowncounter.TomfooleryCooldownCounter;
 import com.leecrafts.goofygoober.common.capabilities.tomfoolery.cooldowncounter.TomfooleryCooldownCounterProvider;
+import com.leecrafts.goofygoober.common.capabilities.tomfoolery.scallywag.ITomfooleryScallywag;
 import com.leecrafts.goofygoober.common.capabilities.tomfoolery.scallywag.TomfooleryScallywag;
 import com.leecrafts.goofygoober.common.capabilities.tomfoolery.scallywag.TomfooleryScallywagProvider;
 import com.leecrafts.goofygoober.common.sounds.ModSounds;
@@ -22,6 +23,7 @@ import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingSpawnEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -52,6 +54,7 @@ public class TomfooleryEvents {
     @SubscribeEvent
     public static void registerCapabilities(RegisterCapabilitiesEvent event) {
         event.register(ITomfooleryCooldownCounter.class);
+        event.register(ITomfooleryScallywag.class);
     }
 
     // a cooldown of two minutes happens when a player causes tomfoolery
@@ -61,7 +64,7 @@ public class TomfooleryEvents {
         if (event.getObject() instanceof Player && !event.getObject().getCommandSenderWorld().isClientSide()) {
             TomfooleryCooldownCounterProvider tomfooleryCooldownCounterProvider = new TomfooleryCooldownCounterProvider();
             event.addCapability(new ResourceLocation(GoofyGoober.MOD_ID, "tomfoolery_cooldown_counter"), tomfooleryCooldownCounterProvider);
-            event.addListener(tomfooleryCooldownCounterProvider::invalidate);
+//            event.addListener(tomfooleryCooldownCounterProvider::invalidate);
         }
     }
 

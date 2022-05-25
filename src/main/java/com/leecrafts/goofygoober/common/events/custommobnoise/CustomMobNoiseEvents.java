@@ -10,6 +10,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Pose;
+import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.entity.EntityEvent;
@@ -28,11 +29,14 @@ public class CustomMobNoiseEvents {
 
     @SubscribeEvent
     public static void onAttachCapabilitiesEvent(AttachCapabilitiesEvent<Entity> event) {
-        if (event.getObject() instanceof LivingEntity && !event.getObject().getCommandSenderWorld().isClientSide()) {
+        Entity entity = event.getObject();
+        if ((entity instanceof LivingEntity && !entity.getCommandSenderWorld().isClientSide()) || entity instanceof Player) {
             AmbientCounterProvider ambientCounterProvider = new AmbientCounterProvider();
             event.addCapability(new ResourceLocation(GoofyGoober.MOD_ID, "ambient_counter"), ambientCounterProvider);
             event.addCapability(new ResourceLocation(GoofyGoober.MOD_ID, "ambient_counter_limit"), ambientCounterProvider);
-            event.addListener(ambientCounterProvider::invalidate);
+            if (!(entity instanceof Player)) {
+                event.addListener(ambientCounterProvider::invalidate);
+            }
         }
     }
 
@@ -56,12 +60,11 @@ public class CustomMobNoiseEvents {
 
     @SubscribeEvent
     public static void sleepEvent(EntityEvent.Size event) {
-        Entity entity = event.getEntity();
-        if (!entity.level.isClientSide() && entity.getPose() == Pose.SLEEPING) {
-            entity.getCapability(ModCapabilities.AMBIENT_COUNTER_CAPABILITY).ifPresent(iAmbientCounter -> {
+        if (event.getEntity() instanceof LivingEntity livingEntity && !livingEntity.level.isClientSide() && livingEntity.getPose() == Pose.SLEEPING) {
+            livingEntity.getCapability(ModCapabilities.AMBIENT_COUNTER_CAPABILITY).ifPresent(iAmbientCounter -> {
                 AmbientCounter ambientCounter = (AmbientCounter) iAmbientCounter;
                 ambientCounter.rollSleepingNoise();
-                entity.level.playSound(null, entity.getX(), entity.getY(), entity.getZ(), ambientCounter.sleepingNoise, SoundSource.AMBIENT, 1, 0.9F + CustomMobNoiseHelper.random.nextFloat(0.6F));
+                CustomMobNoiseHelper.snore(livingEntity, ambientCounter.sleepingNoise);
                 ambientCounter.resetCounter();
                 ambientCounter.rollLimit();
             });

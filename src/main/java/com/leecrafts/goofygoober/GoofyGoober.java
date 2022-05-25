@@ -1,5 +1,6 @@
 package com.leecrafts.goofygoober;
 
+import com.leecrafts.goofygoober.common.entities.ModEntities;
 import com.mojang.logging.LogUtils;
 import com.leecrafts.goofygoober.common.effects.ModEffects;
 import com.leecrafts.goofygoober.common.items.ModItems;
@@ -26,6 +27,7 @@ public class GoofyGoober {
         ModItems.register(eventBus);
         ModSounds.register(eventBus);
         ModEffects.register(eventBus);
+        ModEntities.register(eventBus);
 
         // Register the setup method for modloading
         eventBus.addListener(this::setup);
