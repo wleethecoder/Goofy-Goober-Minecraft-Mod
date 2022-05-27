@@ -1,14 +1,19 @@
 {
   "item.goofygoober.paper_test": "Thank you so much for downloading Goofy Goober!",
+  "item.goofygoober.music_disc_nerd_emoji_beat_by_keyboard": "Music Disc",
+  "item.goofygoober.music_disc_nerd_emoji_beat_by_keyboard.desc": "Keyboard - Nerd Emoji Beat",
+
 
   "sounds.goofygoober.scream": "Screaming",
   "sounds.goofygoober.skedaddle": "Skedaddling",
+  "sounds.goofygoober.player_skedaddle": "Player skedaddles",
+  "sounds.goofygoober.player_takeoff": "Player takes off",
   "sounds.goofygoober.snore_loud": "Loud snoring",
   "sounds.goofygoober.snore_mimimi": "Mimimi snoring",
   "sounds.goofygoober.snore_whistle": "Whistle snoring",
   "sounds.goofygoober.player_gorge": "Player gorges",
   "sounds.goofygoober.tomfoolery": "Scallywag causes mischief",
-  "sounds.goofygoober.death": "Sad noise",
+  "sounds.goofygoober.fail": "Sad noise",
   "sounds.goofygoober.impact": "Impact",
   "sounds.goofygoober.doit": "DOIT",
 

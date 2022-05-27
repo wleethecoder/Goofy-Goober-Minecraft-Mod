@@ -8,8 +8,10 @@ import com.leecrafts.goofygoober.common.capabilities.tomfoolery.cooldowncounter.
 import com.leecrafts.goofygoober.common.capabilities.tomfoolery.scallywag.ITomfooleryScallywag;
 import com.leecrafts.goofygoober.common.capabilities.tomfoolery.scallywag.TomfooleryScallywag;
 import com.leecrafts.goofygoober.common.capabilities.tomfoolery.scallywag.TomfooleryScallywagProvider;
+import com.leecrafts.goofygoober.common.misc.Utilities;
 import com.leecrafts.goofygoober.common.sounds.ModSounds;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -61,7 +63,7 @@ public class TomfooleryEvents {
     // a player causes tomfoolery by being near 3 or more monsters
     @SubscribeEvent
     public static void onAttachCapabilitiesEventCooldownCounter(AttachCapabilitiesEvent<Entity> event) {
-        if (event.getObject() instanceof Player && !event.getObject().getCommandSenderWorld().isClientSide()) {
+        if (event.getObject() instanceof Player player && !player.getCommandSenderWorld().isClientSide()) {
             TomfooleryCooldownCounterProvider tomfooleryCooldownCounterProvider = new TomfooleryCooldownCounterProvider();
             event.addCapability(new ResourceLocation(GoofyGoober.MOD_ID, "tomfoolery_cooldown_counter"), tomfooleryCooldownCounterProvider);
 //            event.addListener(tomfooleryCooldownCounterProvider::invalidate);
@@ -73,7 +75,7 @@ public class TomfooleryEvents {
     @SubscribeEvent
     public static void onAttachCapabilitiesEventScallywag(AttachCapabilitiesEvent<Entity> event) {
         // the isScallywag variable is false by default (I set it to true when appropriate)
-        if (event.getObject() instanceof Mob && !event.getObject().getCommandSenderWorld().isClientSide()) {
+        if (event.getObject() instanceof Mob mob && !mob.getCommandSenderWorld().isClientSide()) {
             TomfooleryScallywagProvider tomfooleryScallywagProvider = new TomfooleryScallywagProvider();
             event.addCapability(new ResourceLocation(GoofyGoober.MOD_ID, "is_eligible_to_cause_tomfoolery"), tomfooleryScallywagProvider);
             event.addCapability(new ResourceLocation(GoofyGoober.MOD_ID, "scallywag"), tomfooleryScallywagProvider);
@@ -110,11 +112,6 @@ public class TomfooleryEvents {
                     ArrayList<Mob> nearbyEligibleMobs = TomfooleryHelper.getNearbyMobs(player, true);
 //                    System.out.println("Nearby mobs eligible to cause tomfoolery: " + nearbyEligibleMobs);
                     if (nearbyEligibleMobs.size() >= TomfooleryHelper.NUM_NEARBY_MOBS) {
-                        for (Mob mob : nearbyEligibleMobs) {
-                            // nearby eligible mobs no longer become eligible to cause any more tomfoolery
-                            TomfooleryHelper.revokeEligibility(mob);
-                        }
-
                         boolean anyScallywagSpawned = false;
 
                         // shuffled version of the list of spawnable scallywags
@@ -132,6 +129,10 @@ public class TomfooleryEvents {
 
                         if (anyScallywagSpawned) {
                             System.out.println("TOMFOOLERY ENSUES!");
+                            for (Mob mob : nearbyEligibleMobs) {
+                                // nearby eligible mobs no longer become eligible to cause any more tomfoolery
+                                TomfooleryHelper.revokeEligibility(mob);
+                            }
                             tomfooleryCooldownCounter.resetCounter();
                         }
 
@@ -158,8 +159,7 @@ public class TomfooleryEvents {
 
                         tomfooleryScallywag.incrementCounter();
                         if (tomfooleryScallywag.counter >= tomfooleryScallywag.limit) {
-                            Random random = new Random();
-                            mob.playSound(ModSounds.TOMFOOLERY.get(), 2.5F, 0.9f + random.nextFloat(0.2f));
+                            Utilities.playSound(mob, ModSounds.TOMFOOLERY.get(), 2.5F);
                             tomfooleryScallywag.resetCounter();
                             tomfooleryScallywag.rollLimit();
                         }

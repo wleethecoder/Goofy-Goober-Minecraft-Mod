@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "goofygoober:item/music_disc_nerd_emoji_beat_by_keyboard"
+  }
+}

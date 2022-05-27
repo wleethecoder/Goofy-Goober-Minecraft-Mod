@@ -1,23 +1,28 @@
 package com.leecrafts.goofygoober.common.events;
 
 import com.leecrafts.goofygoober.GoofyGoober;
+import com.leecrafts.goofygoober.common.capabilities.ModCapabilities;
+import com.leecrafts.goofygoober.common.capabilities.tomfoolery.cooldowncounter.TomfooleryCooldownCounter;
 import com.leecrafts.goofygoober.common.effects.ModEffects;
+import com.leecrafts.goofygoober.common.misc.Utilities;
 import com.leecrafts.goofygoober.common.sounds.ModSounds;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
+// miscellaneous events
 @Mod.EventBusSubscriber(modid = GoofyGoober.MOD_ID)
 public class ModEvents {
 
     @SubscribeEvent
     public static void onPlayerDeath(LivingDeathEvent event) {
         if (event.getEntityLiving() instanceof Player player && !player.level.isClientSide()) {
-            player.level.playSound(null, player.getX(), player.getY(), player.getZ(), ModSounds.DEATH.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
+            Utilities.playSound(player, ModSounds.FAIL.get());
         }
     }
 
@@ -34,6 +39,22 @@ public class ModEvents {
                 player.removeEffect(ModEffects.HALLUCINATING.get());
             }
         }
+    }
+
+    @SubscribeEvent
+    public static void onPlayerCloneEvent(PlayerEvent.Clone event) {
+        Player originalPlayer = event.getOriginal();
+        Player player = event.getPlayer();
+        originalPlayer.reviveCaps();
+        originalPlayer.getCapability(ModCapabilities.TOMFOOLERY_COOLDOWN_COUNTER_CAPABILITY).ifPresent(iTomfooleryCooldownCounter -> {
+            player.getCapability(ModCapabilities.TOMFOOLERY_COOLDOWN_COUNTER_CAPABILITY).ifPresent(iTomfooleryCooldownCounter1 -> {
+                TomfooleryCooldownCounter tomfooleryCooldownCounter = (TomfooleryCooldownCounter) iTomfooleryCooldownCounter;
+                TomfooleryCooldownCounter tomfooleryCooldownCounter1 = (TomfooleryCooldownCounter) iTomfooleryCooldownCounter1;
+                tomfooleryCooldownCounter1.counter = tomfooleryCooldownCounter.counter;
+//                System.out.println((tomfooleryCooldownCounter1.limit - tomfooleryCooldownCounter1.counter) / 20.0 + " seconds left");
+            });
+        });
+        originalPlayer.invalidateCaps();
     }
 
 }

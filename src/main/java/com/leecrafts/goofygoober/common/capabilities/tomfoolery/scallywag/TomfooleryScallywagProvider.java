@@ -22,10 +22,8 @@ public class TomfooleryScallywagProvider implements ICapabilitySerializable<Comp
 
     @Override
     public CompoundTag serializeNBT() {
-        if (ModCapabilities.TOMFOOLERY_SCALLYWAG_CAPABILITY == null) {
-            return new CompoundTag();
-        }
         CompoundTag nbt = new CompoundTag();
+        if (ModCapabilities.TOMFOOLERY_SCALLYWAG_CAPABILITY == null) return nbt;
         nbt.putBoolean("is_eligible_to_cause_tomfoolery", tomfooleryScallywag.isEligible());
         nbt.putBoolean("scallywag", tomfooleryScallywag.isScallywag());
         return nbt;

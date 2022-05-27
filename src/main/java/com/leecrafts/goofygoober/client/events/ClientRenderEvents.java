@@ -77,39 +77,11 @@ public class ClientRenderEvents {
         }
     }
 
-//    @SubscribeEvent
-//    public static void superRun(InputEvent.KeyInputEvent event) {
-//        if (event.getKey() == 87 && event.getModifiers() == 2) {
-//            System.out.println("running");
-//        }
-//         System.out.println(event.getKey() + ", " + event.getScanCode() + ", " + event.getAction() + ", " + event.getModifiers());
-//    }
-
     private static void refreshSteakEntity(LocalPlayer localPlayer, LivingEntity livingEntity) {
-        if (steakEntity == null || steakEntity.isRemoved()) {
+        if (steakEntity == null || steakEntity.level != livingEntity.level) {
             steakEntity = ModEntities.STEAK_ENTITY.get().create(localPlayer.clientLevel);
         }
-        assert steakEntity != null;
-        if (!steakEntity.level.dimension().equals(livingEntity.level.dimension())) {
-            steakEntity.discard();
-        }
     }
-
-//    @SubscribeEvent
-//    public static void a(LivingEvent.LivingUpdateEvent event) {
-//        if (event.getEntityLiving() instanceof Player && steakEntity != null) System.out.println(steakEntity.isRemoved());
-//    }
-//
-//    @SubscribeEvent
-//    public static void steakDead(LivingDeathEvent event) {
-//        LocalPlayer localPlayer = Minecraft.getInstance().player;
-//        LivingEntity livingEntity = event.getEntityLiving();
-//        if (localPlayer != null && localPlayer.getActiveEffectsMap() != null && !localPlayer.is(livingEntity)) {
-//            if (localPlayer.hasEffect(ModEffects.HALLUCINATING.get())) {
-//                steakEntity.discard();
-//            }
-//        }
-//    }
 
     @SubscribeEvent
     public static void steak(RenderLivingEvent.Pre<LivingEntity, EntityModel<LivingEntity>> event) {

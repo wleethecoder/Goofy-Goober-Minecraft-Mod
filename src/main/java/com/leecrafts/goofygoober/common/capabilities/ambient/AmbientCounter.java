@@ -1,5 +1,6 @@
 package com.leecrafts.goofygoober.common.capabilities.ambient;
 
+import com.leecrafts.goofygoober.common.misc.Utilities;
 import com.leecrafts.goofygoober.common.sounds.ModSounds;
 import net.minecraft.sounds.SoundEvent;
 
@@ -27,14 +28,12 @@ public class AmbientCounter implements IAmbientCounter {
     public void rollLimit() {
         // adds randomness to how long it takes for the mob to make another noise
         // 2.5 - 5 seconds
-        Random random = new Random();
-        this.limit = 50 + random.nextInt(50);
+        this.limit = 50 + Utilities.random.nextInt(50);
     }
 
     @Override
     public void rollSleepingNoise() {
-        Random random = new Random();
-        int randInt = random.nextInt(3);
+        int randInt = Utilities.random.nextInt(3);
         this.sleepingNoise = ModSounds.SNORE_LOUD.get();
         if (randInt == 1) this.sleepingNoise = ModSounds.SNORE_MIMIMI.get();
         if (randInt == 2) this.sleepingNoise = ModSounds.SNORE_WHISTLE.get();

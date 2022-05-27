@@ -22,10 +22,8 @@ public class TomfooleryCooldownCounterProvider implements ICapabilitySerializabl
 
     @Override
     public CompoundTag serializeNBT() {
-        if (ModCapabilities.TOMFOOLERY_COOLDOWN_COUNTER_CAPABILITY == null) {
-            return new CompoundTag();
-        }
         CompoundTag nbt = new CompoundTag();
+        if (ModCapabilities.TOMFOOLERY_COOLDOWN_COUNTER_CAPABILITY == null) return nbt;
         nbt.putInt("tomfoolery_cooldown_counter", tomfooleryCooldownCounter.counter);
         return nbt;
     }

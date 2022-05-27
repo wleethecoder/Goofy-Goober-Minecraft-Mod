@@ -18,6 +18,20 @@
       "goofygoober:skedaddle/takeoff1"
     ]
   },
+  "player_skedaddle": {
+    "subtitle": "sounds.goofygoober.player_skedaddle",
+    "sounds": [
+      "goofygoober:player_skedaddle/run",
+      "goofygoober:player_skedaddle/slip"
+    ]
+  },
+  "player_takeoff": {
+    "subtitle": "sounds.goofygoober.player_takeoff",
+    "sounds": [
+      "goofygoober:player_takeoff/takeoff1",
+      "goofygoober:player_takeoff/takeoff2"
+    ]
+  },
   "snore_loud": {
     "subtitle": "sounds.goofygoober.snore_loud",
     "sounds": [
@@ -76,11 +90,11 @@
       "goofygoober:tomfoolery/woaaow"
     ]
   },
-  "death": {
-    "subtitle": "sounds.goofygoober.death",
+  "fail": {
+    "subtitle": "sounds.goofygoober.fail",
     "sounds": [
-      "goofygoober:death/spongebob_fail",
-      "goofygoober:death/squirrel_laugh"
+      "goofygoober:fail/spongebob_fail",
+      "goofygoober:fail/squirrel_laugh"
     ]
   },
   "impact": {
@@ -95,6 +109,14 @@
     "subtitle": "sounds.goofygoober.doit",
     "sounds": [
       "goofygoober:misc/doit"
+    ]
+  },
+  "nerd_emoji_beat_by_keyboard": {
+    "sounds": [
+      {
+        "name": "goofygoober:music_disc/nerd_emoji_beat_by_keyboard",
+        "stream": true
+      }
     ]
   }
 }

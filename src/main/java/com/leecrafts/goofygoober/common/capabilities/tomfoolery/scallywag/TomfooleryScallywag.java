@@ -1,5 +1,7 @@
 package com.leecrafts.goofygoober.common.capabilities.tomfoolery.scallywag;
 
+import com.leecrafts.goofygoober.common.misc.Utilities;
+
 import java.util.Random;
 
 public class TomfooleryScallywag implements ITomfooleryScallywag {
@@ -37,8 +39,7 @@ public class TomfooleryScallywag implements ITomfooleryScallywag {
     @Override
     public void rollLimit() {
         // every 0.5 - 1 second, a goofy noise plays
-        Random random = new Random();
-        this.limit = 10 + random.nextInt(10);
+        this.limit = 10 + Utilities.random.nextInt(10);
     }
 
 }

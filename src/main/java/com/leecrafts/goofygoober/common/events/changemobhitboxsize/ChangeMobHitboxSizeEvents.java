@@ -2,6 +2,7 @@ package com.leecrafts.goofygoober.common.events.changemobhitboxsize;
 
 import com.leecrafts.goofygoober.GoofyGoober;
 import com.leecrafts.goofygoober.common.effects.ModEffects;
+import com.leecrafts.goofygoober.common.misc.Utilities;
 import com.leecrafts.goofygoober.common.sounds.ModSounds;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundSource;
@@ -50,7 +51,7 @@ public class ChangeMobHitboxSizeEvents {
                 int previousCount = previousItemStack.getCount();
                 if (previousCount > 1 && handItemStack.getItem().getFoodProperties() != null) {
                     // play sound
-                    player.level.playSound(null, player.getX(), player.getY(), player.getZ(), ModSounds.PLAYER_GORGE.get(), SoundSource.PLAYERS, 1, 1);
+                    Utilities.playSound(player, ModSounds.PLAYER_GORGE.get());
 
                     // fill hunger bar, capped at 20
                     int nutrition = handItemStack.getItem().getFoodProperties().getNutrition();
@@ -91,16 +92,15 @@ public class ChangeMobHitboxSizeEvents {
         LivingEntity livingEntity = event.getEntityLiving();
         if (!livingEntity.level.isClientSide()) {
             DamageSource damageSource = event.getSource();
-            Random random = new Random();
             if (damageSource.getDirectEntity() instanceof IronGolem) {
                 livingEntity.setDeltaMovement(livingEntity.getDeltaMovement().subtract(0, 1.5, 0));
                 livingEntity.addEffect(new MobEffectInstance(ModEffects.SQUASHED.get(), 30 * 20));
-                livingEntity.level.playSound(null, livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(), ModSounds.DOIT.get(), SoundSource.NEUTRAL, 2, 0.9F + random.nextFloat(0.2F));
+                Utilities.playSound(livingEntity, ModSounds.DOIT.get(), 1.5F);
             }
 
             if (damageSource == DamageSource.ANVIL || damageSource == DamageSource.FALLING_STALACTITE) {
                 livingEntity.addEffect(new MobEffectInstance(ModEffects.SQUASHED.get(), 10 * 20));
-                livingEntity.level.playSound(null, livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(), ModSounds.DOIT.get(), SoundSource.BLOCKS, 1, 0.9F + random.nextFloat(0.2F));
+                Utilities.playSound(livingEntity, ModSounds.DOIT.get(), SoundSource.BLOCKS);
             }
         }
     }
@@ -112,8 +112,7 @@ public class ChangeMobHitboxSizeEvents {
             float distance = event.getDistance();
             if (distance >= 20F) {
                 livingEntity.addEffect(new MobEffectInstance(ModEffects.SQUASHED.get(), (int) (distance / 2 * 20)));
-                Random random = new Random();
-                livingEntity.level.playSound(null, livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(), ModSounds.IMPACT.get(), SoundSource.PLAYERS, 1, 0.9F + random.nextFloat(0.2F));
+                Utilities.playSound(livingEntity, ModSounds.IMPACT.get());
             }
         }
     }
@@ -134,8 +133,7 @@ public class ChangeMobHitboxSizeEvents {
             else {
                 livingEntity.addEffect(new MobEffectInstance(ModEffects.SMASHED.get(), duration));
             }
-            Random random = new Random();
-            livingEntity.level.playSound(null, livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(), ModSounds.IMPACT.get(), SoundSource.PLAYERS, 1, 0.9F + random.nextFloat(0.2F));
+            Utilities.playSound(livingEntity, ModSounds.IMPACT.get());
         }
     }
 

@@ -2,11 +2,13 @@ package com.leecrafts.goofygoober.common.events.custommobnoise;
 
 import com.leecrafts.goofygoober.common.capabilities.ModCapabilities;
 import com.leecrafts.goofygoober.common.capabilities.ambient.AmbientCounter;
+import com.leecrafts.goofygoober.common.misc.Utilities;
 import com.leecrafts.goofygoober.common.sounds.ModSounds;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.schedule.Activity;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 
@@ -16,7 +18,6 @@ import java.util.Random;
 
 public class CustomMobNoiseHelper {
 
-    public static final Random random = new Random();
     private static HashMap<String, Float> damageSourceKnockback;
 
     private static void initializeIfNull() {
@@ -36,7 +37,7 @@ public class CustomMobNoiseHelper {
         initializeIfNull();
         if (damageSourceKnockback.get(source) != null) {
             livingEntity.setDeltaMovement(livingEntity.getDeltaMovement().add(0, damageSourceKnockback.get(source), 0));
-            livingEntity.level.playSound(null, livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(), ModSounds.SCREAM.get(), SoundSource.AMBIENT, 1, 0.9F + random.nextFloat(0.2F));
+            Utilities.playSound(livingEntity, ModSounds.SCREAM.get());
         }
     }
 
@@ -67,13 +68,13 @@ public class CustomMobNoiseHelper {
     public static void panic(Mob mob) {
         Optional<Activity> activity = mob.getBrain().getActiveNonCoreActivity();
         if (activity.isPresent() && activity.get().getName().equals("panic")) {
-            mob.playSound(ModSounds.SKEDADDLE.get(), 1, 0.9F + random.nextFloat(0.2F));
+            Utilities.playSound(mob, ModSounds.SKEDADDLE.get());
         }
     }
 
     public static void snore(LivingEntity livingEntity, SoundEvent sleepingNoise) {
-        float range = 0.6F;
-        if (sleepingNoise == ModSounds.SNORE_MIMIMI.get()) range = 0.2F;
-        livingEntity.level.playSound(null, livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(), sleepingNoise, SoundSource.AMBIENT, 1, 0.9F + random.nextFloat(range));
+        float pitchHigh = 1.5F;
+        if (sleepingNoise == ModSounds.SNORE_MIMIMI.get()) pitchHigh = Utilities.DEFAULT_PITCH_HIGH;
+        Utilities.playSound(livingEntity, sleepingNoise, 1, Utilities.DEFAULT_PITCH_LOW, pitchHigh);
     }
 }

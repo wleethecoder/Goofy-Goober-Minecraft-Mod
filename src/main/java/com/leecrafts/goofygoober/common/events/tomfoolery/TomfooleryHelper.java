@@ -128,9 +128,8 @@ public class TomfooleryHelper {
 
                         // if the player is not nearby, then scallywags will target any monster (including other scallywags) that are near the player
                         ArrayList<Mob> nearbyMobs = getNearbyMobs(player, false);
-//                        Random random = new Random();
 //                        int indexOfSelf = nearbyMobs.indexOf(mob);
-//                        int mobIndex = random.nextInt(nearbyMobs.size() - 1);
+//                        int mobIndex = Utilities.random.nextInt(nearbyMobs.size() - 1);
 //                        // make sure the monster would not target itself
 //                        mobIndex = mobIndex >= indexOfSelf ? mobIndex + 1 : mobIndex;
 //                        Mob targetMob = nearbyMobs.get(mobIndex);

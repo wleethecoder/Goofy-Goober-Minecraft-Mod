@@ -23,10 +23,8 @@ public class AmbientCounterProvider implements ICapabilitySerializable<CompoundT
 
     @Override
     public CompoundTag serializeNBT() {
-        if (ModCapabilities.AMBIENT_COUNTER_CAPABILITY == null) {
-            return new CompoundTag();
-        }
         CompoundTag nbt = new CompoundTag();
+        if (ModCapabilities.AMBIENT_COUNTER_CAPABILITY == null) return nbt;
         nbt.putInt("ambient_counter", ambientCounter.counter);
         nbt.putInt("ambient_counter_limit", ambientCounter.limit);
         return nbt;

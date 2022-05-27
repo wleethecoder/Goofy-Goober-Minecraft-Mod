@@ -1,8 +1,11 @@
 package com.leecrafts.goofygoober.common.items;
 
 import com.leecrafts.goofygoober.GoofyGoober;
+import com.leecrafts.goofygoober.common.sounds.ModSounds;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.RecordItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -14,6 +17,9 @@ public class ModItems {
 
     public static final RegistryObject<Item> PAPER_TEST = ITEMS.register("paper_test",
             () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+
+    public static final RegistryObject<Item> MUSIC_DISC_NERD_EMOJI_BEAT_BY_KEYBOARD = ITEMS.register("music_disc_nerd_emoji_beat_by_keyboard",
+            () -> new RecordItem(0, ModSounds.NERD_EMOJI_BEAT_BY_KEYBOARD, new Item.Properties().tab(CreativeModeTab.TAB_MISC).stacksTo(1).rarity(Rarity.RARE)));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

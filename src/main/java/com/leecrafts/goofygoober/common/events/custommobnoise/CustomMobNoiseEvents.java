@@ -29,12 +29,11 @@ public class CustomMobNoiseEvents {
 
     @SubscribeEvent
     public static void onAttachCapabilitiesEvent(AttachCapabilitiesEvent<Entity> event) {
-        Entity entity = event.getObject();
-        if ((entity instanceof LivingEntity && !entity.getCommandSenderWorld().isClientSide()) || entity instanceof Player) {
+        if (event.getObject() instanceof LivingEntity livingEntity && !livingEntity.getCommandSenderWorld().isClientSide()) {
             AmbientCounterProvider ambientCounterProvider = new AmbientCounterProvider();
             event.addCapability(new ResourceLocation(GoofyGoober.MOD_ID, "ambient_counter"), ambientCounterProvider);
             event.addCapability(new ResourceLocation(GoofyGoober.MOD_ID, "ambient_counter_limit"), ambientCounterProvider);
-            if (!(entity instanceof Player)) {
+            if (!(livingEntity instanceof Player)) {
                 event.addListener(ambientCounterProvider::invalidate);
             }
         }
