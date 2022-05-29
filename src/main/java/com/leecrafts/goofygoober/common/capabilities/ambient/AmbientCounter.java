@@ -4,8 +4,6 @@ import com.leecrafts.goofygoober.common.misc.Utilities;
 import com.leecrafts.goofygoober.common.sounds.ModSounds;
 import net.minecraft.sounds.SoundEvent;
 
-import java.util.Random;
-
 public class AmbientCounter implements IAmbientCounter {
 
     public int counter;
@@ -14,8 +12,8 @@ public class AmbientCounter implements IAmbientCounter {
 
     public AmbientCounter() {
         this.counter = 0;
-        rollLimit();
-        rollSleepingNoise();
+        this.rollLimit();
+        this.rollSleepingNoise();
     }
 
     @Override

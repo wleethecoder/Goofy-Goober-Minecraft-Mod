@@ -5,16 +5,13 @@ import com.leecrafts.goofygoober.common.capabilities.ambient.AmbientCounter;
 import com.leecrafts.goofygoober.common.misc.Utilities;
 import com.leecrafts.goofygoober.common.sounds.ModSounds;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.schedule.Activity;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 
 import java.util.HashMap;
 import java.util.Optional;
-import java.util.Random;
 
 public class CustomMobNoiseHelper {
 

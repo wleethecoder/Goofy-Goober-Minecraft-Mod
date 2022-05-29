@@ -2,8 +2,6 @@ package com.leecrafts.goofygoober.common.capabilities.tomfoolery.scallywag;
 
 import com.leecrafts.goofygoober.common.misc.Utilities;
 
-import java.util.Random;
-
 public class TomfooleryScallywag implements ITomfooleryScallywag {
 
     private boolean isEligible;
@@ -15,7 +13,7 @@ public class TomfooleryScallywag implements ITomfooleryScallywag {
         this.isEligible = true;
         this.isScallywag = false;
         this.counter = 0;
-        rollLimit();
+        this.rollLimit();
     }
 
     @Override

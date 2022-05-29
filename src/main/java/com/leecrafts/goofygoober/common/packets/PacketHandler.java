@@ -2,6 +2,7 @@ package com.leecrafts.goofygoober.common.packets;
 
 import com.leecrafts.goofygoober.GoofyGoober;
 import com.leecrafts.goofygoober.common.packets.key.ServerboundPlayerWKeyPacket;
+import com.leecrafts.goofygoober.common.packets.skedaddle.ClientboundSkedaddlePacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.network.NetworkDirection;
 import net.minecraftforge.network.NetworkRegistry;
@@ -21,6 +22,9 @@ public class PacketHandler {
         INSTANCE.messageBuilder(ServerboundPlayerWKeyPacket.class, index++, NetworkDirection.PLAY_TO_SERVER)
                 .encoder(ServerboundPlayerWKeyPacket::encode).decoder(ServerboundPlayerWKeyPacket::new)
                 .consumer(ServerboundPlayerWKeyPacket::handle).add();
+        INSTANCE.messageBuilder(ClientboundSkedaddlePacket.class, index++, NetworkDirection.PLAY_TO_CLIENT)
+                .encoder(ClientboundSkedaddlePacket::encode).decoder(ClientboundSkedaddlePacket::new)
+                .consumer(ClientboundSkedaddlePacket::handle).add();
     }
 
 }
