@@ -3,6 +3,7 @@ package com.leecrafts.goofygoober.common.packets;
 import com.leecrafts.goofygoober.GoofyGoober;
 import com.leecrafts.goofygoober.common.packets.key.ServerboundPlayerWKeyPacket;
 import com.leecrafts.goofygoober.common.packets.skedaddle.ClientboundSkedaddlePacket;
+import com.leecrafts.goofygoober.common.packets.skedaddle.ServerboundSkedaddleTogglePacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.network.NetworkDirection;
 import net.minecraftforge.network.NetworkRegistry;
@@ -25,6 +26,9 @@ public class PacketHandler {
         INSTANCE.messageBuilder(ClientboundSkedaddlePacket.class, index++, NetworkDirection.PLAY_TO_CLIENT)
                 .encoder(ClientboundSkedaddlePacket::encode).decoder(ClientboundSkedaddlePacket::new)
                 .consumer(ClientboundSkedaddlePacket::handle).add();
+        INSTANCE.messageBuilder(ServerboundSkedaddleTogglePacket.class, index++, NetworkDirection.PLAY_TO_SERVER)
+                .encoder(ServerboundSkedaddleTogglePacket::encode).decoder(ServerboundSkedaddleTogglePacket::new)
+                .consumer(ServerboundSkedaddleTogglePacket::handle).add();
     }
 
 }

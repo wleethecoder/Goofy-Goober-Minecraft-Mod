@@ -15,6 +15,7 @@ import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.animal.IronGolem;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.FOVModifierEvent;
 import net.minecraftforge.client.event.RenderLivingEvent;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.event.TickEvent;
@@ -67,39 +68,31 @@ public class ClientRenderEvents {
     // player eye height is 1.62 = 1.8 * 0.9
     @SubscribeEvent
     public static void squashedEyeHeight(TickEvent.ClientTickEvent event) throws IllegalAccessException {
-        LocalPlayer localPlayer = Minecraft.getInstance().player;
-        if (localPlayer != null && localPlayer.getActiveEffectsMap() != null) {
-            boolean isSquashed = localPlayer.hasEffect(ModEffects.SQUASHED.get());
-            if (!needToChangeEyeHeight) {
-                if (isSquashed) {
-                    needToChangeEyeHeight = true;
-                }
-            } else {
-//                eyeHeightField.setAccessible(true);
-                if (isSquashed) {
-                    eyeHeightField.set(localPlayer, (float) (0.25 * 0.9));
+        if (event.phase == TickEvent.Phase.END) {
+            LocalPlayer localPlayer = Minecraft.getInstance().player;
+            if (localPlayer != null && localPlayer.getActiveEffectsMap() != null) {
+                boolean isSquashed = localPlayer.hasEffect(ModEffects.SQUASHED.get());
+                if (!needToChangeEyeHeight) {
+                    if (isSquashed) {
+                        needToChangeEyeHeight = true;
+                    }
                 } else {
-                    eyeHeightField.set(localPlayer, (float) (1.8 * 0.9));
-                    needToChangeEyeHeight = false;
+//                eyeHeightField.setAccessible(true);
+                    if (isSquashed) {
+                        eyeHeightField.set(localPlayer, (float) (0.25 * 0.9));
+                    } else {
+                        eyeHeightField.set(localPlayer, (float) (1.8 * 0.9));
+                        needToChangeEyeHeight = false;
+                    }
                 }
-            }
 
+            }
         }
     }
 
     private static void refreshSteakEntity(LocalPlayer localPlayer, LivingEntity livingEntity) {
         if (steakEntity == null || steakEntity.level != livingEntity.level) {
             steakEntity = ModEntities.STEAK_ENTITY.get().create(localPlayer.clientLevel);
-        }
-    }
-
-    @SubscribeEvent
-    public static void skedaddle(RenderLivingEvent.Pre<LivingEntity, EntityModel<LivingEntity>> event) {
-        if (event.getEntity() instanceof Player player) {
-            player.getCapability(ModCapabilities.SKEDADDLE_CAPABILITY).ifPresent(iSkedaddle -> {
-                Skedaddle skedaddle = (Skedaddle) iSkedaddle;
-                if (skedaddle.shouldAnimateOnClient) player.animationSpeed = 3;
-            });
         }
     }
 
@@ -135,7 +128,27 @@ public class ClientRenderEvents {
         }
     }
 
-    public static void handleSkedaddlePacket(UUID uuid, boolean shouldAnimateOnClient) {
+    @SubscribeEvent
+    public static void skedaddleAnimation(RenderLivingEvent.Pre<LivingEntity, EntityModel<LivingEntity>> event) {
+        if (event.getEntity() instanceof Player player) {
+            player.getCapability(ModCapabilities.SKEDADDLE_CAPABILITY).ifPresent(iSkedaddle -> {
+                Skedaddle skedaddle = (Skedaddle) iSkedaddle;
+                if (skedaddle.shouldAnimateOnClient) player.animationSpeed = 3;
+            });
+        }
+    }
+
+    @SubscribeEvent
+    public static void cancelFOVChangeUponSkedaddleCharging(FOVModifierEvent event) {
+        if (event.getNewfov() < 1) {
+            event.getEntity().getCapability(ModCapabilities.SKEDADDLE_CAPABILITY).ifPresent(iSkedaddle -> {
+                Skedaddle skedaddle = (Skedaddle) iSkedaddle;
+                if (skedaddle.skedaddleCharging) event.setNewfov(1);
+            });
+        }
+    }
+
+    public static void handleSkedaddlePacket(UUID uuid, boolean skedaddleCharging, boolean shouldAnimateOnClient) {
         LocalPlayer thisPlayer = Minecraft.getInstance().player;
         if (thisPlayer != null) {
             Player trackedPlayer = thisPlayer.level.getPlayerByUUID(uuid);
@@ -143,6 +156,7 @@ public class ClientRenderEvents {
                 trackedPlayer.getCapability(ModCapabilities.SKEDADDLE_CAPABILITY).ifPresent(iSkedaddle -> {
                     Skedaddle skedaddle = (Skedaddle) iSkedaddle;
                     skedaddle.shouldAnimateOnClient = shouldAnimateOnClient;
+                    skedaddle.skedaddleCharging = skedaddleCharging;
                 });
             }
         }

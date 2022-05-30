@@ -4,7 +4,6 @@ import com.leecrafts.goofygoober.common.capabilities.ModCapabilities;
 import com.leecrafts.goofygoober.common.capabilities.skedaddle.Skedaddle;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraftforge.network.NetworkEvent;
 
 import java.util.function.Supplier;
@@ -26,10 +25,7 @@ public class ServerboundPlayerWKeyPacket {
                 sender.getCapability(ModCapabilities.SKEDADDLE_CAPABILITY).ifPresent(iSkedaddle -> {
                     Skedaddle skedaddle = (Skedaddle) iSkedaddle;
                     skedaddle.wPressed = this.wPressed;
-                    if (!skedaddle.wPressed) {
-                        if (sender.getActiveEffectsMap() != null) sender.removeEffect(MobEffects.MOVEMENT_SPEED);
-                        skedaddle.reset(sender);
-                    }
+                    if (!skedaddle.wPressed) skedaddle.reset(sender);
                 });
             }
         });
