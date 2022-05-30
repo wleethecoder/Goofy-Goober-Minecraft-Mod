@@ -2,6 +2,7 @@ package com.leecrafts.goofygoober.common.events;
 
 import com.leecrafts.goofygoober.GoofyGoober;
 import com.leecrafts.goofygoober.common.capabilities.ModCapabilities;
+import com.leecrafts.goofygoober.common.capabilities.skedaddle.Skedaddle;
 import com.leecrafts.goofygoober.common.capabilities.tomfoolery.cooldowncounter.TomfooleryCooldownCounter;
 import com.leecrafts.goofygoober.common.effects.ModEffects;
 import com.leecrafts.goofygoober.common.misc.Utilities;

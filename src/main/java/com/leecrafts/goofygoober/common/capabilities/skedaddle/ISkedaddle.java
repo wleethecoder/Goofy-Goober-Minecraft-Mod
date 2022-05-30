@@ -5,5 +5,5 @@ import net.minecraft.world.entity.player.Player;
 public interface ISkedaddle {
     void incrementCounter();
     void reset(Player player);
-    void sendClientBoundPacket(Player player, boolean skedaddleCharging, boolean shouldAnimateOnClient);
+    void sendClientboundPacket(Player player, boolean skedaddleCharging, boolean shouldAnimateOnClient);
 }

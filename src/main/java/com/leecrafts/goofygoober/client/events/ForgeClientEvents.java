@@ -19,10 +19,19 @@ public class ForgeClientEvents {
     private static boolean skedaddleEnabled;
     private static boolean skedaddleToggleKeyAlreadyPressed = false;
 
+    private static void sendServerboundPacket(boolean enabled) {
+        skedaddleEnabled = enabled;
+        PacketHandler.INSTANCE.sendToServer(new ServerboundSkedaddleTogglePacket(skedaddleEnabled));
+    }
+
     @SubscribeEvent
-    public static void initializeSkedaddleDisabled(ClientPlayerNetworkEvent.LoggedInEvent event) {
-        skedaddleEnabled = false;
-        PacketHandler.INSTANCE.sendToServer(new ServerboundSkedaddleTogglePacket(false));
+    public static void initializeSkedaddleDisabledOnLogin(ClientPlayerNetworkEvent.LoggedInEvent event) {
+        sendServerboundPacket(false);
+    }
+
+    @SubscribeEvent
+    public static void initializeSkedaddleDisabledOnRespawn(ClientPlayerNetworkEvent.RespawnEvent event) {
+        sendServerboundPacket(false);
     }
 
     @SubscribeEvent
@@ -33,10 +42,9 @@ public class ForgeClientEvents {
                 boolean pressed = KeyInit.toggleSkedaddleKeyMapping.isDown();
                 if (pressed && !skedaddleToggleKeyAlreadyPressed) {
                     skedaddleToggleKeyAlreadyPressed = true;
-                    skedaddleEnabled = !skedaddleEnabled;
+                    sendServerboundPacket(!skedaddleEnabled);
                     String message = skedaddleEnabled ? "Skedaddle enabled" : "Skedaddle disabled";
                     localPlayer.displayClientMessage(new TextComponent(message), true);
-                    PacketHandler.INSTANCE.sendToServer(new ServerboundSkedaddleTogglePacket(skedaddleEnabled));
                 }
                 else if (!pressed && skedaddleToggleKeyAlreadyPressed) {
                     skedaddleToggleKeyAlreadyPressed = false;

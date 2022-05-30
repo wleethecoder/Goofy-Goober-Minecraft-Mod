@@ -63,12 +63,12 @@ public class SkedaddleEvents {
                             // player starts charging (skedaddleCharging gets set to true in sendClientBoundPacket)
                             SkedaddleHelper.applySlowness(player, skedaddle);
                             Utilities.playSound(player, ModSounds.PLAYER_SKEDADDLE.get());
-                            skedaddle.sendClientBoundPacket(player, true, true);
+                            skedaddle.sendClientboundPacket(player, true, true);
                         }
                     }
                     else if (skedaddle.skedaddleTakeoff && skedaddle.shouldAnimateOnClient) {
                         if (player.getActiveEffectsMap() != null && !player.hasEffect(MobEffects.MOVEMENT_SPEED)) {
-                            skedaddle.sendClientBoundPacket(player, false, false);
+                            skedaddle.sendClientboundPacket(player, false, false);
                         }
                     }
                 }
@@ -81,7 +81,7 @@ public class SkedaddleEvents {
         if (event.getTarget() instanceof Player target && !target.level.isClientSide()) {
             target.getCapability(ModCapabilities.SKEDADDLE_CAPABILITY).ifPresent(iSkedaddle -> {
                 Skedaddle skedaddle = (Skedaddle) iSkedaddle;
-                skedaddle.sendClientBoundPacket(target, skedaddle.skedaddleCharging, skedaddle.shouldAnimateOnClient);
+                skedaddle.sendClientboundPacket(target, skedaddle.skedaddleCharging, skedaddle.shouldAnimateOnClient);
             });
         }
     }

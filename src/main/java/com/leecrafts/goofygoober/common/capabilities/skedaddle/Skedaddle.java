@@ -54,15 +54,19 @@ public class Skedaddle implements ISkedaddle {
     }
 
     public void reset(Player player) {
+        SkedaddleHelper.removeSlowness(player, this);
         SkedaddleHelper.removeSpeed(player, this);
+
         this.skedaddleTakeoff = false;
         this.skedaddleChargeCounter = 0;
+
         this.previousSlownessInstance = null;
         this.previousSpeedInstance = null;
-        this.sendClientBoundPacket(player, false, false);
+
+        this.sendClientboundPacket(player, false, false);
     }
 
-    public void sendClientBoundPacket(Player sender, boolean skedaddleCharging, boolean shouldAnimateOnClient) {
+    public void sendClientboundPacket(Player sender, boolean skedaddleCharging, boolean shouldAnimateOnClient) {
         this.skedaddleCharging = skedaddleCharging;
         this.shouldAnimateOnClient = shouldAnimateOnClient;
         PacketHandler.INSTANCE.send(
