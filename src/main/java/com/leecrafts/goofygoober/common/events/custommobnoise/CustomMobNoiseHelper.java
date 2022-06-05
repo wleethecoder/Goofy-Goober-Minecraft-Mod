@@ -7,6 +7,9 @@ import com.leecrafts.goofygoober.common.sounds.ModSounds;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.ai.goal.PanicGoal;
+import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.schedule.Activity;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 
@@ -27,12 +30,9 @@ public class CustomMobNoiseHelper {
         damageSourceKnockback.put("stalagmite", 7.5F);
     }
 
-    // don't add @SubscribeEvent here!
-    public static void scream(LivingDamageEvent event) {
-        LivingEntity livingEntity = event.getEntityLiving();
-        String source = event.getSource().getMsgId();
+    public static void scream(LivingEntity livingEntity, String source) {
         initializeIfNull();
-        if (damageSourceKnockback.get(source) != null) {
+        if (damageSourceKnockback.containsKey(source)) {
             livingEntity.setDeltaMovement(livingEntity.getDeltaMovement().add(0, damageSourceKnockback.get(source), 0));
             Utilities.playSound(livingEntity, ModSounds.SCREAM.get());
         }
@@ -47,14 +47,14 @@ public class CustomMobNoiseHelper {
 
                 // ambient panicking noise
                 // for non-player mobs that can panic
-                // TODO make this work for every mob that can panic, not just villagers
-                if (livingEntity instanceof Mob mob) {
-                    panic(mob);
-                }
+                if (livingEntity instanceof Mob mob) panic(mob);
 
                 // ambient snoring noise
                 // for players and villagers
                 if (livingEntity.isSleeping()) snore(livingEntity, ambientCounter.sleepingNoise);
+
+                // ambient freezing noise
+                if (livingEntity.isFreezing()) Utilities.playSound(livingEntity, ModSounds.TEETH_CHATTER.get());
 
                 ambientCounter.resetCounter();
                 ambientCounter.rollLimit();
@@ -63,9 +63,15 @@ public class CustomMobNoiseHelper {
     }
 
     public static void panic(Mob mob) {
-        Optional<Activity> activity = mob.getBrain().getActiveNonCoreActivity();
-        if (activity.isPresent() && activity.get().getName().equals("panic")) {
-            Utilities.playSound(mob, ModSounds.SKEDADDLE.get());
+        if (mob instanceof Villager villager) {
+            Optional<Activity> activity = villager.getBrain().getActiveNonCoreActivity();
+            if (activity.isPresent() && activity.get() == Activity.PANIC) Utilities.playSound(villager, ModSounds.SKEDADDLE.get());
+        }
+        else if (mob instanceof Animal animal) {
+            if (animal.goalSelector.getRunningGoals().anyMatch(wrappedGoal ->
+                    wrappedGoal.getGoal().getClass().equals(PanicGoal.class))) {
+                Utilities.playSound(animal, ModSounds.SKEDADDLE.get());
+            }
         }
     }
 

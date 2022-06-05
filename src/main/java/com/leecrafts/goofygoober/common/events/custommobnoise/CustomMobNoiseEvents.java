@@ -6,10 +6,10 @@ import com.leecrafts.goofygoober.common.capabilities.ambient.AmbientCounter;
 import com.leecrafts.goofygoober.common.capabilities.ambient.AmbientCounterProvider;
 import com.leecrafts.goofygoober.common.capabilities.ambient.IAmbientCounter;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Pose;
+import net.minecraft.world.entity.animal.IronGolem;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
@@ -19,7 +19,7 @@ import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod.EventBusSubscriber(modid = GoofyGoober.MOD_ID)
+@Mod.EventBusSubscriber(modid = GoofyGoober.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CustomMobNoiseEvents {
 
     @SubscribeEvent
@@ -43,8 +43,9 @@ public class CustomMobNoiseEvents {
     // throws the mob high up in the air
     @SubscribeEvent
     public static void scream(LivingDamageEvent event) {
-        if (!event.getEntity().level.isClientSide()) {
-            CustomMobNoiseHelper.scream(event);
+        LivingEntity livingEntity = event.getEntityLiving();
+        if (!livingEntity.level.isClientSide() && !(livingEntity instanceof IronGolem)) {
+            CustomMobNoiseHelper.scream(livingEntity, event.getSource().getMsgId());
         }
     }
 

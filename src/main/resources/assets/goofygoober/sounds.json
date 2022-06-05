@@ -21,15 +21,21 @@
   "player_skedaddle": {
     "subtitle": "sounds.goofygoober.player_skedaddle",
     "sounds": [
-      "goofygoober:player_skedaddle/run",
-      "goofygoober:player_skedaddle/slip"
+      "goofygoober:player/skedaddle/run",
+      "goofygoober:player/skedaddle/slip"
     ]
   },
   "player_takeoff": {
     "subtitle": "sounds.goofygoober.player_takeoff",
     "sounds": [
-      "goofygoober:player_takeoff/takeoff1",
-      "goofygoober:player_takeoff/takeoff2"
+      "goofygoober:player/takeoff/takeoff1",
+      "goofygoober:player/takeoff/takeoff2"
+    ]
+  },
+  "player_sneak": {
+    "subtitle": "sounds.goofygoober.player_sneak",
+    "sounds": [
+      "goofygoober:player/sneak/sneak"
     ]
   },
   "snore_loud": {
@@ -68,6 +74,7 @@
       "goofygoober:tomfoolery/chipmunk",
       "goofygoober:tomfoolery/combo",
       "goofygoober:tomfoolery/cuckoo",
+      "goofygoober:tomfoolery/dizzy",
       "goofygoober:tomfoolery/fail",
       "goofygoober:tomfoolery/fart",
       "goofygoober:tomfoolery/flight",
@@ -101,6 +108,7 @@
     "subtitle": "sounds.goofygoober.impact",
     "sounds": [
       "goofygoober:impact/crash_smash",
+      "goofygoober:impact/dizzy",
       "goofygoober:impact/hammer",
       "goofygoober:impact/stun"
     ]
@@ -117,6 +125,12 @@
         "name": "goofygoober:music_disc/nerd_emoji_beat_by_keyboard",
         "stream": true
       }
+    ]
+  },
+  "teeth_chatter": {
+    "subtitle": "sounds.goofygoober.teeth_chatter",
+    "sounds": [
+      "goofygoober:misc/teeth_chatter"
     ]
   }
 }

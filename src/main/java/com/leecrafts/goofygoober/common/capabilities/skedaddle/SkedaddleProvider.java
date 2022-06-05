@@ -24,26 +24,30 @@ public class SkedaddleProvider implements ICapabilitySerializable<CompoundTag> {
     public CompoundTag serializeNBT() {
         CompoundTag nbt = new CompoundTag();
         if (ModCapabilities.SKEDADDLE_CAPABILITY == null) return nbt;
-        nbt.putBoolean("skedaddle_enabled", skedaddle.skedaddleEnabled);
-        nbt.putInt("skedaddle_charge_counter", skedaddle.skedaddleChargeCounter);
-        nbt.putBoolean("skedaddle_charging", skedaddle.skedaddleCharging);
-        nbt.putBoolean("skedaddle_takeoff", skedaddle.skedaddleTakeoff);
+        nbt.putBoolean("skedaddle_enabled", skedaddle.enabled);
+        nbt.putInt("skedaddle_counter", skedaddle.counter);
+        nbt.putBoolean("skedaddle_charging", skedaddle.charging);
+        nbt.putBoolean("skedaddle_takeoff", skedaddle.takeoff);
+        nbt.putBoolean("skedaddle_finished", skedaddle.finished);
         nbt.putBoolean("w_pressed", skedaddle.wPressed);
         nbt.putBoolean("skedaddle_should_animate_on_client", skedaddle.shouldAnimateOnClient);
-        nbt.putBoolean("in_water", skedaddle.alreadyInWater);
+        nbt.putBoolean("in_water", skedaddle.inWater);
+        nbt.putBoolean("wham", skedaddle.wham);
         return nbt;
     }
 
     @Override
     public void deserializeNBT(CompoundTag nbt) {
         if (ModCapabilities.SKEDADDLE_CAPABILITY != null) {
-            skedaddle.skedaddleEnabled = nbt.getBoolean("skedaddle_enabled");
-            skedaddle.skedaddleChargeCounter = nbt.getInt("skedaddle_charge_counter");
-            skedaddle.skedaddleCharging = nbt.getBoolean("skedaddle_charging");
-            skedaddle.skedaddleTakeoff = nbt.getBoolean("skedaddle_takeoff");
+            skedaddle.enabled = nbt.getBoolean("skedaddle_enabled");
+            skedaddle.counter = nbt.getInt("skedaddle_counter");
+            skedaddle.charging = nbt.getBoolean("skedaddle_charging");
+            skedaddle.takeoff = nbt.getBoolean("skedaddle_takeoff");
+            skedaddle.finished = nbt.getBoolean("skedaddle_finished");
             skedaddle.wPressed = nbt.getBoolean("w_pressed");
             skedaddle.shouldAnimateOnClient = nbt.getBoolean("skedaddle_should_animate_on_client");
-            skedaddle.alreadyInWater = nbt.getBoolean("in_water");
+            skedaddle.inWater = nbt.getBoolean("in_water");
+            skedaddle.inWater = nbt.getBoolean("wham");
         }
     }
 

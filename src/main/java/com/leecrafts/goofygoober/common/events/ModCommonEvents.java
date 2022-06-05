@@ -13,9 +13,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 public class ModCommonEvents {
 
     @SubscribeEvent
-    public static void commonSetup(FMLCommonSetupEvent event) {
-        event.enqueueWork(PacketHandler::init);
-    }
+    public static void commonSetup(FMLCommonSetupEvent event) { event.enqueueWork(PacketHandler::init); }
 
     @SubscribeEvent
     public static void registerAttributes(EntityAttributeCreationEvent event) {

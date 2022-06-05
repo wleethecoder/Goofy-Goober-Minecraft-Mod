@@ -34,14 +34,16 @@ credits="Shoutout to Forge, Minecraft, and Java" #optional
 authors="LeeCrafts" #optional
 # The description text for the mod (multi line!) (#mandatory)
 description='''
-A mod that will brighten your day with wildly cartoonish shenanigans--you know, like in a Looney Tunes episode. Try and see what happens when you step on fire/lava!
+An experimental adventure mod that will brighten your day with wildly cartoonish shenanigans--like in a Looney Tunes episode!
+
+You can try...
+- Stepping on fire or lava!
+- Eating a month's worth of food in one bite!
+- Hanging around with a couple of monsters (unbridled tomfoolery will certainly not occur)!
+- Skedaddling by pressing the V key!
+- and much more!
 
 It's not really designed to be fair, so be careful when using this mod in a Hardcore world!
-
-Contains:
-- goofy ahh game mechanics
-- 21st-century humor sound effects
-- and more!
 '''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies.goofygoober]] #optional

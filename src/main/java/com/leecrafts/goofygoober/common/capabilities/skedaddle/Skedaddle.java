@@ -9,15 +9,18 @@ import net.minecraftforge.network.PacketDistributor;
 
 public class Skedaddle implements ISkedaddle {
 
-    public boolean skedaddleEnabled;
+    public boolean enabled;
 
-    public int skedaddleChargeCounter;
-    public final int skedaddleChargeLimit;
+    public int counter;
+    public final int CHARGE_LIMIT;
+    public final int WHAM_COOLDOWN_LIMIT;
+    public final int PLAYER_SNEAK_AMBIENT_DURATION;
 
-    public boolean skedaddleCharging;
-    public boolean skedaddleTakeoff;
+    public boolean charging;
+    public boolean takeoff;
+    public boolean finished;
 
-    public final int skedaddleDuration;
+    public final int TAKEOFF_DURATION;
 
     public boolean wPressed;
 
@@ -27,17 +30,22 @@ public class Skedaddle implements ISkedaddle {
     public MobEffectInstance previousSpeedInstance;
 
     // players cannot skedaddle in the water
-    public boolean alreadyInWater;
+    public boolean inWater;
+
+    public boolean wham;
 
     public Skedaddle() {
-        this.skedaddleEnabled = false;
-        this.skedaddleChargeCounter = 0;
-        this.skedaddleChargeLimit = 20;
+        this.enabled = false;
+        this.counter = 0;
+        this.CHARGE_LIMIT = 20;
+        this.WHAM_COOLDOWN_LIMIT = 3 * 20;
+        this.PLAYER_SNEAK_AMBIENT_DURATION = 50; // 2.5 * 20
 
-        this.skedaddleCharging = false;
-        this.skedaddleTakeoff = false;
+        this.charging = false;
+        this.takeoff = false;
+        this.finished = false;
 
-        this.skedaddleDuration = 20 * 20;
+        this.TAKEOFF_DURATION = 20 * 20;
 
         this.wPressed = false;
 
@@ -46,19 +54,22 @@ public class Skedaddle implements ISkedaddle {
         this.previousSlownessInstance = null;
         this.previousSpeedInstance = null;
 
-        this.alreadyInWater = false;
+        this.inWater = false;
+
+        this.wham = false;
     }
 
     public void incrementCounter() {
-        this.skedaddleChargeCounter++;
+        this.counter++;
     }
 
     public void reset(Player player) {
-        SkedaddleHelper.removeSlowness(player, this);
-        SkedaddleHelper.removeSpeed(player, this);
+        if (this.charging) SkedaddleHelper.removeSlowness(player, this);
+        if (this.takeoff) SkedaddleHelper.removeSpeed(player, this);
 
-        this.skedaddleTakeoff = false;
-        this.skedaddleChargeCounter = 0;
+        this.counter = 0;
+        this.takeoff = false;
+        this.finished = false;
 
         this.previousSlownessInstance = null;
         this.previousSpeedInstance = null;
@@ -66,12 +77,12 @@ public class Skedaddle implements ISkedaddle {
         this.sendClientboundPacket(player, false, false);
     }
 
-    public void sendClientboundPacket(Player sender, boolean skedaddleCharging, boolean shouldAnimateOnClient) {
-        this.skedaddleCharging = skedaddleCharging;
+    public void sendClientboundPacket(Player sender, boolean charging, boolean shouldAnimateOnClient) {
+        this.charging = charging;
         this.shouldAnimateOnClient = shouldAnimateOnClient;
         PacketHandler.INSTANCE.send(
                 PacketDistributor.TRACKING_ENTITY_AND_SELF.with(() -> sender),
-                new ClientboundSkedaddlePacket(sender.getUUID(), skedaddleCharging, shouldAnimateOnClient)
+                new ClientboundSkedaddlePacket(sender.getUUID(), charging, shouldAnimateOnClient)
         );
     }
 

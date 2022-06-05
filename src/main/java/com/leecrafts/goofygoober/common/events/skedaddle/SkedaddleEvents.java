@@ -18,7 +18,7 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod.EventBusSubscriber(modid = GoofyGoober.MOD_ID)
+@Mod.EventBusSubscriber(modid = GoofyGoober.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class SkedaddleEvents {
 
     @SubscribeEvent
@@ -31,12 +31,14 @@ public class SkedaddleEvents {
         if (event.getObject() instanceof Player) {
             SkedaddleProvider skedaddleProvider = new SkedaddleProvider();
             event.addCapability(new ResourceLocation(GoofyGoober.MOD_ID, "skedaddle_enabled"), skedaddleProvider);
-            event.addCapability(new ResourceLocation(GoofyGoober.MOD_ID, "skedaddle_charge_counter"), skedaddleProvider);
+            event.addCapability(new ResourceLocation(GoofyGoober.MOD_ID, "skedaddle_counter"), skedaddleProvider);
             event.addCapability(new ResourceLocation(GoofyGoober.MOD_ID, "skedaddle_charging"), skedaddleProvider);
             event.addCapability(new ResourceLocation(GoofyGoober.MOD_ID, "skedaddle_takeoff"), skedaddleProvider);
+            event.addCapability(new ResourceLocation(GoofyGoober.MOD_ID, "skedaddle_finished"), skedaddleProvider);
             event.addCapability(new ResourceLocation(GoofyGoober.MOD_ID, "w_pressed"), skedaddleProvider);
             event.addCapability(new ResourceLocation(GoofyGoober.MOD_ID, "skedaddle_should_animate_on_client"), skedaddleProvider);
             event.addCapability(new ResourceLocation(GoofyGoober.MOD_ID, "in_water"), skedaddleProvider);
+            event.addCapability(new ResourceLocation(GoofyGoober.MOD_ID, "wham"), skedaddleProvider);
         }
     }
 
@@ -45,30 +47,65 @@ public class SkedaddleEvents {
         if (event.getEntityLiving() instanceof Player player && !player.level.isClientSide()) {
             player.getCapability(ModCapabilities.SKEDADDLE_CAPABILITY).ifPresent(iSkedaddle -> {
                 Skedaddle skedaddle = (Skedaddle) iSkedaddle;
-                SkedaddleHelper.waterCheck(player, skedaddle);
-                if (skedaddle.skedaddleEnabled && !skedaddle.alreadyInWater) {
-                    if (!skedaddle.skedaddleTakeoff && skedaddle.wPressed) {
-                        if (skedaddle.skedaddleCharging) {
-                            // player runs in place
+                // cooldown after running into wall
+                if (skedaddle.wham) {
+                    skedaddle.incrementCounter();
+                    if (skedaddle.counter >= skedaddle.WHAM_COOLDOWN_LIMIT) {
+                        skedaddle.wham = false;
+                        skedaddle.reset(player);
+                    }
+                }
+                else {
+                    SkedaddleHelper.waterCheck(player, skedaddle);
+                    if (skedaddle.enabled && !skedaddle.inWater && skedaddle.wPressed && !skedaddle.finished) {
+                        if (!skedaddle.takeoff) {
+                            if (skedaddle.charging) {
+                                // player runs in place while charging
 //                            player.teleportTo(player.getX(), player.getY(), player.getZ()); // <-- too uncomfortably jittery
 
-                            skedaddle.incrementCounter();
-                            if (skedaddle.skedaddleChargeCounter >= skedaddle.skedaddleChargeLimit) {
-                                SkedaddleHelper.applySpeed(player, skedaddle);
-                                SkedaddleHelper.removeSlowness(player, skedaddle);
-                                skedaddle.skedaddleTakeoff = true;
-                                Utilities.playSound(player, ModSounds.PLAYER_TAKEOFF.get());
+                                SkedaddleHelper.dustParticles(player);
+                                skedaddle.incrementCounter();
+                                if (skedaddle.counter >= skedaddle.CHARGE_LIMIT) {
+                                    skedaddle.counter = skedaddle.PLAYER_SNEAK_AMBIENT_DURATION;
+                                    SkedaddleHelper.applySpeed(player, skedaddle);
+                                    SkedaddleHelper.removeSlowness(player, skedaddle);
+                                    skedaddle.takeoff = true;
+                                    Utilities.playSound(player, ModSounds.PLAYER_TAKEOFF.get());
+                                }
                             }
-                        } else if (player.isSprinting()) {
-                            // player starts charging (skedaddleCharging gets set to true in sendClientBoundPacket)
-                            SkedaddleHelper.applySlowness(player, skedaddle);
-                            Utilities.playSound(player, ModSounds.PLAYER_SKEDADDLE.get());
-                            skedaddle.sendClientboundPacket(player, true, true);
+                            else if (player.isSprinting()) {
+                                // player starts charging (skedaddleCharging gets set to true in sendClientBoundPacket)
+                                SkedaddleHelper.applySlowness(player, skedaddle);
+                                Utilities.playSound(player, ModSounds.PLAYER_SKEDADDLE.get());
+                                skedaddle.sendClientboundPacket(player, true, true);
+                            }
                         }
-                    }
-                    else if (skedaddle.skedaddleTakeoff && skedaddle.shouldAnimateOnClient) {
-                        if (player.getActiveEffectsMap() != null && !player.hasEffect(MobEffects.MOVEMENT_SPEED)) {
-                            skedaddle.sendClientboundPacket(player, false, false);
+                        else {
+                            // skedaddling
+
+                            if (!player.isSprinting()) {
+                                skedaddle.reset(player);
+                            }
+                            else {
+                                if (player.isShiftKeyDown()) {
+                                    skedaddle.incrementCounter();
+                                    if (skedaddle.counter >= skedaddle.PLAYER_SNEAK_AMBIENT_DURATION) {
+                                        Utilities.playSound(player, ModSounds.PLAYER_SNEAK.get(), 1, 1);
+                                        skedaddle.counter = 0;
+                                    }
+                                }
+                                SkedaddleHelper.dustParticles(player);
+
+                                // takes up more hunger than usual
+                                player.getFoodData().addExhaustion(0.01F);
+
+                                // when speed effect wears off, player is no longer skedaddling
+                                if (player.getActiveEffectsMap() != null && !player.hasEffect(MobEffects.MOVEMENT_SPEED)) {
+                                    skedaddle.takeoff = false;
+                                    skedaddle.finished = true;
+                                    skedaddle.sendClientboundPacket(player, false, false);
+                                }
+                            }
                         }
                     }
                 }
@@ -81,7 +118,7 @@ public class SkedaddleEvents {
         if (event.getTarget() instanceof Player target && !target.level.isClientSide()) {
             target.getCapability(ModCapabilities.SKEDADDLE_CAPABILITY).ifPresent(iSkedaddle -> {
                 Skedaddle skedaddle = (Skedaddle) iSkedaddle;
-                skedaddle.sendClientboundPacket(target, skedaddle.skedaddleCharging, skedaddle.shouldAnimateOnClient);
+                skedaddle.sendClientboundPacket(target, skedaddle.charging, skedaddle.shouldAnimateOnClient);
             });
         }
     }

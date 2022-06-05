@@ -10,12 +10,12 @@ import net.minecraftforge.common.capabilities.CapabilityToken;
 
 public class ModCapabilities {
 
-    public static Capability<IAmbientCounter> AMBIENT_COUNTER_CAPABILITY = CapabilityManager.get(new CapabilityToken<>(){});
+    public static final Capability<IAmbientCounter> AMBIENT_COUNTER_CAPABILITY = CapabilityManager.get(new CapabilityToken<>(){});
 
-    public static Capability<ITomfooleryCooldownCounter> TOMFOOLERY_COOLDOWN_COUNTER_CAPABILITY = CapabilityManager.get(new CapabilityToken<>(){});
+    public static final Capability<ITomfooleryCooldownCounter> TOMFOOLERY_COOLDOWN_COUNTER_CAPABILITY = CapabilityManager.get(new CapabilityToken<>(){});
 
-    public static Capability<ITomfooleryScallywag> TOMFOOLERY_SCALLYWAG_CAPABILITY = CapabilityManager.get(new CapabilityToken<>(){});
+    public static final Capability<ITomfooleryScallywag> TOMFOOLERY_SCALLYWAG_CAPABILITY = CapabilityManager.get(new CapabilityToken<>(){});
 
-    public static Capability<ISkedaddle> SKEDADDLE_CAPABILITY = CapabilityManager.get(new CapabilityToken<>(){});
+    public static final Capability<ISkedaddle> SKEDADDLE_CAPABILITY = CapabilityManager.get(new CapabilityToken<>(){});
 
 }

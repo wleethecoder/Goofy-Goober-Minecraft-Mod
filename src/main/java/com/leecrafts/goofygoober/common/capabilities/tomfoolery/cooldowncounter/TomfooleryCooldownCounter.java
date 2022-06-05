@@ -3,12 +3,12 @@ package com.leecrafts.goofygoober.common.capabilities.tomfoolery.cooldowncounter
 public class TomfooleryCooldownCounter implements ITomfooleryCooldownCounter {
 
     public int counter;
-    public final int limit;
+    public final int LIMIT;
 
     public TomfooleryCooldownCounter() {
-//        this.limit = 2400; // 2 minutes
-        this.limit = 300; // 15 seconds
-        this.counter = limit;
+        this.LIMIT = 2400; // 2 minutes
+//        this.limit = 300; // 15 seconds
+        this.counter = LIMIT;
     }
 
     @Override

@@ -10,13 +10,13 @@ import java.util.function.Supplier;
 
 public class ServerboundSkedaddleTogglePacket {
 
-    public final boolean skedaddleEnabled;
+    public final boolean enabled;
 
-    public ServerboundSkedaddleTogglePacket(boolean skedaddleEnabled) { this.skedaddleEnabled = skedaddleEnabled; }
+    public ServerboundSkedaddleTogglePacket(boolean enabled) { this.enabled = enabled; }
 
     public ServerboundSkedaddleTogglePacket(FriendlyByteBuf buffer) { this(buffer.readBoolean()); }
 
-    public void encode(FriendlyByteBuf buffer) { buffer.writeBoolean(this.skedaddleEnabled); }
+    public void encode(FriendlyByteBuf buffer) { buffer.writeBoolean(this.enabled); }
 
     public void handle(Supplier<NetworkEvent.Context> ctx) {
         ctx.get().enqueueWork(() -> {
@@ -24,8 +24,8 @@ public class ServerboundSkedaddleTogglePacket {
             if (sender != null) {
                 sender.getCapability(ModCapabilities.SKEDADDLE_CAPABILITY).ifPresent(iSkedaddle -> {
                     Skedaddle skedaddle = (Skedaddle) iSkedaddle;
-                    skedaddle.skedaddleEnabled = this.skedaddleEnabled;
-                    if (!skedaddle.skedaddleEnabled) skedaddle.reset(sender);
+                    skedaddle.enabled = this.enabled;
+                    if (!skedaddle.enabled) skedaddle.reset(sender);
                 });
             }
         });

@@ -34,7 +34,7 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
-@Mod.EventBusSubscriber(modid = GoofyGoober.MOD_ID)
+@Mod.EventBusSubscriber(modid = GoofyGoober.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class TomfooleryEvents {
 
     // dealDamage -> m_33637_
@@ -105,7 +105,7 @@ public class TomfooleryEvents {
         if (event.getEntityLiving() instanceof Player player && !player.level.isClientSide()) {
             player.getCapability(ModCapabilities.TOMFOOLERY_COOLDOWN_COUNTER_CAPABILITY).ifPresent(iTomfooleryCooldownCounter -> {
                 TomfooleryCooldownCounter tomfooleryCooldownCounter = (TomfooleryCooldownCounter) iTomfooleryCooldownCounter;
-                if (tomfooleryCooldownCounter.counter >= tomfooleryCooldownCounter.limit) {
+                if (tomfooleryCooldownCounter.counter >= tomfooleryCooldownCounter.LIMIT) {
                     ArrayList<Mob> nearbyEligibleMobs = TomfooleryHelper.getNearbyMobs(player, true);
 //                    System.out.println("Nearby mobs eligible to cause tomfoolery: " + nearbyEligibleMobs);
                     if (nearbyEligibleMobs.size() >= TomfooleryHelper.NUM_NEARBY_MOBS) {

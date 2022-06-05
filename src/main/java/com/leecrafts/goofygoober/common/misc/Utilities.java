@@ -25,6 +25,10 @@ public class Utilities {
         entity.level.playSound(null, entity.getX(), entity.getY(), entity.getZ(), soundEvent, entity.getSoundSource(), volume, pitchLow + random.nextFloat(pitchHigh - pitchLow));
     }
 
+    public static void playSound(Entity entity, SoundEvent soundEvent, float volume, float pitch) {
+        entity.level.playSound(null, entity.getX(), entity.getY(), entity.getZ(), soundEvent, entity.getSoundSource(), volume, pitch);
+    }
+
     public static void playSound(Entity entity, SoundEvent soundEvent, float volume) {
         entity.level.playSound(null, entity.getX(), entity.getY(), entity.getZ(), soundEvent, entity.getSoundSource(), volume, DEFAULT_PITCH_LOW + random.nextFloat(DEFAULT_PITCH_HIGH - DEFAULT_PITCH_LOW));
     }

@@ -26,7 +26,7 @@ import net.minecraftforge.fml.util.ObfuscationReflectionHelper;
 
 import java.lang.reflect.Field;
 
-@Mod.EventBusSubscriber(modid = GoofyGoober.MOD_ID)
+@Mod.EventBusSubscriber(modid = GoofyGoober.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class ChangeMobHitboxSizeEvents {
 
     // dimensions -> f_19815_

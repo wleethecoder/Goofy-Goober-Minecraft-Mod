@@ -22,6 +22,9 @@ public class ModSounds {
     public static final RegistryObject<SoundEvent> PLAYER_SKEDADDLE =
             registerSoundEvent("player_skedaddle");
 
+    public static final RegistryObject<SoundEvent> PLAYER_SNEAK =
+            registerSoundEvent("player_sneak");
+
     public static final RegistryObject<SoundEvent> PLAYER_TAKEOFF =
             registerSoundEvent("player_takeoff");
 
@@ -51,6 +54,9 @@ public class ModSounds {
 
     public static final RegistryObject<SoundEvent> NERD_EMOJI_BEAT_BY_KEYBOARD =
             registerSoundEvent("nerd_emoji_beat_by_keyboard");
+
+    public static final RegistryObject<SoundEvent> TEETH_CHATTER =
+            registerSoundEvent("teeth_chatter");
 
     private static RegistryObject<SoundEvent> registerSoundEvent(String name) {
         return SOUND_EVENTS.register(name, () -> new SoundEvent(new ResourceLocation(GoofyGoober.MOD_ID, name)));
