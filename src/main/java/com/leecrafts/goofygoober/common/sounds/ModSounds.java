@@ -52,9 +52,6 @@ public class ModSounds {
     public static final RegistryObject<SoundEvent> DOIT =
             registerSoundEvent("doit");
 
-    public static final RegistryObject<SoundEvent> NERD_EMOJI_BEAT_BY_KEYBOARD =
-            registerSoundEvent("nerd_emoji_beat_by_keyboard");
-
     public static final RegistryObject<SoundEvent> TEETH_CHATTER =
             registerSoundEvent("teeth_chatter");
 

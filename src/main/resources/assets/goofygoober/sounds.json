@@ -119,14 +119,6 @@
       "goofygoober:misc/doit"
     ]
   },
-  "nerd_emoji_beat_by_keyboard": {
-    "sounds": [
-      {
-        "name": "goofygoober:music_disc/nerd_emoji_beat_by_keyboard",
-        "stream": true
-      }
-    ]
-  },
   "teeth_chatter": {
     "subtitle": "sounds.goofygoober.teeth_chatter",
     "sounds": [
