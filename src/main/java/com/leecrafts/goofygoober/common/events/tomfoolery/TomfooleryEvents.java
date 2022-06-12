@@ -16,6 +16,8 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.animal.IronGolem;
+import net.minecraft.world.entity.monster.AbstractIllager;
+import net.minecraft.world.entity.monster.Ravager;
 import net.minecraft.world.entity.monster.Slime;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.AABB;
@@ -80,11 +82,21 @@ public class TomfooleryEvents {
         }
     }
 
-    // I wanted iron golems to also create dust clouds whenever fighting other mobs, so I guess they're one of the good scallywags
     @SubscribeEvent
-    public static void ironGolemJoinWorldEvent(EntityJoinWorldEvent event) {
-        if (event.getEntity() instanceof IronGolem ironGolem && !ironGolem.level.isClientSide()) {
-            TomfooleryHelper.youreAScallywag(ironGolem);
+    public static void onEntityJoinWorldEvent(EntityJoinWorldEvent event) {
+        // I wanted iron golems and illagers/raiders to also create dust clouds whenever fighting other mobs
+        Entity entity = event.getEntity();
+        if ((entity instanceof IronGolem
+                || entity instanceof AbstractIllager
+                || entity instanceof Ravager)
+                && !entity.level.isClientSide()) {
+            TomfooleryHelper.youreAScallywag((Mob) entity);
+        }
+
+        // To make it fairer, smaller slimes and magma cubes are ineligible to cause tomfoolery by default
+        // MagmaCube extends Slime
+        if (event.getEntity() instanceof Slime cube && cube.getSize() <= 2) {
+            TomfooleryHelper.revokeEligibility(cube);
         }
     }
 
@@ -145,7 +157,7 @@ public class TomfooleryEvents {
     public static void scallywagTick(LivingEvent.LivingUpdateEvent event) {
         if (event.getEntityLiving() instanceof Mob mob && !mob.level.isClientSide()) {
             LivingEntity target = mob.getTarget();
-            if (target != null) {
+            if (target != null && !target.isRemoved()) {
                 double distance = mob.distanceTo(target);
                 mob.getCapability(ModCapabilities.TOMFOOLERY_SCALLYWAG_CAPABILITY).ifPresent(iTomfooleryScallywag -> {
                     TomfooleryScallywag tomfooleryScallywag = (TomfooleryScallywag) iTomfooleryScallywag;
@@ -173,7 +185,6 @@ public class TomfooleryEvents {
             slime.getCapability(ModCapabilities.TOMFOOLERY_SCALLYWAG_CAPABILITY).ifPresent(iTomfooleryScallywag -> {
                 TomfooleryScallywag tomfooleryScallywag = (TomfooleryScallywag) iTomfooleryScallywag;
                 if (tomfooleryScallywag.isScallywag()) {
-                    // TODO make this less CPU intensive
                     // 3*.6 - 0.5202*(2^(3-1))/2
                     AABB aabb = slime.getBoundingBox();
                     int size = slime.getSize();

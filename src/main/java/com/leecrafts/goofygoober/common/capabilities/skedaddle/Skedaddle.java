@@ -19,6 +19,7 @@ public class Skedaddle implements ISkedaddle {
     public boolean charging;
     public boolean takeoff;
     public boolean finished;
+    public boolean deviousWalk;
 
     public final int TAKEOFF_DURATION;
 
@@ -39,11 +40,12 @@ public class Skedaddle implements ISkedaddle {
         this.counter = 0;
         this.CHARGE_LIMIT = 20;
         this.WHAM_COOLDOWN_LIMIT = 3 * 20;
-        this.PLAYER_SNEAK_AMBIENT_DURATION = 50; // 2.5 * 20
+        this.PLAYER_SNEAK_AMBIENT_DURATION = 9;
 
         this.charging = false;
         this.takeoff = false;
         this.finished = false;
+        this.deviousWalk = false;
 
         this.TAKEOFF_DURATION = 20 * 20;
 
@@ -67,9 +69,10 @@ public class Skedaddle implements ISkedaddle {
         if (this.charging) SkedaddleHelper.removeSlowness(player, this);
         if (this.takeoff) SkedaddleHelper.removeSpeed(player, this);
 
-        this.counter = 0;
+        if (!this.wham) this.counter = 0;
         this.takeoff = false;
         this.finished = false;
+        this.deviousWalk = false;
 
         this.previousSlownessInstance = null;
         this.previousSpeedInstance = null;

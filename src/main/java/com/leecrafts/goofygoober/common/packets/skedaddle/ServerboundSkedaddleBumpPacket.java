@@ -29,8 +29,8 @@ public class ServerboundSkedaddleBumpPacket {
                     // when player runs into a wall while skedaddling, it takes damage
                     // it cannot skedaddle for 3 seconds
                     if (this.bump && skedaddle.takeoff) {
-                        skedaddle.wham = true;
                         skedaddle.reset(sender);
+                        skedaddle.wham = true;
                         sender.hurt(DamageSource.FLY_INTO_WALL, 6);
                     }
                 });

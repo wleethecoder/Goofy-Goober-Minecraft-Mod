@@ -29,6 +29,7 @@ public class SkedaddleProvider implements ICapabilitySerializable<CompoundTag> {
         nbt.putBoolean("skedaddle_charging", skedaddle.charging);
         nbt.putBoolean("skedaddle_takeoff", skedaddle.takeoff);
         nbt.putBoolean("skedaddle_finished", skedaddle.finished);
+        nbt.putBoolean("skedaddle_devious_walk", skedaddle.deviousWalk);
         nbt.putBoolean("w_pressed", skedaddle.wPressed);
         nbt.putBoolean("skedaddle_should_animate_on_client", skedaddle.shouldAnimateOnClient);
         nbt.putBoolean("in_water", skedaddle.inWater);
@@ -44,6 +45,7 @@ public class SkedaddleProvider implements ICapabilitySerializable<CompoundTag> {
             skedaddle.charging = nbt.getBoolean("skedaddle_charging");
             skedaddle.takeoff = nbt.getBoolean("skedaddle_takeoff");
             skedaddle.finished = nbt.getBoolean("skedaddle_finished");
+            skedaddle.deviousWalk = nbt.getBoolean("skedaddle_devious_walk");
             skedaddle.wPressed = nbt.getBoolean("w_pressed");
             skedaddle.shouldAnimateOnClient = nbt.getBoolean("skedaddle_should_animate_on_client");
             skedaddle.inWater = nbt.getBoolean("in_water");

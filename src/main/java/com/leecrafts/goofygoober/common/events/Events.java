@@ -32,7 +32,7 @@ public class Events {
             boolean isSoHungryThatItCouldEatAHorse = player.getFoodData().getFoodLevel() < 10;
             boolean isHallucinating = player.hasEffect(ModEffects.HALLUCINATING.get());
             if (isSoHungryThatItCouldEatAHorse && !isHallucinating) {
-                player.addEffect(new MobEffectInstance(ModEffects.HALLUCINATING.get(), 1000000 * 20));
+                player.addEffect(new MobEffectInstance(ModEffects.HALLUCINATING.get(), 1000000 * 20, 0, false, false));
             }
             else if (!isSoHungryThatItCouldEatAHorse && isHallucinating && !player.isCreative()) {
                 player.removeEffect(ModEffects.HALLUCINATING.get());

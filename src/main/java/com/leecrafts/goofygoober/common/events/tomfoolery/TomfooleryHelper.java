@@ -138,7 +138,7 @@ public class TomfooleryHelper {
                             mob.targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(mob, mob1.getClass(), true));
                         }
 
-                        mob.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(mob, player.getClass(), true));
+                        mob.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(mob, player.getClass(), true));
 
                         success = true;
                     }
@@ -230,9 +230,9 @@ public class TomfooleryHelper {
             setSizeMethod.invoke(slime, 4, true);
         }
 
-        if (mob instanceof PolarBear || mob instanceof ZombifiedPiglin) {
-            mob.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 1000000));
-        }
+//        if (mob instanceof PolarBear || mob instanceof ZombifiedPiglin) {
+//            mob.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 1000000));
+//        }
 
     }
 

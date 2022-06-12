@@ -79,7 +79,7 @@ public class ChangeMobHitboxSizeEvents {
 //                    player.addEffect(new MobEffectInstance(MobEffects.SATURATION, duration, saturationAmplifier, true, false));
                     player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, duration, slownessAmplifier));
                     player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, duration, resistanceAmplifier));
-                    player.addEffect(new MobEffectInstance(ModEffects.FAT.get(), duration));
+                    player.addEffect(new MobEffectInstance(ModEffects.FAT.get(), duration, 0, false, false));
 
                     // remove all food items from hand
                     handItemStack.setCount(0);
@@ -95,12 +95,12 @@ public class ChangeMobHitboxSizeEvents {
             DamageSource damageSource = event.getSource();
             if (damageSource.getDirectEntity() instanceof IronGolem) {
                 livingEntity.setDeltaMovement(livingEntity.getDeltaMovement().subtract(0, 1.5, 0));
-                livingEntity.addEffect(new MobEffectInstance(ModEffects.SQUASHED.get(), 30 * 20));
+                livingEntity.addEffect(new MobEffectInstance(ModEffects.SQUASHED.get(), 30 * 20, 0, false, false));
                 Utilities.playSound(livingEntity, ModSounds.DOIT.get(), 1.5F);
             }
 
             if (damageSource == DamageSource.ANVIL || damageSource == DamageSource.FALLING_STALACTITE) {
-                livingEntity.addEffect(new MobEffectInstance(ModEffects.SQUASHED.get(), 10 * 20));
+                livingEntity.addEffect(new MobEffectInstance(ModEffects.SQUASHED.get(), 10 * 20, 0, false, false));
                 Utilities.playSound(livingEntity, ModSounds.DOIT.get(), SoundSource.BLOCKS);
             }
         }
@@ -112,7 +112,7 @@ public class ChangeMobHitboxSizeEvents {
         if (!livingEntity.level.isClientSide()) {
             float distance = event.getDistance();
             if (distance >= 20F) {
-                livingEntity.addEffect(new MobEffectInstance(ModEffects.SQUASHED.get(), (int) (distance / 2 * 20)));
+                livingEntity.addEffect(new MobEffectInstance(ModEffects.SQUASHED.get(), (int) (distance / 2 * 20), 0, false, false));
                 Utilities.playSound(livingEntity, ModSounds.IMPACT.get());
             }
         }
@@ -129,10 +129,10 @@ public class ChangeMobHitboxSizeEvents {
             // damage is <= 6 -> effect lasts for 10 seconds
             // damage is <= 10 -> effect lasts for 18 seconds
             if (direction == Direction.WEST || direction == Direction.EAST) {
-                livingEntity.addEffect(new MobEffectInstance(ModEffects.CRASHED.get(), duration));
+                livingEntity.addEffect(new MobEffectInstance(ModEffects.CRASHED.get(), duration, 0, false, false));
             }
             else {
-                livingEntity.addEffect(new MobEffectInstance(ModEffects.SMASHED.get(), duration));
+                livingEntity.addEffect(new MobEffectInstance(ModEffects.SMASHED.get(), duration, 0, false, false));
             }
             Utilities.playSound(livingEntity, ModSounds.IMPACT.get());
         }
