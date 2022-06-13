@@ -7,7 +7,7 @@ public class TomfooleryCooldownCounter implements ITomfooleryCooldownCounter {
 
     public TomfooleryCooldownCounter() {
         this.LIMIT = 2400; // 2 minutes
-//        this.limit = 300; // 15 seconds
+//        this.LIMIT = 300; // 15 seconds
         this.counter = LIMIT;
     }
 

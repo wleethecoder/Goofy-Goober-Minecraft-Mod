@@ -25,8 +25,6 @@ import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
-import net.minecraftforge.event.entity.living.LivingSpawnEvent;
-import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.util.ObfuscationReflectionHelper;
@@ -84,30 +82,23 @@ public class TomfooleryEvents {
 
     @SubscribeEvent
     public static void onEntityJoinWorldEvent(EntityJoinWorldEvent event) {
-        // I wanted iron golems and illagers/raiders to also create dust clouds whenever fighting other mobs
-        Entity entity = event.getEntity();
-        if ((entity instanceof IronGolem
-                || entity instanceof AbstractIllager
-                || entity instanceof Ravager)
-                && !entity.level.isClientSide()) {
-            TomfooleryHelper.youreAScallywag((Mob) entity);
-        }
+        if (event.getEntity() instanceof Mob mob && !mob.level.isClientSide()) {
+            // iron golems and illagers/raiders are scallywags by default
+            if ((mob instanceof IronGolem
+                    || mob instanceof AbstractIllager
+                    || mob instanceof Ravager)) {
+                TomfooleryHelper.youreAScallywag(mob);
+            }
+            // there is a 20% chance for any hostile/monster mob to be a scallywag
+            else if (TomfooleryHelper.isHostileAndOrMonster(mob)) {
+                if (Utilities.random.nextInt(5) == 0) TomfooleryHelper.youreAScallywag(mob);
+            }
 
-        // To make it fairer, smaller slimes and magma cubes are ineligible to cause tomfoolery by default
-        // MagmaCube extends Slime
-        if (event.getEntity() instanceof Slime cube && cube.getSize() <= 2) {
-            TomfooleryHelper.revokeEligibility(cube);
-        }
-    }
-
-    // scallywags do not despawn
-    @SubscribeEvent
-    public static void onScallywagSpawnEvent(LivingSpawnEvent.AllowDespawn event) {
-        if (event.getEntityLiving() instanceof Mob mob && !mob.level.isClientSide()) {
-            mob.getCapability(ModCapabilities.TOMFOOLERY_SCALLYWAG_CAPABILITY).ifPresent(iTomfooleryScallywag -> {
-                TomfooleryScallywag tomfooleryScallywag = (TomfooleryScallywag) iTomfooleryScallywag;
-                if (tomfooleryScallywag.isScallywag()) event.setResult(Event.Result.DENY);
-            });
+            // To make it fairer, smaller slimes and magma cubes are ineligible to cause tomfoolery by default
+            // MagmaCube extends Slime
+            if (mob instanceof Slime slime && slime.getSize() <= 2) {
+                TomfooleryHelper.revokeEligibility(slime);
+            }
         }
     }
 

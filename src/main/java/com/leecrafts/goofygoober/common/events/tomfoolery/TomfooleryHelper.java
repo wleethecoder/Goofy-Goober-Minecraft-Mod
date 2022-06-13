@@ -138,7 +138,7 @@ public class TomfooleryHelper {
                             mob.targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(mob, mob1.getClass(), true));
                         }
 
-                        mob.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(mob, player.getClass(), true));
+                        mob.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(mob, Player.class, true));
 
                         success = true;
                     }
