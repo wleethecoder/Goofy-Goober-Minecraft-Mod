@@ -17,7 +17,7 @@ public class ModSounds {
             registerSoundEvent("scream");
 
     public static final RegistryObject<SoundEvent> SKEDADDLE =
-            registerSoundEvent("skedaddle");
+            registerSoundEvent("mob_skedaddle");
 
     public static final RegistryObject<SoundEvent> PLAYER_SKEDADDLE =
             registerSoundEvent("player_skedaddle");

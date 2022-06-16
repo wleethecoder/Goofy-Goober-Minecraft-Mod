@@ -2,7 +2,7 @@ package com.leecrafts.goofygoober.common.events;
 
 import com.leecrafts.goofygoober.GoofyGoober;
 import com.leecrafts.goofygoober.common.capabilities.ModCapabilities;
-import com.leecrafts.goofygoober.common.capabilities.tomfoolery.cooldowncounter.TomfooleryCooldownCounter;
+import com.leecrafts.goofygoober.common.capabilities.tomfoolery.player.TomfooleryPlayer;
 import com.leecrafts.goofygoober.common.effects.ModEffects;
 import com.leecrafts.goofygoober.common.misc.Utilities;
 import com.leecrafts.goofygoober.common.sounds.ModSounds;
@@ -45,12 +45,12 @@ public class Events {
         Player originalPlayer = event.getOriginal();
         Player player = event.getPlayer();
         originalPlayer.reviveCaps();
-        originalPlayer.getCapability(ModCapabilities.TOMFOOLERY_COOLDOWN_COUNTER_CAPABILITY).ifPresent(iTomfooleryCooldownCounter -> {
-            player.getCapability(ModCapabilities.TOMFOOLERY_COOLDOWN_COUNTER_CAPABILITY).ifPresent(iTomfooleryCooldownCounter1 -> {
-                TomfooleryCooldownCounter tomfooleryCooldownCounter = (TomfooleryCooldownCounter) iTomfooleryCooldownCounter;
-                TomfooleryCooldownCounter tomfooleryCooldownCounter1 = (TomfooleryCooldownCounter) iTomfooleryCooldownCounter1;
-                tomfooleryCooldownCounter1.counter = tomfooleryCooldownCounter.counter;
-//                System.out.println((tomfooleryCooldownCounter1.limit - tomfooleryCooldownCounter1.counter) / 20.0 + " seconds left");
+        originalPlayer.getCapability(ModCapabilities.TOMFOOLERY_PLAYER_CAPABILITY).ifPresent(iTomfooleryPlayer -> {
+            player.getCapability(ModCapabilities.TOMFOOLERY_PLAYER_CAPABILITY).ifPresent(iTomfooleryPlayer1 -> {
+                TomfooleryPlayer tomfooleryPlayer = (TomfooleryPlayer) iTomfooleryPlayer;
+                TomfooleryPlayer tomfooleryPlayer1 = (TomfooleryPlayer) iTomfooleryPlayer1;
+                tomfooleryPlayer1.counter = tomfooleryPlayer.counter;
+//                System.out.println((tomfooleryPlayer1.LIMIT - tomfooleryPlayer1.counter) / 20.0 + " seconds left");
             });
         });
         originalPlayer.invalidateCaps();

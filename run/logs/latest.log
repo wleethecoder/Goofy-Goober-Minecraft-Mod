@@ -1,159 +1,187 @@
-[12Jun2022 22:05:28.866] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgeclientuserdev, --version, MOD_DEV, --assetIndex, 1.18, --assetsDir, /Users/wlee2019/.gradle/caches/forge_gradle/assets, --gameDir, ., --fml.forgeVersion, 40.0.31, --fml.mcVersion, 1.18.2, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20220228.144236]
-[12Jun2022 22:05:28.871] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 9.1.3+9.1.3+main.9b69c82a starting: java version 17.0.2 by Oracle Corporation
-[12Jun2022 22:05:29.175] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/Users/wlee2019/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar%2322!/ Service=ModLauncher Env=CLIENT
-[12Jun2022 22:05:33.205] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgeclientuserdev' with arguments [--version, MOD_DEV, --gameDir, ., --assetsDir, /Users/wlee2019/.gradle/caches/forge_gradle/assets, --assetIndex, 1.18]
-[12Jun2022 22:05:42.665] [Render thread/WARN] [net.minecraft.server.packs.VanillaPackResources/]: Assets URL 'union:/Users/wlee2019/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.18.2-40.0.31_mapped_parchment_2022.03.13-1.18.2/forge-1.18.2-40.0.31_mapped_parchment_2022.03.13-1.18.2-recomp.jar%2375!/assets/.mcassetsroot' uses unexpected schema
-[12Jun2022 22:05:42.666] [Render thread/WARN] [net.minecraft.server.packs.VanillaPackResources/]: Assets URL 'union:/Users/wlee2019/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.18.2-40.0.31_mapped_parchment_2022.03.13-1.18.2/forge-1.18.2-40.0.31_mapped_parchment_2022.03.13-1.18.2-recomp.jar%2375!/data/.mcassetsroot' uses unexpected schema
-[12Jun2022 22:05:42.757] [Render thread/INFO] [com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService/]: Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
-[12Jun2022 22:05:42.766] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Setting user: Dev
-[12Jun2022 22:05:43.036] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Backend library: LWJGL version 3.2.1 SNAPSHOT
-[12Jun2022 22:05:44.092] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 40.0.31, for MC 1.18.2 with MCP 20220228.144236
-[12Jun2022 22:05:44.095] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v40.0.31 Initialized
-[12Jun2022 22:05:46.622] [Render thread/INFO] [net.minecraftforge.gametest.ForgeGameTestHooks/]: Enabled Gametest Namespaces: [goofygoober]
-[12Jun2022 22:05:47.102] [Render thread/INFO] [net.minecraft.server.packs.resources.ReloadableResourceManager/]: Reloading ResourceManager: Default, Mod Resources
-[12Jun2022 22:05:47.126] [Worker-Main-5/INFO] [com.leecrafts.goofygoober.GoofyGoober/]: HELLO FROM PREINIT
-[12Jun2022 22:05:47.127] [Worker-Main-5/INFO] [com.leecrafts.goofygoober.GoofyGoober/]: DIRT BLOCK >> minecraft:dirt
-[12Jun2022 22:05:47.358] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [forge] Starting version check at https://files.minecraftforge.net/net/minecraftforge/forge/promotions_slim.json
-[12Jun2022 22:05:50.686] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [forge] Found status: OUTDATED Current: 40.0.31 Target: 40.1.0
-[12Jun2022 22:06:13.111] [Render thread/INFO] [com.mojang.blaze3d.audio.Library/]: OpenAL initialized on device CoreAudio Default
-[12Jun2022 22:06:13.118] [Render thread/INFO] [net.minecraft.client.sounds.SoundEngine/SOUNDS]: Sound engine started
-[12Jun2022 22:06:13.534] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 1024x512x4 minecraft:textures/atlas/blocks.png-atlas
-[12Jun2022 22:06:13.551] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x128x4 minecraft:textures/atlas/signs.png-atlas
-[12Jun2022 22:06:13.552] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x512x4 minecraft:textures/atlas/banner_patterns.png-atlas
-[12Jun2022 22:06:13.556] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x512x4 minecraft:textures/atlas/shield_patterns.png-atlas
-[12Jun2022 22:06:13.557] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x4 minecraft:textures/atlas/chest.png-atlas
-[12Jun2022 22:06:13.560] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x4 minecraft:textures/atlas/beds.png-atlas
-[12Jun2022 22:06:13.561] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x4 minecraft:textures/atlas/shulker_boxes.png-atlas
-[12Jun2022 22:06:16.386] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x0 minecraft:textures/atlas/particles.png-atlas
-[12Jun2022 22:06:16.388] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x0 minecraft:textures/atlas/paintings.png-atlas
-[12Jun2022 22:06:16.388] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 128x128x0 minecraft:textures/atlas/mob_effects.png-atlas
-[12Jun2022 22:06:17.217] [Realms Notification Availability checker #1/INFO] [com.mojang.realmsclient.client.RealmsClient/]: Could not authorize you against Realms server: Invalid session id
-[12Jun2022 22:06:22.894] [Render thread/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, location] and [teleport, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
-[12Jun2022 22:06:22.897] [Render thread/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, location] and [teleport, targets] with inputs: [0.1 -0.5 .9, 0 0 0]
-[12Jun2022 22:06:22.903] [Render thread/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, destination] and [teleport, targets] with inputs: [Player, 0123, @e, dd12be42-52a9-4a91-a8a1-11c01849e498]
-[12Jun2022 22:06:22.905] [Render thread/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, targets] and [teleport, destination] with inputs: [Player, 0123, dd12be42-52a9-4a91-a8a1-11c01849e498]
-[12Jun2022 22:06:22.907] [Render thread/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, targets, location] and [teleport, targets, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
-[12Jun2022 22:06:28.703] [Render thread/INFO] [net.minecraft.world.item.crafting.RecipeManager/]: Loaded 7 recipes
-[12Jun2022 22:06:31.982] [Render thread/INFO] [net.minecraft.advancements.AdvancementList/]: Loaded 1141 advancements
-[12Jun2022 22:06:33.146] [Render thread/INFO] [com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService/]: Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
-[12Jun2022 22:06:33.196] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Starting integrated minecraft server version 1.18.2
-[12Jun2022 22:06:33.197] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Generating keypair
-[12Jun2022 22:06:33.750] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Preparing start region for dimension minecraft:overworld
-[12Jun2022 22:06:38.329] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[12Jun2022 22:06:38.389] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[12Jun2022 22:06:38.452] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[12Jun2022 22:06:38.564] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[12Jun2022 22:06:38.617] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[12Jun2022 22:06:38.677] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[12Jun2022 22:06:38.677] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[12Jun2022 22:06:38.737] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[12Jun2022 22:06:38.789] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[12Jun2022 22:06:38.840] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[12Jun2022 22:06:38.894] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[12Jun2022 22:06:39.313] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[12Jun2022 22:06:39.769] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[12Jun2022 22:06:40.288] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[12Jun2022 22:06:40.796] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[12Jun2022 22:06:41.279] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[12Jun2022 22:06:41.801] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[12Jun2022 22:06:42.282] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[12Jun2022 22:06:42.794] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[12Jun2022 22:06:43.295] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[12Jun2022 22:06:43.803] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[12Jun2022 22:06:44.274] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 1%
-[12Jun2022 22:06:44.778] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 4%
-[12Jun2022 22:06:45.310] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 4%
-[12Jun2022 22:06:45.804] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 4%
-[12Jun2022 22:06:46.296] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 4%
-[12Jun2022 22:06:46.793] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 4%
-[12Jun2022 22:06:47.288] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 4%
-[12Jun2022 22:06:47.782] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 16%
-[12Jun2022 22:06:48.301] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 28%
-[12Jun2022 22:06:48.789] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 46%
-[12Jun2022 22:06:49.368] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 69%
-[12Jun2022 22:06:49.777] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 89%
-[12Jun2022 22:06:53.314] [Server thread/INFO] [net.minecraftforge.server.permission.PermissionAPI/]: Successfully initialized permission handler forge:default_handler
-[12Jun2022 22:06:53.329] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Time elapsed: 19565 ms
-[12Jun2022 22:06:53.564] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Changing view distance to 16, from 10
-[12Jun2022 22:06:53.580] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Changing simulation distance to 16, from 0
-[12Jun2022 22:06:57.626] [Netty Local Client IO #0/INFO] [net.minecraftforge.network.NetworkHooks/]: Connected to a modded server.
-[12Jun2022 22:06:57.838] [Server thread/INFO] [net.minecraftforge.common.AdvancementLoadFix/]: Using new advancement loading for net.minecraft.server.PlayerAdvancements@67ce0bbd
-[12Jun2022 22:06:57.919] [Server thread/INFO] [net.minecraft.server.players.PlayerList/]: Dev[local:E:a6093264] logged in with entity id 6 at (679.5491072060388, 76.0, 296.4931786754445)
-[12Jun2022 22:06:58.096] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Dev joined the game
-[12Jun2022 22:07:04.216] [Server thread/WARN] [net.minecraft.server.MinecraftServer/]: Can't keep up! Is the server overloaded? Running 6551ms or 131 ticks behind
-[12Jun2022 22:07:05.427] [Render thread/INFO] [net.minecraft.advancements.AdvancementList/]: Loaded 1141 advancements
-[12Jun2022 22:07:07.750] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Summoned new Zombie Villager]
-[12Jun2022 22:07:07.759] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Summoned new Skeleton]
-[12Jun2022 22:07:07.760] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Summoned new Zombie]
-[12Jun2022 22:07:07.770] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Summoned new Zombie Villager]
-[12Jun2022 22:07:07.771] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Summoned new Skeleton]
-[12Jun2022 22:07:07.772] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Summoned new Zombie]
-[12Jun2022 22:07:35.699] [Server thread/WARN] [net.minecraft.server.MinecraftServer/]: Can't keep up! Is the server overloaded? Running 2033ms or 40 ticks behind
-[12Jun2022 22:07:36.932] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Set own game mode to Survival Mode]
-[12Jun2022 22:07:36.936] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] Set own game mode to Survival Mode
-[12Jun2022 22:07:47.870] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Summoned new Creeper]
-[12Jun2022 22:07:47.912] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Summoned new Creeper]
-[12Jun2022 22:07:54.720] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Summoned new Creeper]
-[12Jun2022 22:07:54.731] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Summoned new Creeper]
-[12Jun2022 22:08:02.069] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Summoned new Zombie]
-[12Jun2022 22:08:02.077] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] Summoned new Zombie
-[12Jun2022 22:08:03.986] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Summoned new Zombie]
-[12Jun2022 22:08:03.988] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] Summoned new Zombie
-[12Jun2022 22:08:12.276] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Saving and pausing game...
-[12Jun2022 22:08:12.441] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
-[12Jun2022 22:08:12.507] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
-[12Jun2022 22:08:12.509] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
-[12Jun2022 22:09:12.228] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Summoned new Zombie Villager]
-[12Jun2022 22:09:12.232] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Summoned new Skeleton]
-[12Jun2022 22:09:12.235] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Summoned new Zombie]
-[12Jun2022 22:09:12.265] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Summoned new Zombie Villager]
-[12Jun2022 22:09:12.266] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Summoned new Skeleton]
-[12Jun2022 22:09:12.268] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Summoned new Zombie]
-[12Jun2022 22:09:23.423] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Summoned new Creeper]
-[12Jun2022 22:09:23.439] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Summoned new Creeper]
-[12Jun2022 22:09:29.978] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Summoned new Creeper]
-[12Jun2022 22:09:29.984] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Summoned new Creeper]
-[12Jun2022 22:10:16.375] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Summoned new Creeper]
-[12Jun2022 22:10:16.400] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Summoned new Creeper]
-[12Jun2022 22:10:22.808] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Set own game mode to Spectator Mode]
-[12Jun2022 22:10:22.812] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] Set own game mode to Spectator Mode
-[12Jun2022 22:10:24.764] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Set own game mode to Survival Mode]
-[12Jun2022 22:10:24.765] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] Set own game mode to Survival Mode
-[12Jun2022 22:10:31.972] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Applied effect Regeneration to Dev]
-[12Jun2022 22:10:31.973] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Applied effect Night Vision to Dev]
-[12Jun2022 22:10:31.973] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Applied effect Saturation to Dev]
-[12Jun2022 22:10:31.975] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Applied effect Strength to Dev]
-[12Jun2022 22:10:31.977] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Applied effect Resistance to Dev]
-[12Jun2022 22:10:31.982] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Summoned new Thrown Bottle o' Enchanting]
-[12Jun2022 22:10:32.008] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Applied effect Regeneration to Dev]
-[12Jun2022 22:10:32.008] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Applied effect Night Vision to Dev]
-[12Jun2022 22:10:32.009] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Applied effect Saturation to Dev]
-[12Jun2022 22:10:32.009] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Applied effect Strength to Dev]
-[12Jun2022 22:10:32.010] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Applied effect Resistance to Dev]
-[12Jun2022 22:10:32.011] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Summoned new Thrown Bottle o' Enchanting]
-[12Jun2022 22:10:39.018] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Set own game mode to Creative Mode]
-[12Jun2022 22:10:39.021] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] Set own game mode to Creative Mode
-[12Jun2022 22:11:20.490] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Successfully filled 1 blocks]
-[12Jun2022 22:11:20.519] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Successfully filled 1 blocks]
-[12Jun2022 22:12:38.255] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Dev fell out of the world
-[12Jun2022 22:12:38.267] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Killed Dev]
-[12Jun2022 22:12:38.268] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] Dev fell out of the world
-[12Jun2022 22:12:38.269] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] Killed Dev
-[12Jun2022 22:12:39.398] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Saving and pausing game...
-[12Jun2022 22:12:39.504] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
-[12Jun2022 22:12:39.528] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
-[12Jun2022 22:12:39.530] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
-[12Jun2022 22:12:41.183] [Server thread/INFO] [net.minecraft.server.network.ServerGamePacketListenerImpl/]: Dev lost connection: Disconnected
-[12Jun2022 22:12:41.184] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Dev left the game
-[12Jun2022 22:12:41.644] [Server thread/INFO] [net.minecraft.server.network.ServerGamePacketListenerImpl/]: Stopping singleplayer server as player logged out
-[12Jun2022 22:12:41.648] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Stopping server
-[12Jun2022 22:12:41.650] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving players
-[12Jun2022 22:12:41.651] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving worlds
-[12Jun2022 22:12:49.691] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
-[12Jun2022 22:12:49.780] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
-[12Jun2022 22:12:49.783] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
-[12Jun2022 22:12:49.832] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (New World): All chunks are saved
-[12Jun2022 22:12:49.832] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
-[12Jun2022 22:12:49.832] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
-[12Jun2022 22:12:49.832] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage: All dimensions are saved
-[12Jun2022 22:12:53.489] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Stopping!
+[15Jun2022 23:23:22.909] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgeclientuserdev, --version, MOD_DEV, --assetIndex, 1.18, --assetsDir, /Users/wlee2019/.gradle/caches/forge_gradle/assets, --gameDir, ., --fml.forgeVersion, 40.0.31, --fml.mcVersion, 1.18.2, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20220228.144236]
+[15Jun2022 23:23:22.914] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 9.1.3+9.1.3+main.9b69c82a starting: java version 17.0.2 by Oracle Corporation
+[15Jun2022 23:23:23.082] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/Users/wlee2019/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar%2322!/ Service=ModLauncher Env=CLIENT
+[15Jun2022 23:23:25.796] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgeclientuserdev' with arguments [--version, MOD_DEV, --gameDir, ., --assetsDir, /Users/wlee2019/.gradle/caches/forge_gradle/assets, --assetIndex, 1.18]
+[15Jun2022 23:23:33.420] [Render thread/WARN] [net.minecraft.server.packs.VanillaPackResources/]: Assets URL 'union:/Users/wlee2019/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.18.2-40.0.31_mapped_parchment_2022.03.13-1.18.2/forge-1.18.2-40.0.31_mapped_parchment_2022.03.13-1.18.2-recomp.jar%2375!/assets/.mcassetsroot' uses unexpected schema
+[15Jun2022 23:23:33.421] [Render thread/WARN] [net.minecraft.server.packs.VanillaPackResources/]: Assets URL 'union:/Users/wlee2019/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.18.2-40.0.31_mapped_parchment_2022.03.13-1.18.2/forge-1.18.2-40.0.31_mapped_parchment_2022.03.13-1.18.2-recomp.jar%2375!/data/.mcassetsroot' uses unexpected schema
+[15Jun2022 23:23:33.442] [Render thread/INFO] [com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService/]: Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
+[15Jun2022 23:23:33.454] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Setting user: Dev
+[15Jun2022 23:23:33.665] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Backend library: LWJGL version 3.2.1 SNAPSHOT
+[15Jun2022 23:23:34.543] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 40.0.31, for MC 1.18.2 with MCP 20220228.144236
+[15Jun2022 23:23:34.546] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v40.0.31 Initialized
+[15Jun2022 23:23:36.995] [Render thread/INFO] [net.minecraftforge.gametest.ForgeGameTestHooks/]: Enabled Gametest Namespaces: [goofygoober]
+[15Jun2022 23:23:37.428] [Render thread/INFO] [net.minecraft.server.packs.resources.ReloadableResourceManager/]: Reloading ResourceManager: Default, Mod Resources
+[15Jun2022 23:23:37.449] [Worker-Main-5/INFO] [com.leecrafts.goofygoober.GoofyGoober/]: HELLO FROM PREINIT
+[15Jun2022 23:23:37.449] [Worker-Main-5/INFO] [com.leecrafts.goofygoober.GoofyGoober/]: DIRT BLOCK >> minecraft:dirt
+[15Jun2022 23:23:37.886] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [forge] Starting version check at https://files.minecraftforge.net/net/minecraftforge/forge/promotions_slim.json
+[15Jun2022 23:23:40.068] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [forge] Found status: OUTDATED Current: 40.0.31 Target: 40.1.0
+[15Jun2022 23:23:58.124] [Render thread/INFO] [com.mojang.blaze3d.audio.Library/]: OpenAL initialized on device CoreAudio Default
+[15Jun2022 23:23:58.128] [Render thread/INFO] [net.minecraft.client.sounds.SoundEngine/SOUNDS]: Sound engine started
+[15Jun2022 23:23:58.484] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 1024x512x4 minecraft:textures/atlas/blocks.png-atlas
+[15Jun2022 23:23:58.496] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x128x4 minecraft:textures/atlas/signs.png-atlas
+[15Jun2022 23:23:58.497] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x512x4 minecraft:textures/atlas/banner_patterns.png-atlas
+[15Jun2022 23:23:58.498] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x512x4 minecraft:textures/atlas/shield_patterns.png-atlas
+[15Jun2022 23:23:58.500] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x4 minecraft:textures/atlas/chest.png-atlas
+[15Jun2022 23:23:58.501] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x4 minecraft:textures/atlas/beds.png-atlas
+[15Jun2022 23:23:58.502] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x4 minecraft:textures/atlas/shulker_boxes.png-atlas
+[15Jun2022 23:24:00.540] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x0 minecraft:textures/atlas/particles.png-atlas
+[15Jun2022 23:24:00.543] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x0 minecraft:textures/atlas/paintings.png-atlas
+[15Jun2022 23:24:00.543] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 128x128x0 minecraft:textures/atlas/mob_effects.png-atlas
+[15Jun2022 23:24:01.085] [Realms Notification Availability checker #1/INFO] [com.mojang.realmsclient.client.RealmsClient/]: Could not authorize you against Realms server: Invalid session id
+[15Jun2022 23:24:07.121] [Render thread/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, location] and [teleport, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
+[15Jun2022 23:24:07.123] [Render thread/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, location] and [teleport, targets] with inputs: [0.1 -0.5 .9, 0 0 0]
+[15Jun2022 23:24:07.127] [Render thread/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, destination] and [teleport, targets] with inputs: [Player, 0123, @e, dd12be42-52a9-4a91-a8a1-11c01849e498]
+[15Jun2022 23:24:07.128] [Render thread/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, targets] and [teleport, destination] with inputs: [Player, 0123, dd12be42-52a9-4a91-a8a1-11c01849e498]
+[15Jun2022 23:24:07.130] [Render thread/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, targets, location] and [teleport, targets, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
+[15Jun2022 23:24:13.696] [Render thread/INFO] [net.minecraft.world.item.crafting.RecipeManager/]: Loaded 7 recipes
+[15Jun2022 23:24:16.267] [Render thread/INFO] [net.minecraft.advancements.AdvancementList/]: Loaded 1141 advancements
+[15Jun2022 23:24:17.407] [Render thread/INFO] [com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService/]: Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
+[15Jun2022 23:24:17.453] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Starting integrated minecraft server version 1.18.2
+[15Jun2022 23:24:17.454] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Generating keypair
+[15Jun2022 23:24:18.110] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Preparing start region for dimension minecraft:overworld
+[15Jun2022 23:24:21.592] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[15Jun2022 23:24:21.592] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[15Jun2022 23:24:21.690] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[15Jun2022 23:24:21.819] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[15Jun2022 23:24:21.865] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[15Jun2022 23:24:21.912] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[15Jun2022 23:24:21.913] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[15Jun2022 23:24:21.971] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[15Jun2022 23:24:22.159] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[15Jun2022 23:24:22.658] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[15Jun2022 23:24:23.166] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[15Jun2022 23:24:23.644] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[15Jun2022 23:24:24.177] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[15Jun2022 23:24:24.641] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[15Jun2022 23:24:25.160] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[15Jun2022 23:24:25.656] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 1%
+[15Jun2022 23:24:26.174] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 5%
+[15Jun2022 23:24:26.643] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 8%
+[15Jun2022 23:24:27.160] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 9%
+[15Jun2022 23:24:27.676] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 22%
+[15Jun2022 23:24:28.182] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 26%
+[15Jun2022 23:24:28.648] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 39%
+[15Jun2022 23:24:29.167] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 51%
+[15Jun2022 23:24:29.673] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 62%
+[15Jun2022 23:24:30.153] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 83%
+[15Jun2022 23:24:39.432] [Server thread/INFO] [net.minecraftforge.server.permission.PermissionAPI/]: Successfully initialized permission handler forge:default_handler
+[15Jun2022 23:24:39.451] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Time elapsed: 21311 ms
+[15Jun2022 23:24:39.611] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Changing view distance to 16, from 10
+[15Jun2022 23:24:39.616] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Changing simulation distance to 16, from 0
+[15Jun2022 23:24:43.991] [Netty Local Client IO #0/INFO] [net.minecraftforge.network.NetworkHooks/]: Connected to a modded server.
+[15Jun2022 23:24:44.223] [Server thread/INFO] [net.minecraftforge.common.AdvancementLoadFix/]: Using new advancement loading for net.minecraft.server.PlayerAdvancements@524a46ed
+[15Jun2022 23:24:44.251] [Server thread/INFO] [net.minecraft.server.players.PlayerList/]: Dev[local:E:c38f6559] logged in with entity id 6 at (671.6045406995802, 63.187586587943024, 308.1932416479425)
+[15Jun2022 23:24:44.398] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Dev joined the game
+[15Jun2022 23:24:48.956] [Server thread/WARN] [net.minecraft.server.MinecraftServer/]: Can't keep up! Is the server overloaded? Running 4923ms or 98 ticks behind
+[15Jun2022 23:24:49.002] [Render thread/INFO] [net.minecraft.advancements.AdvancementList/]: Loaded 1141 advancements
+[15Jun2022 23:24:56.603] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Summoned new Villager]
+[15Jun2022 23:24:56.628] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] Summoned new Villager
+[15Jun2022 23:25:01.466] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Summoned new Zombie]
+[15Jun2022 23:25:01.470] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] Summoned new Zombie
+[15Jun2022 23:25:13.099] [Server thread/INFO] [net.minecraft.world.entity.npc.Villager/]: Villager Villager['Villager'/38, l='ServerLevel[New World]', x=672.65, y=76.80, z=290.01] died, message: 'Villager was slain by Zombie'
+[15Jun2022 23:25:23.218] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Summoned new Zombie]
+[15Jun2022 23:25:23.221] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] Summoned new Zombie
+[15Jun2022 23:25:23.974] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Summoned new Villager]
+[15Jun2022 23:25:23.983] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] Summoned new Villager
+[15Jun2022 23:25:33.338] [Server thread/INFO] [net.minecraft.world.entity.npc.Villager/]: Villager Villager['Villager'/54, l='ServerLevel[New World]', x=673.45, y=76.00, z=289.22] died, message: 'Villager was killed by Dev using magic'
+[15Jun2022 23:25:33.356] [Render thread/INFO] [net.minecraft.world.entity.npc.Villager/]: Villager Villager['Villager'/54, l='ClientLevel', x=673.37, y=76.82, z=289.03] died, message: 'Villager died'
+[15Jun2022 23:25:58.098] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Summoned new Zombie Villager]
+[15Jun2022 23:25:58.113] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Summoned new Zombie Villager]
+[15Jun2022 23:25:58.113] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Summoned new Skeleton]
+[15Jun2022 23:25:58.114] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Summoned new Skeleton]
+[15Jun2022 23:25:58.115] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Summoned new Zombie]
+[15Jun2022 23:25:58.138] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Summoned new Zombie]
+[15Jun2022 23:26:36.282] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [Debug]: Hitboxes: shown
+[15Jun2022 23:26:38.074] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [Debug]: Hitboxes: hidden
+[15Jun2022 23:26:42.191] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Summoned new Creeper]
+[15Jun2022 23:26:42.205] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Summoned new Creeper]
+[15Jun2022 23:26:44.987] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Summoned new Creeper]
+[15Jun2022 23:26:44.988] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Summoned new Creeper]
+[15Jun2022 23:26:47.288] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Summoned new Creeper]
+[15Jun2022 23:26:47.291] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Summoned new Creeper]
+[15Jun2022 23:26:50.391] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Summoned new Zombie Villager]
+[15Jun2022 23:26:50.398] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Summoned new Skeleton]
+[15Jun2022 23:26:50.400] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Summoned new Zombie]
+[15Jun2022 23:26:50.404] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Summoned new Zombie Villager]
+[15Jun2022 23:26:50.405] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Summoned new Skeleton]
+[15Jun2022 23:26:50.406] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Summoned new Zombie]
+[15Jun2022 23:27:13.210] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Set own game mode to Survival Mode]
+[15Jun2022 23:27:13.211] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] Set own game mode to Survival Mode
+[15Jun2022 23:27:16.688] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Summoned new Creeper]
+[15Jun2022 23:27:16.699] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Summoned new Creeper]
+[15Jun2022 23:27:18.168] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Dev was blown up by Creeper
+[15Jun2022 23:27:18.179] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] Dev was blown up by Creeper
+[15Jun2022 23:27:22.933] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Applied effect Regeneration to Dev]
+[15Jun2022 23:27:22.934] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Applied effect Night Vision to Dev]
+[15Jun2022 23:27:22.934] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Applied effect Saturation to Dev]
+[15Jun2022 23:27:22.935] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Applied effect Strength to Dev]
+[15Jun2022 23:27:22.935] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Applied effect Resistance to Dev]
+[15Jun2022 23:27:22.936] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Summoned new Thrown Bottle o' Enchanting]
+[15Jun2022 23:27:22.961] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Applied effect Regeneration to Dev]
+[15Jun2022 23:27:22.962] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Applied effect Night Vision to Dev]
+[15Jun2022 23:27:22.967] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Applied effect Saturation to Dev]
+[15Jun2022 23:27:22.969] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Applied effect Strength to Dev]
+[15Jun2022 23:27:22.969] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Applied effect Resistance to Dev]
+[15Jun2022 23:27:22.971] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Summoned new Thrown Bottle o' Enchanting]
+[15Jun2022 23:27:27.384] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Set own game mode to Creative Mode]
+[15Jun2022 23:27:27.395] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] Set own game mode to Creative Mode
+[15Jun2022 23:27:33.374] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Summoned new Creeper]
+[15Jun2022 23:27:33.423] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Summoned new Creeper]
+[15Jun2022 23:27:36.585] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Set own game mode to Survival Mode]
+[15Jun2022 23:27:36.588] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] Set own game mode to Survival Mode
+[15Jun2022 23:27:37.949] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Summoned new Zombie Villager]
+[15Jun2022 23:27:37.950] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Summoned new Skeleton]
+[15Jun2022 23:27:37.952] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Summoned new Zombie]
+[15Jun2022 23:27:37.958] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Summoned new Zombie Villager]
+[15Jun2022 23:27:37.959] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Summoned new Skeleton]
+[15Jun2022 23:27:37.960] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Summoned new Zombie]
+[15Jun2022 23:28:02.676] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Summoned new Iron Golem]
+[15Jun2022 23:28:02.678] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] Summoned new Iron Golem
+[15Jun2022 23:28:03.109] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Summoned new Iron Golem]
+[15Jun2022 23:28:03.111] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] Summoned new Iron Golem
+[15Jun2022 23:28:35.990] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Summoned new Zombie Villager]
+[15Jun2022 23:28:35.998] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Summoned new Skeleton]
+[15Jun2022 23:28:35.999] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Summoned new Zombie]
+[15Jun2022 23:28:36.010] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Summoned new Zombie Villager]
+[15Jun2022 23:28:36.011] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Summoned new Skeleton]
+[15Jun2022 23:28:36.011] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Summoned new Zombie]
+[15Jun2022 23:29:28.645] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Summoned new Creeper]
+[15Jun2022 23:29:28.654] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Summoned new Creeper]
+[15Jun2022 23:29:35.558] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Summoned new Thrown Bottle o' Enchanting]
+[15Jun2022 23:29:35.560] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] Summoned new Thrown Bottle o' Enchanting
+[15Jun2022 23:29:39.217] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] Incorrect argument for command
+[15Jun2022 23:29:39.220] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] /gamemode c<--[HERE]
+[15Jun2022 23:29:41.214] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Set own game mode to Creative Mode]
+[15Jun2022 23:29:41.231] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] Set own game mode to Creative Mode
+[15Jun2022 23:29:42.544] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Summoned new Zombie Villager]
+[15Jun2022 23:29:42.546] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Summoned new Skeleton]
+[15Jun2022 23:29:42.547] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Summoned new Zombie]
+[15Jun2022 23:29:42.547] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Summoned new Zombie Villager]
+[15Jun2022 23:29:42.548] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Summoned new Skeleton]
+[15Jun2022 23:29:42.565] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Summoned new Zombie]
+[15Jun2022 23:30:28.202] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Set own game mode to Survival Mode]
+[15Jun2022 23:30:28.218] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] Set own game mode to Survival Mode
+[15Jun2022 23:30:37.929] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Summoned new Thrown Bottle o' Enchanting]
+[15Jun2022 23:30:37.932] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] Summoned new Thrown Bottle o' Enchanting
+[15Jun2022 23:30:56.244] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Summoned new Creeper]
+[15Jun2022 23:30:56.257] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Summoned new Creeper]
+[15Jun2022 23:31:03.041] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Set own game mode to Creative Mode]
+[15Jun2022 23:31:03.044] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] Set own game mode to Creative Mode
+[15Jun2022 23:31:07.192] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Saving and pausing game...
+[15Jun2022 23:31:07.292] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[15Jun2022 23:31:07.341] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[15Jun2022 23:31:07.342] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[15Jun2022 23:31:08.301] [Server thread/INFO] [net.minecraft.server.network.ServerGamePacketListenerImpl/]: Dev lost connection: Disconnected
+[15Jun2022 23:31:08.301] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Dev left the game
+[15Jun2022 23:31:08.372] [Server thread/INFO] [net.minecraft.server.network.ServerGamePacketListenerImpl/]: Stopping singleplayer server as player logged out
+[15Jun2022 23:31:08.406] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Stopping server
+[15Jun2022 23:31:08.407] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving players
+[15Jun2022 23:31:08.407] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving worlds
+[15Jun2022 23:31:13.193] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[15Jun2022 23:31:13.347] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[15Jun2022 23:31:13.349] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[15Jun2022 23:31:13.379] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (New World): All chunks are saved
+[15Jun2022 23:31:13.379] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[15Jun2022 23:31:13.379] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[15Jun2022 23:31:13.379] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage: All dimensions are saved
+[15Jun2022 23:31:18.785] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Stopping!

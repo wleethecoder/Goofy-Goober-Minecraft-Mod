@@ -1,7 +1,8 @@
 package com.leecrafts.goofygoober.common.events.tomfoolery;
 
 import com.leecrafts.goofygoober.common.capabilities.ModCapabilities;
-import com.leecrafts.goofygoober.common.capabilities.tomfoolery.scallywag.TomfooleryScallywag;
+import com.leecrafts.goofygoober.common.capabilities.tomfoolery.mob.TomfooleryMob;
+import com.leecrafts.goofygoober.common.misc.Utilities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
@@ -9,11 +10,9 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
-import net.minecraft.world.entity.animal.PolarBear;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.Slime;
 import net.minecraft.world.entity.monster.Spider;
-import net.minecraft.world.entity.monster.ZombifiedPiglin;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
@@ -28,8 +27,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class TomfooleryHelper {
 
-    // list of scallywags that can spawn
-    private static ArrayList<EntityType<?>> scallywags;
+    // list of mobs that can spawn
+    private static ArrayList<EntityType<?>> summonableMobs;
 
     private static final double HORIZONTAL_RADIUS = 4;
     private static final double VERTICAL_RADIUS = 2;
@@ -45,25 +44,25 @@ public class TomfooleryHelper {
     }
 
     private static void initializeIfNull() {
-        if (scallywags == null) {
-            scallywags = new ArrayList<>();
-            // 7 monsters that can spawn during tomfoolery
-            scallywags.add(EntityType.WITHER_SKELETON);
-            scallywags.add(EntityType.SPIDER);
-            scallywags.add(EntityType.CAVE_SPIDER);
-            scallywags.add(EntityType.MAGMA_CUBE);
-            scallywags.add(EntityType.SLIME);
-            scallywags.add(EntityType.POLAR_BEAR);
-            scallywags.add(EntityType.ZOMBIFIED_PIGLIN);
+        if (summonableMobs == null) {
+            summonableMobs = new ArrayList<>();
+            // 7 mobs that can spawn during tomfoolery
+            summonableMobs.add(EntityType.WITHER_SKELETON);
+            summonableMobs.add(EntityType.SPIDER);
+            summonableMobs.add(EntityType.CAVE_SPIDER);
+            summonableMobs.add(EntityType.MAGMA_CUBE);
+            summonableMobs.add(EntityType.SLIME);
+            summonableMobs.add(EntityType.POLAR_BEAR);
+            summonableMobs.add(EntityType.ZOMBIFIED_PIGLIN);
         }
     }
 
-    // returns a shuffled version of the scallywag list so that a random sample can be drawn
-    public static ArrayList<EntityType<?>> getScallywagsToSpawn() {
+    // returns a shuffled version of the summonableMobs list so that a random sample can be drawn
+    public static ArrayList<EntityType<?>> getMobsToSpawn() {
         initializeIfNull();
-        ArrayList<EntityType<?>> scallywagsToSpawn = new ArrayList<>(scallywags);
-        Collections.shuffle(scallywagsToSpawn);
-        return scallywagsToSpawn;
+        ArrayList<EntityType<?>> mobsToSpawn = new ArrayList<>(summonableMobs);
+        Collections.shuffle(mobsToSpawn);
+        return mobsToSpawn;
     }
 
     // returns a list of hostile/monster mobs near the player
@@ -79,18 +78,17 @@ public class TomfooleryHelper {
                 y - VERTICAL_RADIUS,
                 z - HORIZONTAL_RADIUS
         ));
-//        System.out.println(Arrays.toString(list.toArray()));
         ArrayList<Mob> mobs = new ArrayList<>();
         for (Entity entity : list) {
 
             if (entity instanceof Mob mob && isHostileAndOrMonster(mob)) {
                 if (mustBeEligible) {
-                    AtomicBoolean isEligible = new AtomicBoolean(true);
-                    mob.getCapability(ModCapabilities.TOMFOOLERY_SCALLYWAG_CAPABILITY).ifPresent(iTomfooleryScallywag -> {
-                        TomfooleryScallywag tomfooleryScallywag = (TomfooleryScallywag) iTomfooleryScallywag;
-                        isEligible.set(tomfooleryScallywag.isEligible());
+                    AtomicBoolean isEligibleToSummonNearbyMobs = new AtomicBoolean(true);
+                    mob.getCapability(ModCapabilities.TOMFOOLERY_MOB_CAPABILITY).ifPresent(iTomfooleryMob -> {
+                        TomfooleryMob tomfooleryMob = (TomfooleryMob) iTomfooleryMob;
+                        isEligibleToSummonNearbyMobs.set(tomfooleryMob.isEligibleToSummonNearbyMobs());
                     });
-                    if (isEligible.get()) mobs.add(mob);
+                    if (isEligibleToSummonNearbyMobs.get()) mobs.add(mob);
                 }
                 else mobs.add(mob);
             }
@@ -98,9 +96,9 @@ public class TomfooleryHelper {
         return mobs;
     }
 
-    // makes an attempt to spawn a scallywag
+    // makes an attempt to spawn a mob
     // returns whether the spawn attempt is successful
-    public static boolean spawnScallywag(Player player, EntityType<?> mobType) throws InvocationTargetException, IllegalAccessException {
+    public static boolean spawnMob(Player player, EntityType<?> mobType) throws InvocationTargetException, IllegalAccessException {
         boolean success = false;
         ServerLevel serverLevel = (ServerLevel) player.level;
         int j = 0;
@@ -114,31 +112,31 @@ public class TomfooleryHelper {
                 if (mob != null) {
                     if (mob.checkSpawnObstruction(serverLevel)) {
 
-                        setScallywagStats(mob);
+                        setMobStats(mob);
 
                         serverLevel.addFreshEntityWithPassengers(mob);
 
-                        // scallywags glow (which is convenient, considering all the smoke they generate)
-                        mob.addEffect(new MobEffectInstance(MobEffects.GLOWING, 1000000));
+                        mobIsSummoned(mob);
 
-                        youreAScallywag(mob);
-
-                        // scallywags themselves cannot cause tomfoolery
+                        // summoned mobs themselves cannot summon more mobs
                         revokeEligibility(mob);
 
-                        // if the player is not nearby, then scallywags will target any monster (including other scallywags) that are near the player
+                        // summoned mobs will target both the player and any nearby hostile/monster mob
                         ArrayList<Mob> nearbyMobs = getNearbyMobs(player, false);
 //                        int indexOfSelf = nearbyMobs.indexOf(mob);
 //                        int mobIndex = Utilities.random.nextInt(nearbyMobs.size() - 1);
-//                        // make sure the monster would not target itself
+//                        // make sure the mob would not target itself
 //                        mobIndex = mobIndex >= indexOfSelf ? mobIndex + 1 : mobIndex;
 //                        Mob targetMob = nearbyMobs.get(mobIndex);
 //                        mob.targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(mob, targetMob.getClass(), true));
+
+                        // 20% chance that the mob will prioritize targeting the player over other nearby mobs
+                        boolean prioritizeMobsOverPlayers = Utilities.random.nextInt(5) >= 1;
                         for (Mob mob1: nearbyMobs) {
-                            mob.targetSelector.addGoal(5, new NearestAttackableTargetGoal<>(mob, mob1.getClass(), true));
+                            mob.targetSelector.addGoal(prioritizeMobsOverPlayers ? 1 : 2, new NearestAttackableTargetGoal<>(mob, mob1.getClass(), false));
                         }
 
-                        mob.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(mob, Player.class, true));
+                        mob.targetSelector.addGoal(prioritizeMobsOverPlayers ? 2 : 1, new NearestAttackableTargetGoal<>(mob, Player.class, true));
 
                         success = true;
                     }
@@ -174,16 +172,16 @@ public class TomfooleryHelper {
     }
 
     public static void revokeEligibility(Mob mob) {
-        mob.getCapability(ModCapabilities.TOMFOOLERY_SCALLYWAG_CAPABILITY).ifPresent(iTomfooleryScallywag -> {
-            TomfooleryScallywag tomfooleryScallywag = (TomfooleryScallywag) iTomfooleryScallywag;
-            tomfooleryScallywag.setEligibility(false);
+        mob.getCapability(ModCapabilities.TOMFOOLERY_MOB_CAPABILITY).ifPresent(iTomfooleryMob -> {
+            TomfooleryMob tomfooleryMob = (TomfooleryMob) iTomfooleryMob;
+            tomfooleryMob.setEligibility(false);
         });
     }
 
-    public static void youreAScallywag(Mob mob) {
-        mob.getCapability(ModCapabilities.TOMFOOLERY_SCALLYWAG_CAPABILITY).ifPresent(iTomfooleryScallywag -> {
-            TomfooleryScallywag tomfooleryScallywag = (TomfooleryScallywag) iTomfooleryScallywag;
-            tomfooleryScallywag.setScallywag(true);
+    public static void mobIsSummoned(Mob mob) {
+        mob.getCapability(ModCapabilities.TOMFOOLERY_MOB_CAPABILITY).ifPresent(iTomfooleryMob -> {
+            TomfooleryMob tomfooleryMob = (TomfooleryMob) iTomfooleryMob;
+            tomfooleryMob.setSummoned(true);
         });
     }
 
@@ -192,10 +190,6 @@ public class TomfooleryHelper {
         double y = (entity1.getY() + entity2.getY()) / 2 + 1;
         double z = (entity1.getZ() + entity2.getZ()) / 2;
 
-        // this would only work on the client
-//        entity1.level.addParticle(ParticleTypes.CAMPFIRE_COSY_SMOKE, x, y, z, 1.0, 0.0, 0.0);
-
-//        System.out.println("generating particles at " + x + ", " + y + ", " + z);
         ServerLevel level = (ServerLevel) entity1.level;
         level.sendParticles(ParticleTypes.CAMPFIRE_COSY_SMOKE, x, y, z,
                 4, 1.25, 1, 1.25, 0);
@@ -217,14 +211,14 @@ public class TomfooleryHelper {
                 || mob.getType() == EntityType.POLAR_BEAR;
     }
 
-    public static void setScallywagStats(Mob mob) throws InvocationTargetException, IllegalAccessException {
+    public static void setMobStats(Mob mob) throws InvocationTargetException, IllegalAccessException {
 
         if (mob instanceof Spider spider) { // CaveSpider extends Spider
             spider.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 1000000));
             spider.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 1000000));
         }
 
-        // Slime and Magma cube scallywags are always size 3
+        // summoned Slimes and Magma cubes are always size 3
         if (mob instanceof Slime slime) { // MagmaCube extends Slime
 //            method.setAccessible(true);
             setSizeMethod.invoke(slime, 4, true);

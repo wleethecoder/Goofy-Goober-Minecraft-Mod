@@ -2,12 +2,14 @@ package com.leecrafts.goofygoober.common.events.tomfoolery;
 
 import com.leecrafts.goofygoober.GoofyGoober;
 import com.leecrafts.goofygoober.common.capabilities.ModCapabilities;
-import com.leecrafts.goofygoober.common.capabilities.tomfoolery.cooldowncounter.ITomfooleryCooldownCounter;
-import com.leecrafts.goofygoober.common.capabilities.tomfoolery.cooldowncounter.TomfooleryCooldownCounter;
-import com.leecrafts.goofygoober.common.capabilities.tomfoolery.cooldowncounter.TomfooleryCooldownCounterProvider;
-import com.leecrafts.goofygoober.common.capabilities.tomfoolery.scallywag.ITomfooleryScallywag;
-import com.leecrafts.goofygoober.common.capabilities.tomfoolery.scallywag.TomfooleryScallywag;
-import com.leecrafts.goofygoober.common.capabilities.tomfoolery.scallywag.TomfooleryScallywagProvider;
+import com.leecrafts.goofygoober.common.capabilities.tomfoolery.livingentity.TomfooleryLivingEntity;
+import com.leecrafts.goofygoober.common.capabilities.tomfoolery.livingentity.TomfooleryLivingEntityProvider;
+import com.leecrafts.goofygoober.common.capabilities.tomfoolery.player.ITomfooleryPlayer;
+import com.leecrafts.goofygoober.common.capabilities.tomfoolery.player.TomfooleryPlayer;
+import com.leecrafts.goofygoober.common.capabilities.tomfoolery.player.TomfooleryPlayerProvider;
+import com.leecrafts.goofygoober.common.capabilities.tomfoolery.mob.ITomfooleryMob;
+import com.leecrafts.goofygoober.common.capabilities.tomfoolery.mob.TomfooleryMob;
+import com.leecrafts.goofygoober.common.capabilities.tomfoolery.mob.TomfooleryMobProvider;
 import com.leecrafts.goofygoober.common.misc.Utilities;
 import com.leecrafts.goofygoober.common.sounds.ModSounds;
 import net.minecraft.resources.ResourceLocation;
@@ -15,9 +17,6 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.animal.IronGolem;
-import net.minecraft.world.entity.monster.AbstractIllager;
-import net.minecraft.world.entity.monster.Ravager;
 import net.minecraft.world.entity.monster.Slime;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.AABB;
@@ -32,140 +31,181 @@ import net.minecraftforge.fml.util.ObfuscationReflectionHelper;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 @Mod.EventBusSubscriber(modid = GoofyGoober.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class TomfooleryEvents {
 
     // dealDamage -> m_33637_
-    private static final Method dealDamageMethod = ObfuscationReflectionHelper.findMethod(Slime.class, "m_33637_", LivingEntity.class);;
+    private static final Method dealDamageMethod = ObfuscationReflectionHelper.findMethod(Slime.class, "m_33637_", LivingEntity.class);
 
     public TomfooleryEvents() {
         dealDamageMethod.setAccessible(true);
     }
 
-    // During tomfoolery, 5 different hostile/monster mobs spawn around the player (those spawned mobs are called scallywags).
-    // Scallywags can attack each other.
-    // A cloud of dust appears whenever scallywags get in a fight.
-    // Random goofy sound effects play.
-    // As a result, chaos ensues, and it becomes very disorienting to both the eyes and ears. Be careful.
+    // Tomfoolery is simply when a mob gets into a fight with a player or any living entity.
+    // A cloud of dust appears, and random goofy sound effects play.
+    // If the player is near 3 or more hostile/monster mobs, 5 different hostile/monster mobs spawn around the player, adding to the chaos.
+    // Summoned mobs can attack each other.
+
+    // As a result, it can become very disorienting to both the eyes and ears. Be careful.
 
     @SubscribeEvent
     public static void registerCapabilities(RegisterCapabilitiesEvent event) {
-        event.register(ITomfooleryCooldownCounter.class);
-        event.register(ITomfooleryScallywag.class);
+        event.register(ITomfooleryPlayer.class);
+        event.register(ITomfooleryMob.class);
     }
 
-    // a cooldown of two minutes happens when a player causes tomfoolery
-    // a player causes tomfoolery by being near 3 or more monsters
     @SubscribeEvent
-    public static void onAttachCapabilitiesEventCooldownCounter(AttachCapabilitiesEvent<Entity> event) {
+    public static void onAttachCapabilitiesEventPlayer(AttachCapabilitiesEvent<Entity> event) {
         if (event.getObject() instanceof Player player && !player.getCommandSenderWorld().isClientSide()) {
-            TomfooleryCooldownCounterProvider tomfooleryCooldownCounterProvider = new TomfooleryCooldownCounterProvider();
-            event.addCapability(new ResourceLocation(GoofyGoober.MOD_ID, "tomfoolery_cooldown_counter"), tomfooleryCooldownCounterProvider);
-//            event.addListener(tomfooleryCooldownCounterProvider::invalidate);
+            TomfooleryPlayerProvider tomfooleryPlayerProvider = new TomfooleryPlayerProvider();
+            event.addCapability(new ResourceLocation(GoofyGoober.MOD_ID, "tomfoolery_cooldown_counter"), tomfooleryPlayerProvider);
+//            event.addListener(tomfooleryPlayerProvider::invalidate);
         }
     }
 
-    // scallywags do not count towards whether a player is near 3 or more monsters
-    // they also make really goofy noises
     @SubscribeEvent
-    public static void onAttachCapabilitiesEventScallywag(AttachCapabilitiesEvent<Entity> event) {
-        // the isScallywag variable is false by default (I set it to true when appropriate)
+    public static void onAttachCapabilitiesEventMob(AttachCapabilitiesEvent<Entity> event) {
         if (event.getObject() instanceof Mob mob && !mob.getCommandSenderWorld().isClientSide()) {
-            TomfooleryScallywagProvider tomfooleryScallywagProvider = new TomfooleryScallywagProvider();
-            event.addCapability(new ResourceLocation(GoofyGoober.MOD_ID, "is_eligible_to_cause_tomfoolery"), tomfooleryScallywagProvider);
-            event.addCapability(new ResourceLocation(GoofyGoober.MOD_ID, "scallywag"), tomfooleryScallywagProvider);
-            event.addListener(tomfooleryScallywagProvider::invalidate);
+            TomfooleryMobProvider tomfooleryMobProvider = new TomfooleryMobProvider();
+            event.addCapability(new ResourceLocation(GoofyGoober.MOD_ID, "is_eligible_to_summon_nearby_mobs"), tomfooleryMobProvider);
+            event.addCapability(new ResourceLocation(GoofyGoober.MOD_ID, "summoned"), tomfooleryMobProvider);
+            event.addListener(tomfooleryMobProvider::invalidate);
+        }
+    }
+
+    @SubscribeEvent
+    public static void onAttachCapabilitiesEventLivingEntity(AttachCapabilitiesEvent<Entity> event) {
+        if (event.getObject() instanceof LivingEntity livingEntity && !livingEntity.getCommandSenderWorld().isClientSide()) {
+            TomfooleryLivingEntityProvider tomfooleryLivingEntityProvider = new TomfooleryLivingEntityProvider();
+            event.addCapability(new ResourceLocation(GoofyGoober.MOD_ID, "num_attackers"), tomfooleryLivingEntityProvider);
+            if (!(livingEntity instanceof Player)) {
+                event.addListener(tomfooleryLivingEntityProvider::invalidate);
+            }
         }
     }
 
     @SubscribeEvent
     public static void onEntityJoinWorldEvent(EntityJoinWorldEvent event) {
-        if (event.getEntity() instanceof Mob mob && !mob.level.isClientSide()) {
-            // iron golems and illagers/raiders are scallywags by default
-            if ((mob instanceof IronGolem
-                    || mob instanceof AbstractIllager
-                    || mob instanceof Ravager)) {
-                TomfooleryHelper.youreAScallywag(mob);
-            }
-            // there is a 20% chance for any hostile/monster mob to be a scallywag
-            else if (TomfooleryHelper.isHostileAndOrMonster(mob)) {
-                if (Utilities.random.nextInt(5) == 0) TomfooleryHelper.youreAScallywag(mob);
-            }
+//        if (event.getEntity() instanceof Mob mob && !mob.level.isClientSide()) {
+//            // iron golems and illagers/raiders are scallywags by default
+//            if ((mob instanceof IronGolem
+//                    || mob instanceof AbstractIllager
+//                    || mob instanceof Ravager)) {
+//                TomfooleryHelper.mobIsSummoned(mob);
+//            }
+//            // there is a 20% chance for any hostile/monster mob to be a scallywag
+//            else if (TomfooleryHelper.isHostileAndOrMonster(mob)) {
+//                if (Utilities.random.nextInt(5) == 0) TomfooleryHelper.mobIsSummoned(mob);
+//            }
 
-            // To make it fairer, smaller slimes and magma cubes are ineligible to cause tomfoolery by default
-            // MagmaCube extends Slime
-            if (mob instanceof Slime slime && slime.getSize() <= 2) {
-                TomfooleryHelper.revokeEligibility(slime);
-            }
+        // To make it fairer, smaller slimes and magma cubes are ineligible to summon nearby mobs by default
+        // MagmaCube extends Slime
+        if (event.getEntity() instanceof Slime slime && !slime.level.isClientSide() && slime.getSize() <= 2) {
+            TomfooleryHelper.revokeEligibility(slime);
         }
+//        }
     }
 
     // player tick update
     @SubscribeEvent
     public static void playerTick(LivingEvent.LivingUpdateEvent event) {
         if (event.getEntityLiving() instanceof Player player && !player.level.isClientSide()) {
-            player.getCapability(ModCapabilities.TOMFOOLERY_COOLDOWN_COUNTER_CAPABILITY).ifPresent(iTomfooleryCooldownCounter -> {
-                TomfooleryCooldownCounter tomfooleryCooldownCounter = (TomfooleryCooldownCounter) iTomfooleryCooldownCounter;
-                if (tomfooleryCooldownCounter.counter >= tomfooleryCooldownCounter.LIMIT) {
+            player.getCapability(ModCapabilities.TOMFOOLERY_PLAYER_CAPABILITY).ifPresent(iTomfooleryPlayer -> {
+                TomfooleryPlayer tomfooleryPlayer = (TomfooleryPlayer) iTomfooleryPlayer;
+                if (tomfooleryPlayer.counter >= tomfooleryPlayer.LIMIT) {
                     ArrayList<Mob> nearbyEligibleMobs = TomfooleryHelper.getNearbyMobs(player, true);
-//                    System.out.println("Nearby mobs eligible to cause tomfoolery: " + nearbyEligibleMobs);
                     if (nearbyEligibleMobs.size() >= TomfooleryHelper.NUM_NEARBY_MOBS) {
-                        boolean anyScallywagSpawned = false;
+                        boolean anyMobsSpawned = false;
 
-                        // shuffled version of the list of spawnable scallywags
-                        // as a result, n UNIQUE scallywags will be spawned
-                        ArrayList<EntityType<?>> scallywagsToSpawn = TomfooleryHelper.getScallywagsToSpawn();
+                        // shuffled version of the spawnableMobs list
+                        // as a result, n UNIQUE mobs will be spawned
+                        ArrayList<EntityType<?>> mobsToSpawn = TomfooleryHelper.getMobsToSpawn();
 
                         for (int i = 0; i < TomfooleryHelper.NUM_MOBS_TO_SUMMON; i++) {
                             try {
-                                EntityType<?> mobType = scallywagsToSpawn.get(i);
-                                if (TomfooleryHelper.spawnScallywag(player, mobType)) anyScallywagSpawned = true;
+                                EntityType<?> mobType = mobsToSpawn.get(i);
+                                if (TomfooleryHelper.spawnMob(player, mobType)) anyMobsSpawned = true;
                             } catch (InvocationTargetException | IllegalAccessException e) {
                                 e.printStackTrace();
                             }
                         }
 
-                        if (anyScallywagSpawned) {
-                            System.out.println("TOMFOOLERY ENSUES!");
+                        if (anyMobsSpawned) {
                             for (Mob mob : nearbyEligibleMobs) {
-                                // nearby eligible mobs no longer become eligible to cause any more tomfoolery
+                                // nearby eligible mobs no longer become eligible to summon any more mobs
                                 TomfooleryHelper.revokeEligibility(mob);
                             }
-                            tomfooleryCooldownCounter.resetCounter();
+                            tomfooleryPlayer.resetCounter();
                         }
 
                     }
                 }
-                else tomfooleryCooldownCounter.incrementCounter();
+                else tomfooleryPlayer.incrementCounter();
             });
         }
     }
 
-    // scallywag tick update
+    // mob tick update
     @SubscribeEvent
-    public static void scallywagTick(LivingEvent.LivingUpdateEvent event) {
+    public static void mobTick(LivingEvent.LivingUpdateEvent event) {
         if (event.getEntityLiving() instanceof Mob mob && !mob.level.isClientSide()) {
             LivingEntity target = mob.getTarget();
             if (target != null && !target.isRemoved()) {
-                double distance = mob.distanceTo(target);
-                mob.getCapability(ModCapabilities.TOMFOOLERY_SCALLYWAG_CAPABILITY).ifPresent(iTomfooleryScallywag -> {
-                    TomfooleryScallywag tomfooleryScallywag = (TomfooleryScallywag) iTomfooleryScallywag;
-                    if (tomfooleryScallywag.isScallywag() && distance < 3) {
-                        // a large cloud of dust appears during the tomfoolery
-                        // that is, when the scallywags are fighting the player or each other
-                        TomfooleryHelper.dustCloudBetween(mob, target);
+                mob.getCapability(ModCapabilities.TOMFOOLERY_MOB_CAPABILITY).ifPresent(iTomfooleryMob -> {
+                    TomfooleryMob tomfooleryMob = (TomfooleryMob) iTomfooleryMob;
+                    target.getCapability(ModCapabilities.TOMFOOLERY_LIVING_ENTITY_CAPABILITY).ifPresent(iTomfooleryLivingEntity -> {
+                        TomfooleryLivingEntity tomfooleryLivingEntity = (TomfooleryLivingEntity) iTomfooleryLivingEntity;
+                        if (mob.distanceTo(target) < tomfooleryLivingEntity.TOMFOOLERY_RANGE) {
+                            // see line 197
+                            if (tomfooleryLivingEntity.numAttackers < tomfooleryLivingEntity.MAX_NUM_ATTACKERS || tomfooleryLivingEntity.alreadyTargetedByMob(mob)) {
+                                if (!tomfooleryLivingEntity.alreadyTargetedByMob(mob)) {
+                                    tomfooleryLivingEntity.attackers.add(mob);
+                                    tomfooleryLivingEntity.numAttackers++;
+                                }
 
-                        tomfooleryScallywag.incrementCounter();
-                        if (tomfooleryScallywag.counter >= tomfooleryScallywag.limit) {
-                            Utilities.playSound(mob, ModSounds.TOMFOOLERY.get(), 2.5F);
-                            tomfooleryScallywag.resetCounter();
-                            tomfooleryScallywag.rollLimit();
+                                // a large cloud of dust appears during tomfoolery
+                                // that is, when mobs are fighting the player or other living entities
+                                TomfooleryHelper.dustCloudBetween(mob, target);
+
+                                // goofy noises
+                                tomfooleryMob.incrementCounter();
+                                if (tomfooleryMob.counter >= tomfooleryMob.limit) {
+                                    Utilities.playSound(mob, ModSounds.TOMFOOLERY.get(), 2.5F);
+                                    tomfooleryMob.resetCounter();
+                                    tomfooleryMob.rollLimit();
+                                }
+                            }
                         }
-                    }
+                    });
                 });
             }
+        }
+    }
+
+    // For each living entity, a limit is placed on how many attacking mobs can make dust clouds and goofy noises.
+    // This is to prevent lag. Imagine that there is no limit, and you are in an enderman farm!
+    @SubscribeEvent
+    public static void livingEntityTick(LivingEvent.LivingUpdateEvent event) {
+        LivingEntity livingEntity = event.getEntityLiving();
+        if (!livingEntity.level.isClientSide()) {
+            livingEntity.getCapability(ModCapabilities.TOMFOOLERY_LIVING_ENTITY_CAPABILITY).ifPresent(iTomfooleryLivingEntity -> {
+                TomfooleryLivingEntity tomfooleryLivingEntity = (TomfooleryLivingEntity) iTomfooleryLivingEntity;
+                // using Iterator to avoid ConcurrentModificationExceptions
+                Iterator<Mob> it = tomfooleryLivingEntity.attackers.iterator();
+                while (it.hasNext()) {
+                    Mob attacker = it.next();
+                    if (attacker.isRemoved()
+                            || attacker.getTarget() == null
+                            || !attacker.getTarget().is(livingEntity)
+                            || attacker.distanceTo(livingEntity) >= tomfooleryLivingEntity.TOMFOOLERY_RANGE) {
+                        it.remove();
+                        tomfooleryLivingEntity.numAttackers--;
+                    }
+                }
+            });
         }
     }
 
@@ -173,9 +213,9 @@ public class TomfooleryEvents {
     @SubscribeEvent
     public static void slimeMagmaCubeDamage(LivingEvent.LivingUpdateEvent event) {
         if (event.getEntityLiving() instanceof Slime slime && !slime.level.isClientSide()) { // MagmaCube extends Slime
-            slime.getCapability(ModCapabilities.TOMFOOLERY_SCALLYWAG_CAPABILITY).ifPresent(iTomfooleryScallywag -> {
-                TomfooleryScallywag tomfooleryScallywag = (TomfooleryScallywag) iTomfooleryScallywag;
-                if (tomfooleryScallywag.isScallywag()) {
+            slime.getCapability(ModCapabilities.TOMFOOLERY_MOB_CAPABILITY).ifPresent(iTomfooleryMob -> {
+                TomfooleryMob tomfooleryMob = (TomfooleryMob) iTomfooleryMob;
+                if (tomfooleryMob.isSummoned()) {
                     // 3*.6 - 0.5202*(2^(3-1))/2
                     AABB aabb = slime.getBoundingBox();
                     int size = slime.getSize();
