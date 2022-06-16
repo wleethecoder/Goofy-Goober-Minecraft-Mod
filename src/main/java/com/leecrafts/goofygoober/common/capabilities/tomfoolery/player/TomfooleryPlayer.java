@@ -6,8 +6,8 @@ public class TomfooleryPlayer implements ITomfooleryPlayer {
     public final int LIMIT;
 
     public TomfooleryPlayer() {
-//        this.LIMIT = 2400; // 2 minutes
-        this.LIMIT = 300; // 15 seconds
+        this.LIMIT = 2400; // 2 minutes
+//        this.LIMIT = 300; // 15 seconds
         this.counter = LIMIT;
     }
 
