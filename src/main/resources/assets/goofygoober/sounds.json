@@ -2,10 +2,11 @@
   "scream": {
     "subtitle": "sounds.goofygoober.scream",
     "sounds": [
-      "goofygoober:scream/tom_scream",
-      "goofygoober:scream/goofy_scream",
       "goofygoober:scream/flight_scream",
-      "goofygoober:scream/keemstar_scream"
+      "goofygoober:scream/goofy_scream",
+      "goofygoober:scream/keemstar_scream",
+      "goofygoober:scream/tom_scream",
+      "goofygoober:scream/tom_scream2"
     ]
   },
   "mob_skedaddle": {
