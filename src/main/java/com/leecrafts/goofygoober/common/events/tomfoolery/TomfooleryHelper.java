@@ -185,18 +185,21 @@ public class TomfooleryHelper {
         });
     }
 
-    public static void dustCloudBetween(LivingEntity entity1, LivingEntity entity2) {
-        double x = (entity1.getX() + entity2.getX()) / 2;
-        double y = (entity1.getY() + entity2.getY()) / 2 + 1;
-        double z = (entity1.getZ() + entity2.getZ()) / 2;
+    public static void dustCloudBetween(Mob attacker, LivingEntity target) {
+        // makes it somewhat less visually disorienting to players
+        int particleCount = target instanceof Player ? 1 : 4;
 
-        ServerLevel level = (ServerLevel) entity1.level;
+        double x = (attacker.getX() + target.getX()) / 2;
+        double y = (attacker.getY() + target.getY()) / 2 + 1;
+        double z = (attacker.getZ() + target.getZ()) / 2;
+
+        ServerLevel level = (ServerLevel) attacker.level;
         level.sendParticles(ParticleTypes.CAMPFIRE_COSY_SMOKE, x, y, z,
-                4, 1.25, 1, 1.25, 0);
+                particleCount, 1.25, 1, 1.25, 0);
         level.sendParticles(ParticleTypes.CRIT, x, y, z,
-                4, 1.25, 1, 1.25, 0.7);
+                particleCount, 1.25, 1, 1.25, 0.7);
         level.sendParticles(ParticleTypes.ELECTRIC_SPARK, x, y, z,
-                4, 1.25, 1, 1.25, 1);
+                particleCount, 1.25, 1, 1.25, 1);
     }
 
     // returns if this is the type of mob that the player must be near in order to cause tomfoolery
