@@ -1,339 +1,235 @@
-[16Jun2022 17:47:54.526] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgeclientuserdev, --version, MOD_DEV, --assetIndex, 1.18, --assetsDir, /Users/wlee2019/.gradle/caches/forge_gradle/assets, --gameDir, ., --fml.forgeVersion, 40.0.31, --fml.mcVersion, 1.18.2, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20220228.144236]
-[16Jun2022 17:47:54.533] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 9.1.3+9.1.3+main.9b69c82a starting: java version 17.0.2 by Oracle Corporation
-[16Jun2022 17:47:55.177] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/Users/wlee2019/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar%2322!/ Service=ModLauncher Env=CLIENT
-[16Jun2022 17:48:05.970] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgeclientuserdev' with arguments [--version, MOD_DEV, --gameDir, ., --assetsDir, /Users/wlee2019/.gradle/caches/forge_gradle/assets, --assetIndex, 1.18]
-[16Jun2022 17:48:38.748] [Render thread/WARN] [net.minecraft.server.packs.VanillaPackResources/]: Assets URL 'union:/Users/wlee2019/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.18.2-40.0.31_mapped_parchment_2022.03.13-1.18.2/forge-1.18.2-40.0.31_mapped_parchment_2022.03.13-1.18.2-recomp.jar%2375!/assets/.mcassetsroot' uses unexpected schema
-[16Jun2022 17:48:38.749] [Render thread/WARN] [net.minecraft.server.packs.VanillaPackResources/]: Assets URL 'union:/Users/wlee2019/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.18.2-40.0.31_mapped_parchment_2022.03.13-1.18.2/forge-1.18.2-40.0.31_mapped_parchment_2022.03.13-1.18.2-recomp.jar%2375!/data/.mcassetsroot' uses unexpected schema
-[16Jun2022 17:48:38.853] [Render thread/INFO] [com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService/]: Environment: authHost='https://authserver.moja[16Jun2022 17:49:36.949] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 40.0.31, for MC 1.18.2 with MCP 20220228.144236
-[16Jun2022 17:49:36.957] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v40.0.31 Initialized
-[16Jun2022 17:49:43.066] [modloading-worker-0/INFO] [com.leecrafts.goofygoober.GoofyGoober/]: HELLO FROM PREINIT
-[16Jun2022 17:49:43.068] [modloading-worker-0/INFO] [com.leecrafts.goofygoober.GoofyGoober/]: DIRT BLOCK >> minecraft:dirt
-[16Jun2022 17:49:45.078] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [forge] Starting version check at https://files.minecraftforge.net/net/minecraftforge/forge/promotions_slim.json
-[16Jun2022 17:49:51.585] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [forge] Found status: OUTDATED Current: 40.0.31 Target: 40.1.0
-[16Jun2022 17:50:00.572] [main/INFO] [com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService/]: Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
-[16Jun2022 17:50:02.484] [main/ERROR] [net.minecraftforge.registries.GameData/REGISTRIES]: Unidentified mapping from registry minecraft:item
-	goofygoober:music_disc_nerd_emoji_beat_by_keyboard: 1102
-
-[16Jun2022 17:50:02.486] [main/ERROR] [net.minecraftforge.registries.GameData/REGISTRIES]: Unidentified mapping from registry minecraft:sound_event
-	goofygoober:nerd_emoj[16Jun2022 17:51:13.326] [Render thread/INFO] [com.mojang.blaze3d.audio.Library/]: OpenAL initialized on device CoreAudio Default
-[16Jun2022 17:51:13.341] [Render thread/INFO] [net.minecraft.client.sounds.SoundEngine/SOUNDS]: Sound engine started
-[16Jun2022 17:51:14.354] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 1024x512x4 minecraft:textures/atlas/blocks.png-atlas
-[16Jun2022 17:51:14.432] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x128x4 minecraft:textures/atlas/signs.png-atlas
-[16Jun2022 17:51:14.434] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x512x4 minecraft:textures/atlas/banner_patterns.png-atlas
-[16Jun2022 17:51:14.437] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x512x4 minecraft:textures/atlas/shield_patterns.png-atlas
-[16Jun2022 17:51:14.439] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x4 minecraft:textures/atlas/chest.png-atlas
-[16Jun2022 17:51:14.441] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x4 minecraft:textures/atlas/beds.png-atlas
-[16Jun2022 17:51:14.443] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x4 minecraft:textures/atlas/shulker_boxes.png-atlas
-[16Jun2022 17:51:20.419] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x0 minecraft:textures/atlas/particles.png-atlas
-[16Jun2022 17:51:20.423] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x0 minecraft:textures/atlas/paintings.png-atlas
-[16Jun2022 17:51:20.426] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 128x128x0 minecraft:textures/atlas/mob_effects.png-atlas
-[16Jun2022 17:51:26.007] [Realms Notification Availability checker #1/INFO] [com.mojang.realmsclient.client.RealmsClient/]: Could not authorize you against Realms server: Invalid session id
-[16Jun2022 17:55:26.384] [Render thread/INFO] [net.minecraft.client.gui.screens.ConnectScreen/]: Connecting to localhost, 25565
-[16Jun2022 17:55:44.591] [Netty Client IO #0/INFO] [net.minecraftforge.network.NetworkHooks/]: Connected to a modded server.
-[16Jun2022 17:55:58.760] [Render thread/INFO] [com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService/]: Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
-[16Jun2022 17:56:05.469] [Render thread/INFO] [net.minecraft.advancements.AdvancementList/]: Loaded 1141 advancements
-[16Jun2022 17:56:05.495] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] Lee_Crafts joined the game
-[16Jun2022 17:56:16.532] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] Lee_Crafts left the game
-[16Jun2022 17:56:41.904] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] Lee_Crafts joined the game
-[16Jun2022 17:57:00.689] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [Debug]: Pause on lost focus: disabled
-[16Jun2022 17:57:55.238] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] Set own game mode to Survival Mode
-[16Jun2022 17:57:56.256] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Summoned new Skeleton]
-[16Jun2022 17:57:56.261] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Summoned new Zombie]
-[16Jun2022 17:57:56.656] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Summoned new Zombie Villager]
-[16Jun2022 17:59:09.823] [Render thread/INFO] [net.minecraft.client.gui.screens.ConnectScreen/]: Connecting to localhost, 25565
-[16Jun2022 17:59:10.235] [Server Connector #2/ERROR] [net.minecraft.client.gui.screens.ConnectScreen/]: Couldn't connect to server
-io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: localhost/127.0.0.1:25565
-Caused by: java.net.ConnectException: Connection refused
-	at sun.nio.ch.Net.pollConnect(Native Method) ~[?:?]
-	at sun.nio.ch.Net.pollConnectNow(Net.java:672) ~[?:?]
-	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:946) ~[?:?]
-	at io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:330) ~[netty-all-4.1.68.Final.jar%2332!/:4.1.68.Final]
-	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:334) ~[netty-all-4.1.68.Final.jar%2332!/:4.1.68.Final]
-	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:707) ~[netty-all-4.1.68.Final.jar%2332!/:4.1.68.Final]
-	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:655) ~[netty-all-4.1.68.Final.jar%2332!/:4.1.68.Final]
-	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:581) ~[netty-all-4.1.68.Final.jar%2332!/:4.1.68.Final]
-	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493) ~[netty-all-4.1.68.Final.jar%2332!/:4.1.68.Final]
-	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:986) ~[netty-all-4.1.68.Final.jar%2332!/:4.1.68.Final]
-	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-all-4.1.68.Final.jar%2332!/:4.1.68.Final]
-	at java.lang.Thread.run(Thread.java:833) ~[?:?]
-[16Jun2022 17:59:18.668] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Stopping!
-/]: Preparing spawn area: 0%
-[16Jun2022 17:52:58.147] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:52:58.311] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:52:58.451] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:52:58.672] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:52:58.884] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:52:59.173] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:52:59.529] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:00.189] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:00.471] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:00.890] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:01.160] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:01.377] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:01.638] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:01.852] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:02.294] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:02.553] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:02.734] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:02.919] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:03.140] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:03.307] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:03.459] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:03.672] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:03.921] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:04.218] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:04.461] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:04.833] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:05.308] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:05.925] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:06.275] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:06.544] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:06.721] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:07.064] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:07.267] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:07.542] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:07.763] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:07.933] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:08.209] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:08.358] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:08.492] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:08.828] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:09.008] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:09.190] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:09.472] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:09.776] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:10.287] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:10.573] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:11.032] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:11.254] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:11.661] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:11.848] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:12.075] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:12.239] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:12.468] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:12.655] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:12.926] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:13.249] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:13.366] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:13.621] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:13.766] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:14.144] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:14.280] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:14.382] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:14.771] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:14.882] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:15.197] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:15.351] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:15.505] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:15.741] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:15.982] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:16.128] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:16.273] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:16.773] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:16.919] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:17.128] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:17.379] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:17.602] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:17.852] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:18.028] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:18.638] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:18.799] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:19.035] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:19.480] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:19.660] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:19.862] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:20.204] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:20.356] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:20.478] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:20.660] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:20.974] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:21.042] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:21.197] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:21.261] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:21.427] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:21.446] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:21.655] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:21.671] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:21.851] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:21.867] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:22.236] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:22.521] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:22.972] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:23.491] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:23.983] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:24.477] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:25.024] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:25.478] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:25.993] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:26.571] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:27.096] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:27.653] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:28.218] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:28.480] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:29.117] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:29.487] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:30.204] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:30.604] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:30.979] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:31.489] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:31.983] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:32.564] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:33.056] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:33.531] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:34.094] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:34.489] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:34.984] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:35.508] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:36.166] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:36.514] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:37.043] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:37.572] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:37.972] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:38.484] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:38.975] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:39.650] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:40.018] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:40.543] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:41.058] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:41.599] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:42.286] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:42.544] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:43.017] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:43.502] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:44.055] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:44.493] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:45.126] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:45.530] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:46.121] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:46.477] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:46.973] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:47.490] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:48.046] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:48.494] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:48.994] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:49.502] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:50.059] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:50.640] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:50.974] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:51.481] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:51.972] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:52.612] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:53.106] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:53.509] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:54.073] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:54.555] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:55.057] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:55.473] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:55.972] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:56.473] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:57.037] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:57.712] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:57.978] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:58.490] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:59.142] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:53:59.573] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:54:00.174] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:54:00.571] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:54:01.117] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
-[16Jun2022 17:54:01.476] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 1%
-[16Jun2022 17:54:02.232] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 1%
-[16Jun2022 17:54:02.474] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 1%
-[16Jun2022 17:54:03.148] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 1%
-[16Jun2022 17:54:03.472] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 1%
-[16Jun2022 17:54:03.996] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 2%
-[16Jun2022 17:54:04.858] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 2%
-[16Jun2022 17:54:04.976] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 2%
-[16Jun2022 17:54:05.556] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 3%
-[16Jun2022 17:54:05.986] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 4%
-[16Jun2022 17:54:06.474] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 4%
-[16Jun2022 17:54:07.039] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 4%
-[16Jun2022 17:54:07.480] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 5%
-[16Jun2022 17:54:08.000] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 5%
-[16Jun2022 17:54:08.481] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 5%
-[16Jun2022 17:54:09.068] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 5%
-[16Jun2022 17:54:09.479] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 6%
-[16Jun2022 17:54:09.992] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 6%
-[16Jun2022 17:54:10.494] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 6%
-[16Jun2022 17:54:11.038] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 6%
-[16Jun2022 17:54:11.486] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 9%
-[16Jun2022 17:54:12.046] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 11%
-[16Jun2022 17:54:12.642] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 11%
-[16Jun2022 17:54:12.985] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 11%
-[16Jun2022 17:54:13.474] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 11%
-[16Jun2022 17:54:13.974] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 11%
-[16Jun2022 17:54:14.475] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 11%
-[16Jun2022 17:54:15.091] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 11%
-[16Jun2022 17:54:15.558] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 11%
-[16Jun2022 17:54:16.068] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 11%
-[16Jun2022 17:54:16.535] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 11%
-[16Jun2022 17:54:17.068] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 11%
-[16Jun2022 17:54:17.537] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 11%
-[16Jun2022 17:54:17.973] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 11%
-[16Jun2022 17:54:18.472] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 11%
-[16Jun2022 17:54:19.034] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 11%
-[16Jun2022 17:54:19.507] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 11%
-[16Jun2022 17:54:19.983] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 12%
-[16Jun2022 17:54:20.508] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 12%
-[16Jun2022 17:54:20.972] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 13%
-[16Jun2022 17:54:21.478] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 13%
-[16Jun2022 17:54:21.977] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 17%
-[16Jun2022 17:54:22.476] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 20%
-[16Jun2022 17:54:22.983] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 22%
-[16Jun2022 17:54:23.472] [Worker-Main-5/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 26%
-[16Jun2022 17:54:24.111] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 28%
-[16Jun2022 17:54:24.473] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 31%
-[16Jun2022 17:54:25.217] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 34%
-[16Jun2022 17:54:25.516] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 36%
-[16Jun2022 17:54:25.985] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 36%
-[16Jun2022 17:54:26.472] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 42%
-[16Jun2022 17:54:26.972] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 42%
-[16Jun2022 17:54:27.480] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 42%
-[16Jun2022 17:54:27.972] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 51%
-[16Jun2022 17:54:28.570] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 51%
-[16Jun2022 17:54:28.984] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 67%
-[16Jun2022 17:54:29.481] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 67%
-[16Jun2022 17:54:30.111] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 67%
-[16Jun2022 17:54:30.866] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 82%
-[16Jun2022 17:54:30.986] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 82%
-[16Jun2022 17:54:32.155] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 82%
-[16Jun2022 17:54:32.156] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 82%
-[16Jun2022 17:54:33.177] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 89%
-[16Jun2022 17:54:33.177] [Worker-Main-6/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 89%
-[16Jun2022 17:54:41.269] [Server thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Time elapsed: 130298 ms
-[16Jun2022 17:54:41.271] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Done (134.167s)! For help, type "help"
-[16Jun2022 17:54:41.465] [Server thread/INFO] [net.minecraftforge.gametest.ForgeGameTestHooks/]: Enabled Gametest Namespaces: [goofygoober]
-[16Jun2022 17:54:41.653] [Server thread/INFO] [net.minecraftforge.server.permission.PermissionAPI/]: Successfully initialized permission handler forge:default_handler
-[16Jun2022 17:54:44.056] [Server thread/WARN] [net.minecraft.server.MinecraftServer/]: Can't keep up! Is the server overloaded? Running 2050ms or 41 ticks behind
-[16Jun2022 17:55:45.046] [Server thread/WARN] [net.minecraft.stats.ServerStatsCounter/]: Invalid statistic in ./world/stats/380df991-f603-344c-a090-369bad2a924a.json: Don't know what goofygoober:music_disc_nerd_emoji_beat_by_keyboard is
-[16Jun2022 17:55:45.048] [Server thread/WARN] [net.minecraft.stats.ServerStatsCounter/]: Invalid statistic in ./world/stats/380df991-f603-344c-a090-369bad2a924a.json: Don't know what goofygoober:music_disc_nerd_emoji_beat_by_keyboard is
-[16Jun2022 17:55:45.053] [Server thread/WARN] [net.minecraft.stats.ServerStatsCounter/]: Invalid statistic in ./world/stats/380df991-f603-344c-a090-369bad2a924a.json: Don't know what goofygoober:music_disc_nerd_emoji_beat_by_keyboard is
-[16Jun2022 17:55:45.818] [Server thread/INFO] [net.minecraftforge.common.AdvancementLoadFix/]: Using new advancement loading for net.minecraft.server.PlayerAdvancements@62152f43
-[16Jun2022 17:55:46.068] [Server thread/INFO] [net.minecraft.server.players.PlayerList/]: Dev[/127.0.0.1:60137] logged in with entity id 90 at (-237.15955324027118, 63.0, -566.106441924174)
-[16Jun2022 17:55:46.804] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Dev joined the game
-[16Jun2022 17:56:00.834] [Server thread/WARN] [net.minecraft.server.MinecraftServer/]: Can't keep up! Is the server overloaded? Running 16227ms or 324 ticks behind
-[16Jun2022 17:56:02.119] [Server thread/WARN] [net.minecraft.stats.ServerStatsCounter/]: Invalid statistic in ./world/stats/1b9b2f85-e461-3012-92b4-852824697c04.json: Don't know what goofygoober:music_disc_nerd_emoji_beat_by_keyboard is
-[16Jun2022 17:56:02.150] [Server thread/WARN] [net.minecraft.stats.ServerStatsCounter/]: Invalid statistic in ./world/stats/1b9b2f85-e461-3012-92b4-852824697c04.json: Don't know what goofygoober:music_disc_nerd_emoji_beat_by_keyboard is
-[16Jun2022 17:56:02.846] [Server thread/INFO] [net.minecraftforge.common.AdvancementLoadFix/]: Using new advancement loading for net.minecraft.server.PlayerAdvancements@e80c8ed
-[16Jun2022 17:56:03.083] [Server thread/INFO] [net.minecraft.server.players.PlayerList/]: Lee_Crafts[/127.0.0.1:60136] logged in with entity id 91 at (-234.21014388415244, 63.0, -570.4333864825119)
-[16Jun2022 17:56:03.119] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Lee_Crafts joined the game
-[16Jun2022 17:56:16.403] [Server thread/INFO] [net.minecraft.server.network.ServerGamePacketListenerImpl/]: Lee_Crafts lost connection: Timed out
-[16Jun2022 17:56:16.405] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Lee_Crafts left the game
-[16Jun2022 17:56:41.457] [Server thread/INFO] [net.minecraftforge.common.AdvancementLoadFix/]: Using new advancement loading for net.minecraft.server.PlayerAdvancements@7e19018b
-[16Jun2022 17:56:41.677] [Server thread/INFO] [net.minecraft.server.players.PlayerList/]: Lee_Crafts[/127.0.0.1:60148] logged in with entity id 154 at (-234.21014388415244, 63.0, -570.4333864825119)
-[16Jun2022 17:56:41.815] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Lee_Crafts joined the game
-[16Jun2022 17:56:48.157] [Server thread/WARN] [net.minecraft.server.MinecraftServer/]: Can't keep up! Is the server overloaded? Running 32350ms or 647 ticks behind
-[16Jun2022 17:57:55.162] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: [Dev: Set own game mode to Survival Mode]
-[16Jun2022 17:57:56.179] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: [@: Summoned new Skeleton]
-[16Jun2022 17:57:56.203] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: [@: Summoned new Zombie]
-[16Jun2022 17:57:56.565] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: [@: Summoned new Zombie Villager]
-[16Jun2022 17:58:02.915] [Server Watchdog/ERROR] [net.minecraft.server.dedicated.ServerWatchdog/FATAL]: A single server tick took 60.01 seconds (should be max 0.05)
-[16Jun2022 17:58:02.917] [Server Watchdog/ERROR] [net.minecraft.server.dedicated.ServerWatchdog/FATAL]: Considering it to be crashed, server will forcibly shutdown.
-[16Jun2022 17:58:19.855] [Server thread/WARN] [net.minecraft.server.MinecraftServer/]: Can't keep up! Is the server overloaded? Running 76697ms or 1533 ticks behind
-[16Jun2022 17:58:24.851] [Server Watchdog/FATAL] [net.minecraftforge.common.ForgeMod/]: Preparing crash report with UUID 78f019e1-e7ae-4c38-8ed0-339c8a78ec7f
-[16Jun2022 17:58:25.183] [Server Watchdog/FATAL] [net.minecraftforge.common.ForgeMod/]: Preparing crash report with UUID 8aa6f0db-5359-4ae9-b11e-3601dc96483d
-[16Jun2022 17:58:25.184] [Server Watchdog/ERROR] [net.minecraft.server.dedicated.ServerWatchdog/]: This crash report has been saved to: /Users/wlee2019/Downloads/goofy goober/run/./crash-reports/crash-2022-06-16_17.58.24-server.txt
-[16Jun2022 17:58:25.428] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Stopping server
-[16Jun2022 17:58:25.433] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving players
-[16Jun2022 17:58:26.975] [Server thread/INFO] [net.minecraft.server.network.ServerGamePacketListenerImpl/]: Dev lost connection: Server closed
-[16Jun2022 17:58:26.976] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Dev left the game
-[16Jun2022 17:58:27.598] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving worlds
+[17Jun2022 22:46:28.060] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgeclientuserdev, --version, MOD_DEV, --assetIndex, 1.18, --assetsDir, /Users/wlee2019/.gradle/caches/forge_gradle/assets, --gameDir, ., --fml.forgeVersion, 40.0.31, --fml.mcVersion, 1.18.2, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20220228.144236]
+[17Jun2022 22:46:28.071] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 9.1.3+9.1.3+main.9b69c82a starting: java version 17.0.2 by Oracle Corporation
+[17Jun2022 22:46:28.469] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/Users/wlee2019/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar%2322!/ Service=ModLauncher Env=CLIENT
+[17Jun2022 22:46:35.216] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgeclientuserdev' with arguments [--version, MOD_DEV, --gameDir, ., --assetsDir, /Users/wlee2019/.gradle/caches/forge_gradle/assets, --assetIndex, 1.18]
+[17Jun2022 22:46:49.732] [Render thread/WARN] [net.minecraft.server.packs.VanillaPackResources/]: Assets URL 'union:/Users/wlee2019/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.18.2-40.0.31_mapped_parchment_2022.03.13-1.18.2/forge-1.18.2-40.0.31_mapped_parchment_2022.03.13-1.18.2-recomp.jar%2375!/assets/.mcassetsroot' uses unexpected schema
+[17Jun2022 22:46:49.734] [Render thread/WARN] [net.minecraft.server.packs.VanillaPackResources/]: Assets URL 'union:/Users/wlee2019/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.18.2-40.0.31_mapped_parchment_2022.03.13-1.18.2/forge-1.18.2-40.0.31_mapped_parchment_2022.03.13-1.18.2-recomp.jar%2375!/data/.mcassetsroot' uses unexpected schema
+[17Jun2022 22:46:49.761] [Render thread/INFO] [com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService/]: Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
+[17Jun2022 22:46:49.772] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Setting user: Dev
+[17Jun2022 22:46:50.199] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Backend library: LWJGL version 3.2.1 SNAPSHOT
+[17Jun2022 22:46:51.647] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 40.0.31, for MC 1.18.2 with MCP 20220228.144236
+[17Jun2022 22:46:51.651] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v40.0.31 Initialized
+[17Jun2022 22:46:55.628] [Render thread/INFO] [net.minecraftforge.gametest.ForgeGameTestHooks/]: Enabled Gametest Namespaces: [goofygoober]
+[17Jun2022 22:46:56.537] [Render thread/INFO] [net.minecraft.server.packs.resources.ReloadableResourceManager/]: Reloading ResourceManager: Default, Mod Resources
+[17Jun2022 22:46:56.570] [Worker-Main-5/INFO] [com.leecrafts.goofygoober.GoofyGoober/]: HELLO FROM PREINIT
+[17Jun2022 22:46:56.571] [Worker-Main-5/INFO] [com.leecrafts.goofygoober.GoofyGoober/]: DIRT BLOCK >> minecraft:dirt
+[17Jun2022 22:46:57.077] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [forge] Starting version check at https://files.minecraftforge.net/net/minecraftforge/forge/promotions_slim.json
+[17Jun2022 22:46:58.564] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [forge] Found status: OUTDATED Current: 40.0.31 Target: 40.1.0
+[17Jun2022 22:48:29.274] [Render thread/INFO] [com.mojang.blaze3d.audio.Library/]: OpenAL initialized on device CoreAudio Default
+[17Jun2022 22:48:29.286] [Render thread/INFO] [net.minecraft.client.sounds.SoundEngine/SOUNDS]: Sound engine started
+[17Jun2022 22:48:30.539] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 1024x512x4 minecraft:textures/atlas/blocks.png-atlas
+[17Jun2022 22:48:30.559] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x128x4 minecraft:textures/atlas/signs.png-atlas
+[17Jun2022 22:48:30.561] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x512x4 minecraft:textures/atlas/banner_patterns.png-atlas
+[17Jun2022 22:48:30.564] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x512x4 minecraft:textures/atlas/shield_patterns.png-atlas
+[17Jun2022 22:48:30.567] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x4 minecraft:textures/atlas/chest.png-atlas
+[17Jun2022 22:48:30.568] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x4 minecraft:textures/atlas/beds.png-atlas
+[17Jun2022 22:48:30.570] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x4 minecraft:textures/atlas/shulker_boxes.png-atlas
+[17Jun2022 22:48:35.183] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x0 minecraft:textures/atlas/particles.png-atlas
+[17Jun2022 22:48:35.187] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x0 minecraft:textures/atlas/paintings.png-atlas
+[17Jun2022 22:48:35.188] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 128x128x0 minecraft:textures/atlas/mob_effects.png-atlas
+[17Jun2022 22:48:36.374] [Realms Notification Availability checker #1/INFO] [com.mojang.realmsclient.client.RealmsClient/]: Could not authorize you against Realms server: Invalid session id
+[17Jun2022 22:48:44.777] [Render thread/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, location] and [teleport, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
+[17Jun2022 22:48:44.781] [Render thread/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, location] and [teleport, targets] with inputs: [0.1 -0.5 .9, 0 0 0]
+[17Jun2022 22:48:44.796] [Render thread/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, destination] and [teleport, targets] with inputs: [Player, 0123, @e, dd12be42-52a9-4a91-a8a1-11c01849e498]
+[17Jun2022 22:48:44.799] [Render thread/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, targets] and [teleport, destination] with inputs: [Player, 0123, dd12be42-52a9-4a91-a8a1-11c01849e498]
+[17Jun2022 22:48:44.813] [Render thread/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, targets, location] and [teleport, targets, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
+[17Jun2022 22:48:51.937] [Render thread/INFO] [net.minecraft.world.item.crafting.RecipeManager/]: Loaded 7 recipes
+[17Jun2022 22:48:56.144] [Render thread/INFO] [net.minecraft.advancements.AdvancementList/]: Loaded 1141 advancements
+[17Jun2022 22:48:57.543] [Render thread/INFO] [com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService/]: Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
+[17Jun2022 22:48:57.591] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Starting integrated minecraft server version 1.18.2
+[17Jun2022 22:48:57.592] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Generating keypair
+[17Jun2022 22:48:58.320] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Preparing start region for dimension minecraft:overworld
+[17Jun2022 22:49:03.621] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[17Jun2022 22:49:03.736] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[17Jun2022 22:49:03.737] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[17Jun2022 22:49:03.798] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[17Jun2022 22:49:03.799] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[17Jun2022 22:49:03.859] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[17Jun2022 22:49:03.860] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[17Jun2022 22:49:03.929] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[17Jun2022 22:49:03.929] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[17Jun2022 22:49:04.017] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[17Jun2022 22:49:04.107] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[17Jun2022 22:49:04.171] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[17Jun2022 22:49:04.378] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[17Jun2022 22:49:04.831] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[17Jun2022 22:49:05.336] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[17Jun2022 22:49:05.870] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[17Jun2022 22:49:06.386] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[17Jun2022 22:49:06.857] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[17Jun2022 22:49:07.324] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[17Jun2022 22:49:07.851] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[17Jun2022 22:49:08.373] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[17Jun2022 22:49:08.877] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[17Jun2022 22:49:09.332] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[17Jun2022 22:49:09.830] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[17Jun2022 22:49:10.386] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[17Jun2022 22:49:10.877] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 1%
+[17Jun2022 22:49:11.350] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 2%
+[17Jun2022 22:49:11.889] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 4%
+[17Jun2022 22:49:12.334] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 5%
+[17Jun2022 22:49:12.913] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 7%
+[17Jun2022 22:49:13.382] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 10%
+[17Jun2022 22:49:13.828] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 10%
+[17Jun2022 22:49:14.344] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 12%
+[17Jun2022 22:49:14.828] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 12%
+[17Jun2022 22:49:15.365] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 15%
+[17Jun2022 22:49:15.827] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 20%
+[17Jun2022 22:49:16.352] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 24%
+[17Jun2022 22:49:16.879] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 35%
+[17Jun2022 22:49:17.329] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 42%
+[17Jun2022 22:49:17.856] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 46%
+[17Jun2022 22:49:18.394] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 52%
+[17Jun2022 22:49:18.858] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 59%
+[17Jun2022 22:49:19.342] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 71%
+[17Jun2022 22:49:19.837] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 75%
+[17Jun2022 22:49:20.501] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 91%
+[17Jun2022 22:49:20.930] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 98%
+[17Jun2022 22:49:26.987] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Time elapsed: 28664 ms
+[17Jun2022 22:49:26.988] [Server thread/INFO] [net.minecraftforge.server.permission.PermissionAPI/]: Successfully initialized permission handler forge:default_handler
+[17Jun2022 22:49:27.749] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Changing view distance to 16, from 10
+[17Jun2022 22:49:27.761] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Changing simulation distance to 16, from 0
+[17Jun2022 22:49:30.513] [Netty Local Client IO #0/INFO] [net.minecraftforge.network.NetworkHooks/]: Connected to a modded server.
+[17Jun2022 22:49:31.591] [Server thread/INFO] [net.minecraftforge.common.AdvancementLoadFix/]: Using new advancement loading for net.minecraft.server.PlayerAdvancements@483916ad
+[17Jun2022 22:49:31.649] [Server thread/INFO] [net.minecraft.server.players.PlayerList/]: Dev[local:E:eb652a35] logged in with entity id 6 at (671.6978135776735, 65.05217316664691, 308.53409610477087)
+[17Jun2022 22:49:31.955] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Dev joined the game
+[17Jun2022 22:49:42.576] [Server thread/WARN] [net.minecraft.server.MinecraftServer/]: Can't keep up! Is the server overloaded? Running 12135ms or 242 ticks behind
+[17Jun2022 22:49:42.805] [Render thread/INFO] [net.minecraft.advancements.AdvancementList/]: Loaded 1141 advancements
+[17Jun2022 22:49:47.289] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Saving and pausing game...
+[17Jun2022 22:49:47.685] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[17Jun2022 22:49:54.775] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[17Jun2022 22:49:54.778] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[17Jun2022 22:50:02.571] [Server thread/WARN] [net.minecraft.server.MinecraftServer/]: Can't keep up! Is the server overloaded? Running 5029ms or 100 ticks behind
+[17Jun2022 22:50:02.979] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Summoned new Zombie Villager]
+[17Jun2022 22:50:03.004] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Summoned new Skeleton]
+[17Jun2022 22:50:03.006] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Summoned new Zombie]
+[17Jun2022 22:50:03.021] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Summoned new Zombie Villager]
+[17Jun2022 22:50:03.023] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Summoned new Skeleton]
+[17Jun2022 22:50:03.024] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Summoned new Zombie]
+[17Jun2022 22:50:21.681] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Summoned new Wither Skeleton]
+[17Jun2022 22:50:21.750] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] Summoned new Wither Skeleton
+[17Jun2022 22:50:27.551] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Summoned new Zombified Piglin]
+[17Jun2022 22:50:27.630] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] Summoned new Zombified Piglin
+[17Jun2022 22:50:36.561] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Summoned new Creeper]
+[17Jun2022 22:50:36.620] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Summoned new Creeper]
+[17Jun2022 22:50:42.866] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Summoned new Zombie Villager]
+[17Jun2022 22:50:42.869] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Summoned new Skeleton]
+[17Jun2022 22:50:42.871] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Summoned new Zombie]
+[17Jun2022 22:50:42.923] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Summoned new Zombie Villager]
+[17Jun2022 22:50:42.924] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Summoned new Skeleton]
+[17Jun2022 22:50:42.925] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Summoned new Zombie]
+[17Jun2022 22:50:46.951] [Server thread/WARN] [net.minecraft.server.MinecraftServer/]: Can't keep up! Is the server overloaded? Running 2008ms or 40 ticks behind
+[17Jun2022 22:51:00.739] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Summoned new Zombified Piglin]
+[17Jun2022 22:51:00.766] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] Summoned new Zombified Piglin
+[17Jun2022 22:51:08.907] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Summoned new Zombie]
+[17Jun2022 22:51:08.981] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] Summoned new Zombie
+[17Jun2022 22:51:18.174] [Server thread/WARN] [net.minecraft.server.MinecraftServer/]: Can't keep up! Is the server overloaded? Running 2026ms or 40 ticks behind
+[17Jun2022 22:51:23.053] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Summoned new Zombie Villager]
+[17Jun2022 22:51:23.081] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Summoned new Skeleton]
+[17Jun2022 22:51:23.088] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Summoned new Zombie]
+[17Jun2022 22:51:23.090] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Summoned new Zombie Villager]
+[17Jun2022 22:51:23.092] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Summoned new Skeleton]
+[17Jun2022 22:51:23.092] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Summoned new Zombie]
+[17Jun2022 22:51:24.838] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Saving and pausing game...
+[17Jun2022 22:51:25.075] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[17Jun2022 22:51:25.971] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[17Jun2022 22:51:25.978] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[17Jun2022 22:51:27.530] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Saving and pausing game...
+[17Jun2022 22:51:27.740] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[17Jun2022 22:51:28.296] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[17Jun2022 22:51:28.298] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[17Jun2022 22:51:28.830] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Saving and pausing game...
+[17Jun2022 22:51:29.038] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[17Jun2022 22:51:29.145] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[17Jun2022 22:51:29.178] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[17Jun2022 22:51:30.905] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Saving and pausing game...
+[17Jun2022 22:51:31.109] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[17Jun2022 22:51:31.155] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[17Jun2022 22:51:31.156] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[17Jun2022 22:51:47.306] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Summoned new Creeper]
+[17Jun2022 22:51:47.363] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Summoned new Creeper]
+[17Jun2022 22:51:52.026] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Summoned new Creeper]
+[17Jun2022 22:51:52.122] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Summoned new Creeper]
+[17Jun2022 22:51:54.503] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Summoned new Creeper]
+[17Jun2022 22:51:54.591] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Summoned new Creeper]
+[17Jun2022 22:52:11.628] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Saving and pausing game...
+[17Jun2022 22:52:11.791] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[17Jun2022 22:52:11.831] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[17Jun2022 22:52:11.838] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[17Jun2022 22:52:15.189] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Summoned new Skeleton]
+[17Jun2022 22:52:15.232] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] Summoned new Skeleton
+[17Jun2022 22:52:15.385] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Summoned new Skeleton]
+[17Jun2022 22:52:15.401] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] Summoned new Skeleton
+[17Jun2022 22:52:16.469] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Summoned new Skeleton]
+[17Jun2022 22:52:16.577] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] Summoned new Skeleton
+[17Jun2022 22:52:28.315] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] No entity was found
+[17Jun2022 22:52:42.072] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Summoned new Skeleton]
+[17Jun2022 22:52:42.163] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] Summoned new Skeleton
+[17Jun2022 22:52:58.232] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Summoned new Skeleton]
+[17Jun2022 22:52:58.235] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] Summoned new Skeleton
+[17Jun2022 22:52:58.769] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Summoned new Skeleton]
+[17Jun2022 22:52:58.773] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] Summoned new Skeleton
+[17Jun2022 22:52:59.230] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Summoned new Skeleton]
+[17Jun2022 22:52:59.272] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] Summoned new Skeleton
+[17Jun2022 22:53:09.156] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Summoned new Creeper]
+[17Jun2022 22:53:09.375] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Summoned new Creeper]
+[17Jun2022 22:53:10.696] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Summoned new Creeper]
+[17Jun2022 22:53:10.740] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Summoned new Creeper]
+[17Jun2022 22:53:12.300] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Summoned new Creeper]
+[17Jun2022 22:53:12.391] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Summoned new Creeper]
+[17Jun2022 22:53:15.823] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] Unknown or incomplete command, see below for error
+[17Jun2022 22:53:15.824] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] /<--[HERE]
+[17Jun2022 22:53:17.677] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Summoned new Skeleton]
+[17Jun2022 22:53:17.679] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] Summoned new Skeleton
+[17Jun2022 22:53:18.063] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Summoned new Skeleton]
+[17Jun2022 22:53:18.079] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] Summoned new Skeleton
+[17Jun2022 22:53:18.432] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Summoned new Skeleton]
+[17Jun2022 22:53:18.445] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] Summoned new Skeleton
+[17Jun2022 22:53:44.028] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Summoned new Skeleton]
+[17Jun2022 22:53:44.031] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] Summoned new Skeleton
+[17Jun2022 22:54:17.824] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Summoned new Zombified Piglin]
+[17Jun2022 22:54:17.829] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] Summoned new Zombified Piglin
+[17Jun2022 22:54:23.480] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Summoned new Wither Skeleton]
+[17Jun2022 22:54:23.495] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] Summoned new Wither Skeleton
+[17Jun2022 22:54:31.635] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Summoned new Wither]
+[17Jun2022 22:54:31.642] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] Summoned new Wither
+[17Jun2022 22:54:42.320] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Summoned new Enderman]
+[17Jun2022 22:54:42.323] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] Summoned new Enderman
+[17Jun2022 22:54:49.839] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Summoned new Polar Bear]
+[17Jun2022 22:54:49.865] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] Summoned new Polar Bear
+[17Jun2022 22:55:10.427] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Set own game mode to Survival Mode]
+[17Jun2022 22:55:10.445] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] Set own game mode to Survival Mode
+[17Jun2022 22:55:25.800] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Removed every effect from Dev]
+[17Jun2022 22:55:25.804] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] Removed every effect from Dev
+[17Jun2022 22:55:28.250] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Applied effect Regeneration to Dev]
+[17Jun2022 22:55:28.252] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Applied effect Night Vision to Dev]
+[17Jun2022 22:55:28.254] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Applied effect Saturation to Dev]
+[17Jun2022 22:55:28.255] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Applied effect Strength to Dev]
+[17Jun2022 22:55:28.256] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Applied effect Resistance to Dev]
+[17Jun2022 22:55:28.257] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [@: Summoned new Thrown Bottle o' Enchanting]
+[17Jun2022 22:55:28.278] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Applied effect Regeneration to Dev]
+[17Jun2022 22:55:28.279] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Applied effect Night Vision to Dev]
+[17Jun2022 22:55:28.279] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Applied effect Saturation to Dev]
+[17Jun2022 22:55:28.280] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Applied effect Strength to Dev]
+[17Jun2022 22:55:28.280] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Applied effect Resistance to Dev]
+[17Jun2022 22:55:28.281] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] [@: Summoned new Thrown Bottle o' Enchanting]
+[17Jun2022 22:55:29.793] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: [Dev: Set own game mode to Creative Mode]
+[17Jun2022 22:55:29.797] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [CHAT] Set own game mode to Creative Mode
+[17Jun2022 22:55:30.797] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Saving and pausing game...
+[17Jun2022 22:55:30.902] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[17Jun2022 22:55:30.924] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[17Jun2022 22:55:30.926] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[17Jun2022 22:55:31.462] [Server thread/INFO] [net.minecraft.server.network.ServerGamePacketListenerImpl/]: Dev lost connection: Disconnected
+[17Jun2022 22:55:31.462] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Dev left the game
+[17Jun2022 22:55:31.546] [Server thread/INFO] [net.minecraft.server.network.ServerGamePacketListenerImpl/]: Stopping singleplayer server as player logged out
+[17Jun2022 22:55:31.629] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Stopping server
+[17Jun2022 22:55:31.632] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving players
+[17Jun2022 22:55:31.632] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving worlds
+[17Jun2022 22:55:43.395] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:overworld
+[17Jun2022 22:55:43.736] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_end
+[17Jun2022 22:55:43.744] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[New World]'/minecraft:the_nether
+[17Jun2022 22:55:43.831] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (New World): All chunks are saved
+[17Jun2022 22:55:43.832] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[17Jun2022 22:55:43.832] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[17Jun2022 22:55:43.833] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage: All dimensions are saved
+[17Jun2022 22:56:06.486] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Stopping!

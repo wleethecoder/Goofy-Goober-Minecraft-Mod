@@ -96,7 +96,7 @@ public class ChangeMobHitboxSizeEvents {
             if (damageSource.getDirectEntity() instanceof IronGolem) {
                 livingEntity.setDeltaMovement(livingEntity.getDeltaMovement().subtract(0, 1.5, 0));
                 livingEntity.addEffect(new MobEffectInstance(ModEffects.SQUASHED.get(), 30 * 20, 0, false, false));
-                Utilities.playSound(livingEntity, ModSounds.DOIT.get(), 1.5F);
+                Utilities.playSound(livingEntity, ModSounds.DOIT.get());
             }
 
             if (damageSource == DamageSource.ANVIL || damageSource == DamageSource.FALLING_STALACTITE) {

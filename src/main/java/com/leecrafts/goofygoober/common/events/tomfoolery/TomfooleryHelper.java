@@ -13,7 +13,9 @@ import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.Slime;
 import net.minecraft.world.entity.monster.Spider;
+import net.minecraft.world.entity.monster.ZombifiedPiglin;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraftforge.fml.util.ObfuscationReflectionHelper;
@@ -133,10 +135,11 @@ public class TomfooleryHelper {
                         // 20% chance that the mob will prioritize targeting the player over other nearby mobs
                         boolean prioritizeMobsOverPlayers = Utilities.random.nextInt(5) >= 1;
                         for (Mob mob1: nearbyMobs) {
-                            mob.targetSelector.addGoal(prioritizeMobsOverPlayers ? 1 : 2, new NearestAttackableTargetGoal<>(mob, mob1.getClass(), false));
+                            if (!mob.is(mob1)) mob.targetSelector.addGoal(prioritizeMobsOverPlayers ? 1 : 2, new NearestAttackableTargetGoal<>(mob, mob1.getClass(), false));
                         }
 
-                        mob.targetSelector.addGoal(prioritizeMobsOverPlayers ? 2 : 1, new NearestAttackableTargetGoal<>(mob, Player.class, true));
+                        // Trust me, nobody wants zombified piglins to aggro towards players--especially when unprovoked.
+                        if (!(mob instanceof ZombifiedPiglin) || player.level.dimension() != Level.NETHER) mob.targetSelector.addGoal(prioritizeMobsOverPlayers ? 2 : 1, new NearestAttackableTargetGoal<>(mob, Player.class, true));
 
                         success = true;
                     }

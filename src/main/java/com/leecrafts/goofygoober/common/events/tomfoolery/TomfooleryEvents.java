@@ -140,6 +140,8 @@ public class TomfooleryEvents {
                             }
                             tomfooleryPlayer.resetCounter();
                         }
+                        // if no mobs spawned successfully, then the cooldown will be 1 minute instead of 2
+                        else tomfooleryPlayer.counter = tomfooleryPlayer.LIMIT / 2;
 
                     }
                 }
