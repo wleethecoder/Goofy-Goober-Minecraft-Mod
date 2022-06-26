@@ -15,7 +15,9 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.animal.IronGolem;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.common.extensions.IForgeItem;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
@@ -50,12 +52,13 @@ public class ChangeMobHitboxSizeEvents {
                     handItemStack = player.getMainHandItem();
                 }
                 int previousCount = previousItemStack.getCount();
-                if (previousCount > 1 && handItemStack.getItem().getFoodProperties() != null) {
+                FoodProperties foodProperties = handItemStack.getItem().getFoodProperties(handItemStack, player);
+                if (previousCount > 1 && foodProperties != null) {
                     // play sound
                     Utilities.playSound(player, ModSounds.PLAYER_GORGE.get());
 
                     // fill hunger bar, capped at 20
-                    int nutrition = handItemStack.getItem().getFoodProperties().getNutrition();
+                    int nutrition = foodProperties.getNutrition();
                     int totalNutrition = nutrition * previousCount;
                     int newPlayerNutritionRaw = totalNutrition + player.getFoodData().getFoodLevel();
                     int newPlayerNutrition = Math.min(newPlayerNutritionRaw, 20);
@@ -63,7 +66,7 @@ public class ChangeMobHitboxSizeEvents {
                     player.getFoodData().setFoodLevel(newPlayerNutrition);
 
                     // increase player saturation
-                    float saturation = handItemStack.getItem().getFoodProperties().getSaturationModifier() * 2 * nutrition;
+                    float saturation = foodProperties.getSaturationModifier() * 2 * nutrition;
                     // saturation effect would not work in this case because every tick of its duration it instantly adds saturation, making it broken
                     float totalSaturation = saturation * previousCount;
                     float newPlayerSaturation = totalSaturation + player.getFoodData().getSaturationLevel();
