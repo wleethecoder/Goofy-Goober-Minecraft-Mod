@@ -12,7 +12,8 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.Direction;
-import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.Vec3;
@@ -55,7 +56,8 @@ public class SkedaddleClientEvents {
                     skedaddleToggleKeyAlreadyPressed = true;
                     SkedaddleClientHelper.sendServerboundPacket(!skedaddleEnabled);
                     String message = skedaddleEnabled ? "Skedaddle enabled" : "Skedaddle disabled";
-                    localPlayer.displayClientMessage(new TextComponent(message), true);
+//                    localPlayer.displayClientMessage(new TextComponent(message), true);
+                    localPlayer.displayClientMessage(Component.literal(message), true);
                 }
                 else if (!pressed && skedaddleToggleKeyAlreadyPressed) {
                     skedaddleToggleKeyAlreadyPressed = false;
@@ -89,10 +91,10 @@ public class SkedaddleClientEvents {
 
     @SubscribeEvent
     public static void cancelFOVChangeUponSkedaddleCharging(FOVModifierEvent event) {
-        if (event.getNewfov() < 1) {
-            event.getEntity().getCapability(ModCapabilities.SKEDADDLE_CAPABILITY).ifPresent(iSkedaddle -> {
+        if (event.getNewFov() < 1) {
+            event.getPlayer().getCapability(ModCapabilities.SKEDADDLE_CAPABILITY).ifPresent(iSkedaddle -> {
                 Skedaddle skedaddle = (Skedaddle) iSkedaddle;
-                if (skedaddle.charging) event.setNewfov(1);
+                if (skedaddle.charging) event.setNewFov(1);
             });
         }
     }
