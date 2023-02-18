@@ -1,10 +1,7 @@
 package com.leecrafts.goofygoober.common.packets;
 
 import com.leecrafts.goofygoober.GoofyGoober;
-import com.leecrafts.goofygoober.common.packets.skedaddle.ServerboundSkedaddleWKeyPacket;
-import com.leecrafts.goofygoober.common.packets.skedaddle.ClientboundSkedaddlePacket;
-import com.leecrafts.goofygoober.common.packets.skedaddle.ServerboundSkedaddleTogglePacket;
-import com.leecrafts.goofygoober.common.packets.skedaddle.ServerboundSkedaddleBumpPacket;
+import com.leecrafts.goofygoober.common.packets.skedaddle.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.network.NetworkDirection;
 import net.minecraftforge.network.NetworkRegistry;
@@ -33,6 +30,9 @@ public class PacketHandler {
         INSTANCE.messageBuilder(ServerboundSkedaddleBumpPacket.class, index++, NetworkDirection.PLAY_TO_SERVER)
                 .encoder(ServerboundSkedaddleBumpPacket::encode).decoder(ServerboundSkedaddleBumpPacket::new)
                 .consumer(ServerboundSkedaddleBumpPacket::handle).add();
+        INSTANCE.messageBuilder(ClientboundSoundPacket.class, index++, NetworkDirection.PLAY_TO_CLIENT)
+                .encoder(ClientboundSoundPacket::encode).decoder(ClientboundSoundPacket::new)
+                .consumer(ClientboundSoundPacket::handle).add();
     }
 
 }

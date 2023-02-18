@@ -15,7 +15,9 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 public class ModClientEvents {
 
     @SubscribeEvent
-    public static void clientSetup(FMLClientSetupEvent event) { KeyInit.init(); }
+    public static void clientSetup(FMLClientSetupEvent event) {
+        KeyInit.init();
+    }
 
     @SubscribeEvent
     public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {

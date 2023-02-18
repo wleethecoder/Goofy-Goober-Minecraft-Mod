@@ -34,7 +34,7 @@ public class CustomMobNoiseHelper {
         initializeIfNull();
         if (damageSourceKnockback.containsKey(source)) {
             livingEntity.setDeltaMovement(livingEntity.getDeltaMovement().add(0, damageSourceKnockback.get(source), 0));
-            Utilities.playSound(livingEntity, ModSounds.SCREAM.get());
+            Utilities.playSound(livingEntity, "scream");
         }
     }
 
@@ -54,7 +54,7 @@ public class CustomMobNoiseHelper {
                 if (livingEntity.isSleeping()) snore(livingEntity, ambientCounter.sleepingNoise);
 
                 // ambient freezing noise
-                if (livingEntity.isFreezing()) Utilities.playSound(livingEntity, ModSounds.TEETH_CHATTER.get());
+                if (livingEntity.isFreezing()) Utilities.playSound(livingEntity, "teeth_chatter");
 
                 ambientCounter.resetCounter();
                 ambientCounter.rollLimit();
@@ -65,19 +65,19 @@ public class CustomMobNoiseHelper {
     public static void panic(Mob mob) {
         if (mob instanceof Villager villager) {
             Optional<Activity> activity = villager.getBrain().getActiveNonCoreActivity();
-            if (activity.isPresent() && activity.get() == Activity.PANIC) Utilities.playSound(villager, ModSounds.SKEDADDLE.get());
+            if (activity.isPresent() && activity.get() == Activity.PANIC) Utilities.playSound(villager, "mob_skedaddle");
         }
         else if (mob instanceof Animal animal) {
             if (animal.goalSelector.getRunningGoals().anyMatch(wrappedGoal ->
                     wrappedGoal.getGoal().getClass().equals(PanicGoal.class))) {
-                Utilities.playSound(animal, ModSounds.SKEDADDLE.get());
+                Utilities.playSound(animal, "mob_skedaddle");
             }
         }
     }
 
-    public static void snore(LivingEntity livingEntity, SoundEvent sleepingNoise) {
+    public static void snore(LivingEntity livingEntity, String sleepingNoise) {
         float pitchHigh = 1.5F;
-        if (sleepingNoise == ModSounds.SNORE_MIMIMI.get()) pitchHigh = Utilities.DEFAULT_PITCH_HIGH;
-        Utilities.playSound(livingEntity, sleepingNoise, 1, Utilities.DEFAULT_PITCH_LOW, pitchHigh);
+        if (sleepingNoise.equals("snore_mimimi")) pitchHigh = Utilities.DEFAULT_PITCH_HIGH;
+        Utilities.playSound(livingEntity, sleepingNoise, Utilities.DEFAULT_PITCH_LOW, pitchHigh);
     }
 }

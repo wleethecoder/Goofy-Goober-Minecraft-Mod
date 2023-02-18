@@ -175,7 +175,7 @@ public class TomfooleryEvents {
                                 // goofy noises
                                 tomfooleryMob.incrementCounter();
                                 if (tomfooleryMob.counter >= tomfooleryMob.limit) {
-                                    Utilities.playSound(mob, ModSounds.TOMFOOLERY.get());
+                                    Utilities.playSound(mob, "tomfoolery");
                                     tomfooleryMob.resetCounter();
                                     tomfooleryMob.rollLimit();
                                 }

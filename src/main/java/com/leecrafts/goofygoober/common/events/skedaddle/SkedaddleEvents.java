@@ -72,13 +72,13 @@ public class SkedaddleEvents {
                                     SkedaddleHelper.applySpeed(player, skedaddle);
                                     SkedaddleHelper.removeSlowness(player, skedaddle);
                                     skedaddle.takeoff = true;
-                                    Utilities.playSound(player, ModSounds.PLAYER_TAKEOFF.get());
+                                    Utilities.playSound(player, "player_takeoff");
                                 }
                             }
                             else if (player.isSprinting()) {
                                 // player starts charging (skedaddleCharging gets set to true in sendClientBoundPacket)
                                 SkedaddleHelper.applySlowness(player, skedaddle);
-                                Utilities.playSound(player, ModSounds.PLAYER_SKEDADDLE.get());
+                                Utilities.playSound(player, "player_skedaddle");
                                 skedaddle.sendClientboundPacket(player, true, true);
                             }
                         }
@@ -94,7 +94,7 @@ public class SkedaddleEvents {
                                     if (!skedaddle.deviousWalk) skedaddle.deviousWalk = true;
                                     skedaddle.incrementCounter();
                                     if (skedaddle.counter >= skedaddle.PLAYER_SNEAK_AMBIENT_DURATION) {
-                                        Utilities.playSound(player, ModSounds.PLAYER_SNEAK.get(), 1, 1);
+                                        Utilities.playSound(player, "player_sneak", 1);
                                         skedaddle.counter = 0;
                                     }
                                 }

@@ -1,8 +1,14 @@
 package com.leecrafts.goofygoober.common.misc;
 
+import com.leecrafts.goofygoober.common.packets.PacketHandler;
+import com.leecrafts.goofygoober.common.packets.skedaddle.ClientboundSoundPacket;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.screens.SoundOptionsScreen;
+import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
+import net.minecraftforge.network.PacketDistributor;
 
 import java.util.Random;
 
@@ -13,24 +19,34 @@ public class Utilities {
     public static final float DEFAULT_PITCH_LOW = 0.9F;
     public static final float DEFAULT_PITCH_HIGH = 1.1F;
 
-//    public static void playSound(Entity entity, SoundEvent soundEvent, SoundSource soundSource, float volume, float pitchLow, float pitchHigh) {
-//        entity.level.playSound(null, entity.getX(), entity.getY(), entity.getZ(), soundEvent, soundSource, volume, pitchLow + random.nextFloat(pitchHigh - pitchLow));
-//    }
-
-    public static void playSound(Entity entity, SoundEvent soundEvent, SoundSource soundSource) {
-        entity.level.playSound(null, entity.getX(), entity.getY(), entity.getZ(), soundEvent, soundSource, 1, DEFAULT_PITCH_LOW + random.nextFloat(DEFAULT_PITCH_HIGH - DEFAULT_PITCH_LOW));
+    private static void playLocalSound(Entity entity, String soundEvent, float pitchLow, float pitchHigh) {
+        // this would be reaching across logical sides
+//        if (Minecraft.getInstance().level != null) {
+//            Minecraft.getInstance().level.playLocalSound(entity.getX(), entity.getY(), entity.getZ(), soundEvent, soundSource, volume, pitchLow + random.nextFloat(pitchHigh - pitchLow), false);
+//        }
+        PacketHandler.INSTANCE.send(
+                PacketDistributor.TRACKING_ENTITY_AND_SELF.with(() -> entity),
+                new ClientboundSoundPacket(entity.blockPosition(), soundEvent, pitchLow + random.nextFloat(pitchHigh - pitchLow))
+        );
     }
 
-    public static void playSound(Entity entity, SoundEvent soundEvent, float volume, float pitchLow, float pitchHigh) {
-        entity.level.playSound(null, entity.getX(), entity.getY(), entity.getZ(), soundEvent, entity.getSoundSource(), volume, pitchLow + random.nextFloat(pitchHigh - pitchLow));
+    private static void playLocalSound(Entity entity, String soundEvent, float pitch) {
+        PacketHandler.INSTANCE.send(
+                PacketDistributor.TRACKING_ENTITY_AND_SELF.with(() -> entity),
+                new ClientboundSoundPacket(entity.blockPosition(), soundEvent, pitch)
+        );
     }
 
-    public static void playSound(Entity entity, SoundEvent soundEvent, float volume, float pitch) {
-        entity.level.playSound(null, entity.getX(), entity.getY(), entity.getZ(), soundEvent, entity.getSoundSource(), volume, pitch);
+    public static void playSound(Entity entity, String soundEvent, float pitchLow, float pitchHigh) {
+        playLocalSound(entity, soundEvent, pitchLow, pitchHigh);
     }
 
-    public static void playSound(Entity entity, SoundEvent soundEvent) {
-        entity.level.playSound(null, entity.getX(), entity.getY(), entity.getZ(), soundEvent, entity.getSoundSource(), 1, DEFAULT_PITCH_LOW + random.nextFloat(DEFAULT_PITCH_HIGH - DEFAULT_PITCH_LOW));
+    public static void playSound(Entity entity, String soundEvent, float pitch) {
+        playLocalSound(entity, soundEvent, pitch);
+    }
+
+    public static void playSound(Entity entity, String soundEvent) {
+        playLocalSound(entity, soundEvent, DEFAULT_PITCH_LOW, DEFAULT_PITCH_HIGH);
     }
 
 }

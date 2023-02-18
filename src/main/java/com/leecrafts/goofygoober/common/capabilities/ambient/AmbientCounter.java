@@ -8,7 +8,7 @@ public class AmbientCounter implements IAmbientCounter {
 
     public int counter;
     public int limit;
-    public SoundEvent sleepingNoise;
+    public String sleepingNoise;
 
     public AmbientCounter() {
         this.counter = 0;
@@ -32,9 +32,12 @@ public class AmbientCounter implements IAmbientCounter {
     @Override
     public void rollSleepingNoise() {
         int randInt = Utilities.random.nextInt(3);
-        this.sleepingNoise = ModSounds.SNORE_LOUD.get();
-        if (randInt == 1) this.sleepingNoise = ModSounds.SNORE_MIMIMI.get();
-        if (randInt == 2) this.sleepingNoise = ModSounds.SNORE_WHISTLE.get();
+//        this.sleepingNoise = ModSounds.SNORE_LOUD.get();
+//        if (randInt == 1) this.sleepingNoise = ModSounds.SNORE_MIMIMI.get();
+//        if (randInt == 2) this.sleepingNoise = ModSounds.SNORE_WHISTLE.get();
+        this.sleepingNoise = "snore_loud";
+        if (randInt == 1) this.sleepingNoise = "snore_mimimi";
+        if (randInt == 2) this.sleepingNoise = "snore_whistle";
     }
 
 }

@@ -55,7 +55,7 @@ public class ChangeMobHitboxSizeEvents {
                 FoodProperties foodProperties = handItemStack.getItem().getFoodProperties(handItemStack, player);
                 if (previousCount > 1 && foodProperties != null) {
                     // play sound
-                    Utilities.playSound(player, ModSounds.PLAYER_GORGE.get());
+                    Utilities.playSound(player, "player_gorge");
 
                     // fill hunger bar, capped at 20
                     int nutrition = foodProperties.getNutrition();
@@ -99,12 +99,12 @@ public class ChangeMobHitboxSizeEvents {
             if (damageSource.getDirectEntity() instanceof IronGolem) {
                 livingEntity.setDeltaMovement(livingEntity.getDeltaMovement().subtract(0, 1.5, 0));
                 livingEntity.addEffect(new MobEffectInstance(ModEffects.SQUASHED.get(), 30 * 20, 0, false, false));
-                Utilities.playSound(livingEntity, ModSounds.DOIT.get());
+                Utilities.playSound(livingEntity, "doit");
             }
 
             if (damageSource == DamageSource.ANVIL || damageSource == DamageSource.FALLING_STALACTITE) {
                 livingEntity.addEffect(new MobEffectInstance(ModEffects.SQUASHED.get(), 10 * 20, 0, false, false));
-                Utilities.playSound(livingEntity, ModSounds.DOIT.get(), SoundSource.BLOCKS);
+                Utilities.playSound(livingEntity, "doit");
             }
         }
     }
@@ -116,7 +116,7 @@ public class ChangeMobHitboxSizeEvents {
             float distance = event.getDistance();
             if (distance >= 20F) {
                 livingEntity.addEffect(new MobEffectInstance(ModEffects.SQUASHED.get(), (int) (distance / 2 * 20), 0, false, false));
-                Utilities.playSound(livingEntity, ModSounds.IMPACT.get());
+                Utilities.playSound(livingEntity, "impact");
             }
         }
     }
@@ -137,7 +137,7 @@ public class ChangeMobHitboxSizeEvents {
             else {
                 livingEntity.addEffect(new MobEffectInstance(ModEffects.SMASHED.get(), duration, 0, false, false));
             }
-            Utilities.playSound(livingEntity, ModSounds.IMPACT.get());
+            Utilities.playSound(livingEntity, "impact");
         }
     }
 

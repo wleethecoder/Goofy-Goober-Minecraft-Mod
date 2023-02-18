@@ -21,7 +21,7 @@ public class Events {
     @SubscribeEvent
     public static void onPlayerDeath(LivingDeathEvent event) {
         if (event.getEntityLiving() instanceof Player player && !player.level.isClientSide()) {
-            Utilities.playSound(player, ModSounds.FAIL.get());
+            Utilities.playSound(player, "fail");
         }
     }
 
