@@ -14,7 +14,7 @@ public class ModEntities {
     private ModEntities() {}
 
     public static final DeferredRegister<EntityType<?>> ENTITIES =
-            DeferredRegister.create(ForgeRegistries.ENTITIES, GoofyGoober.MOD_ID);
+            DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, GoofyGoober.MOD_ID);
 
     public static final RegistryObject<EntityType<SteakEntity>> STEAK_ENTITY = ENTITIES.register("steak",
             () -> EntityType.Builder.of(SteakEntity::new, MobCategory.MISC).sized(1, 2)

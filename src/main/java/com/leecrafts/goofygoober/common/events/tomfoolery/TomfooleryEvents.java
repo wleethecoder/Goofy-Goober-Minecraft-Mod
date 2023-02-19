@@ -22,7 +22,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.AABB;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
-import net.minecraftforge.event.entity.EntityJoinWorldEvent;
+import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -88,7 +88,7 @@ public class TomfooleryEvents {
     }
 
     @SubscribeEvent
-    public static void onEntityJoinWorldEvent(EntityJoinWorldEvent event) {
+    public static void onEntityJoinWorldEvent(EntityJoinLevelEvent event) {
 //        if (event.getEntity() instanceof Mob mob && !mob.level.isClientSide()) {
 //            // iron golems and illagers/raiders are scallywags by default
 //            if ((mob instanceof IronGolem
@@ -111,8 +111,8 @@ public class TomfooleryEvents {
 
     // player tick update
     @SubscribeEvent
-    public static void playerTick(LivingEvent.LivingUpdateEvent event) {
-        if (event.getEntityLiving() instanceof Player player && !player.level.isClientSide()) {
+    public static void playerTick(LivingEvent.LivingTickEvent event) {
+        if (event.getEntity() instanceof Player player && !player.level.isClientSide()) {
             player.getCapability(ModCapabilities.TOMFOOLERY_PLAYER_CAPABILITY).ifPresent(iTomfooleryPlayer -> {
                 TomfooleryPlayer tomfooleryPlayer = (TomfooleryPlayer) iTomfooleryPlayer;
                 if (tomfooleryPlayer.counter >= tomfooleryPlayer.LIMIT) {
@@ -152,8 +152,8 @@ public class TomfooleryEvents {
 
     // mob tick update
     @SubscribeEvent
-    public static void mobTick(LivingEvent.LivingUpdateEvent event) {
-        if (event.getEntityLiving() instanceof Mob mob && !mob.level.isClientSide()) {
+    public static void mobTick(LivingEvent.LivingTickEvent event) {
+        if (event.getEntity() instanceof Mob mob && !mob.level.isClientSide()) {
             LivingEntity target = mob.getTarget();
             if (target != null && !target.isRemoved()) {
                 mob.getCapability(ModCapabilities.TOMFOOLERY_MOB_CAPABILITY).ifPresent(iTomfooleryMob -> {
@@ -190,8 +190,8 @@ public class TomfooleryEvents {
     // For each living entity, a limit is placed on how many attacking mobs can make dust clouds and goofy noises.
     // This is to prevent lag. Imagine that there is no limit, and you are in an enderman farm!
     @SubscribeEvent
-    public static void livingEntityTick(LivingEvent.LivingUpdateEvent event) {
-        LivingEntity livingEntity = event.getEntityLiving();
+    public static void livingEntityTick(LivingEvent.LivingTickEvent event) {
+        LivingEntity livingEntity = event.getEntity();
         if (!livingEntity.level.isClientSide()) {
             livingEntity.getCapability(ModCapabilities.TOMFOOLERY_LIVING_ENTITY_CAPABILITY).ifPresent(iTomfooleryLivingEntity -> {
                 TomfooleryLivingEntity tomfooleryLivingEntity = (TomfooleryLivingEntity) iTomfooleryLivingEntity;
@@ -213,8 +213,8 @@ public class TomfooleryEvents {
 
     // special case for slimes and magma cubes because they cannot normally damage any mobs besides players and iron golems
     @SubscribeEvent
-    public static void slimeMagmaCubeDamage(LivingEvent.LivingUpdateEvent event) {
-        if (event.getEntityLiving() instanceof Slime slime && !slime.level.isClientSide()) { // MagmaCube extends Slime
+    public static void slimeMagmaCubeDamage(LivingEvent.LivingTickEvent event) {
+        if (event.getEntity() instanceof Slime slime && !slime.level.isClientSide()) { // MagmaCube extends Slime
             slime.getCapability(ModCapabilities.TOMFOOLERY_MOB_CAPABILITY).ifPresent(iTomfooleryMob -> {
                 TomfooleryMob tomfooleryMob = (TomfooleryMob) iTomfooleryMob;
                 if (tomfooleryMob.isSummoned()) {

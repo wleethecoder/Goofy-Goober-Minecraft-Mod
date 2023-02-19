@@ -20,19 +20,19 @@ public class PacketHandler {
         int index = 0;
         INSTANCE.messageBuilder(ServerboundSkedaddleWKeyPacket.class, index++, NetworkDirection.PLAY_TO_SERVER)
                 .encoder(ServerboundSkedaddleWKeyPacket::encode).decoder(ServerboundSkedaddleWKeyPacket::new)
-                .consumer(ServerboundSkedaddleWKeyPacket::handle).add();
+                .consumerMainThread(ServerboundSkedaddleWKeyPacket::handle).add();
         INSTANCE.messageBuilder(ClientboundSkedaddlePacket.class, index++, NetworkDirection.PLAY_TO_CLIENT)
                 .encoder(ClientboundSkedaddlePacket::encode).decoder(ClientboundSkedaddlePacket::new)
-                .consumer(ClientboundSkedaddlePacket::handle).add();
+                .consumerMainThread(ClientboundSkedaddlePacket::handle).add();
         INSTANCE.messageBuilder(ServerboundSkedaddleTogglePacket.class, index++, NetworkDirection.PLAY_TO_SERVER)
                 .encoder(ServerboundSkedaddleTogglePacket::encode).decoder(ServerboundSkedaddleTogglePacket::new)
-                .consumer(ServerboundSkedaddleTogglePacket::handle).add();
+                .consumerMainThread(ServerboundSkedaddleTogglePacket::handle).add();
         INSTANCE.messageBuilder(ServerboundSkedaddleBumpPacket.class, index++, NetworkDirection.PLAY_TO_SERVER)
                 .encoder(ServerboundSkedaddleBumpPacket::encode).decoder(ServerboundSkedaddleBumpPacket::new)
-                .consumer(ServerboundSkedaddleBumpPacket::handle).add();
+                .consumerMainThread(ServerboundSkedaddleBumpPacket::handle).add();
         INSTANCE.messageBuilder(ClientboundSoundPacket.class, index++, NetworkDirection.PLAY_TO_CLIENT)
                 .encoder(ClientboundSoundPacket::encode).decoder(ClientboundSoundPacket::new)
-                .consumer(ClientboundSoundPacket::handle).add();
+                .consumerMainThread(ClientboundSoundPacket::handle).add();
     }
 
 }

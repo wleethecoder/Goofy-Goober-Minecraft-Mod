@@ -93,7 +93,7 @@ public class ChangeMobHitboxSizeEvents {
 
     @SubscribeEvent
     public static void squash(LivingHurtEvent event) {
-        LivingEntity livingEntity = event.getEntityLiving();
+        LivingEntity livingEntity = event.getEntity();
         if (!livingEntity.level.isClientSide()) {
             DamageSource damageSource = event.getSource();
             if (damageSource.getDirectEntity() instanceof IronGolem) {
@@ -111,7 +111,7 @@ public class ChangeMobHitboxSizeEvents {
 
     @SubscribeEvent
     public static void squashFall(LivingFallEvent event) {
-        LivingEntity livingEntity = event.getEntityLiving();
+        LivingEntity livingEntity = event.getEntity();
         if (!livingEntity.level.isClientSide()) {
             float distance = event.getDistance();
             if (distance >= 20F) {
@@ -123,7 +123,7 @@ public class ChangeMobHitboxSizeEvents {
 
     @SubscribeEvent
     public static void crashSmashElytra(LivingHurtEvent event) {
-        LivingEntity livingEntity = event.getEntityLiving();
+        LivingEntity livingEntity = event.getEntity();
         if (!livingEntity.level.isClientSide() && event.getSource() == DamageSource.FLY_INTO_WALL) {
             Direction direction = livingEntity.getDirection();
             float damage = event.getAmount();
@@ -142,8 +142,8 @@ public class ChangeMobHitboxSizeEvents {
     }
 
     @SubscribeEvent
-    public static void changeMobHitboxSize(LivingEvent.LivingUpdateEvent event) throws IllegalAccessException {
-        LivingEntity livingEntity = event.getEntityLiving();
+    public static void changeMobHitboxSize(LivingEvent.LivingTickEvent event) throws IllegalAccessException {
+        LivingEntity livingEntity = event.getEntity();
         if (/*!livingEntity.level.isClientSide() && */livingEntity.getActiveEffectsMap() != null) {
 
             EntityDimensions entityDimensions = livingEntity.getDimensions(livingEntity.getPose());
@@ -199,8 +199,8 @@ public class ChangeMobHitboxSizeEvents {
 //    }
 
     @SubscribeEvent
-    public static void preventSquashedPlayerFromCrawling(LivingEvent.LivingUpdateEvent event) {
-        if (event.getEntityLiving() instanceof Player player && /*!player.level.isClientSide() && */player.getActiveEffectsMap() != null) {
+    public static void preventSquashedPlayerFromCrawling(LivingEvent.LivingTickEvent event) {
+        if (event.getEntity() instanceof Player player && /*!player.level.isClientSide() && */player.getActiveEffectsMap() != null) {
             if (player.hasEffect(ModEffects.SQUASHED.get())) {
                 boolean solidAbove = !player.level.noCollision(player.getBoundingBox().expandTowards(0, 1.5, 0));
                 if (solidAbove) {
@@ -214,7 +214,7 @@ public class ChangeMobHitboxSizeEvents {
 
     @SubscribeEvent
     public static void preventSquashedLivingEntityFromUnexpectedSuffocationDamage(LivingHurtEvent event) {
-        LivingEntity livingEntity = event.getEntityLiving();
+        LivingEntity livingEntity = event.getEntity();
         if (!livingEntity.level.isClientSide() && livingEntity.getActiveEffectsMap() != null && livingEntity.hasEffect(ModEffects.SQUASHED.get())) {
             if (event.getSource() == DamageSource.IN_WALL) {
                 if (livingEntity.level.noCollision(livingEntity.getBoundingBox())) {

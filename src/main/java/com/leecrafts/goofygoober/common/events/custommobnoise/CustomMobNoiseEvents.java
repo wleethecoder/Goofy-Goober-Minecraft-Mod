@@ -43,7 +43,7 @@ public class CustomMobNoiseEvents {
     // throws the mob high up in the air
     @SubscribeEvent
     public static void scream(LivingDamageEvent event) {
-        LivingEntity livingEntity = event.getEntityLiving();
+        LivingEntity livingEntity = event.getEntity();
         if (!livingEntity.level.isClientSide() && !(livingEntity instanceof IronGolem)) {
             CustomMobNoiseHelper.scream(livingEntity, event.getSource().getMsgId());
         }
@@ -51,8 +51,8 @@ public class CustomMobNoiseEvents {
 
     // Players and Villagers snore when they sleep
     @SubscribeEvent
-    public static void tick(LivingEvent.LivingUpdateEvent event) {
-        LivingEntity livingEntity = event.getEntityLiving();
+    public static void tick(LivingEvent.LivingTickEvent event) {
+        LivingEntity livingEntity = event.getEntity();
         if (!livingEntity.level.isClientSide()) {
             CustomMobNoiseHelper.ambient(livingEntity);
         }

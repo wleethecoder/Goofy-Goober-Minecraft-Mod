@@ -1,7 +1,7 @@
 package com.leecrafts.goofygoober.client.events.skedaddle;
 
 import com.leecrafts.goofygoober.GoofyGoober;
-import com.leecrafts.goofygoober.client.keys.KeyInit;
+import com.leecrafts.goofygoober.client.keys.KeyBinding;
 import com.leecrafts.goofygoober.common.capabilities.ModCapabilities;
 import com.leecrafts.goofygoober.common.capabilities.skedaddle.Skedaddle;
 import com.leecrafts.goofygoober.common.packets.PacketHandler;
@@ -13,15 +13,11 @@ import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.ClientPlayerNetworkEvent;
-import net.minecraftforge.client.event.FOVModifierEvent;
-import net.minecraftforge.client.event.InputEvent;
-import net.minecraftforge.client.event.RenderLivingEvent;
+import net.minecraftforge.client.event.*;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -37,13 +33,18 @@ public class SkedaddleClientEvents {
     private static final float WHAM_MAX_ANGLE = 30;
 
     @SubscribeEvent
-    public static void initializeSkedaddleDisabledOnLogin(ClientPlayerNetworkEvent.LoggedInEvent event) {
+    public static void initializeSkedaddleDisabledOnLogin(ClientPlayerNetworkEvent.LoggingIn event) {
         SkedaddleClientHelper.sendServerboundPacket(false);
     }
 
     @SubscribeEvent
-    public static void initializeSkedaddleDisabledOnRespawn(ClientPlayerNetworkEvent.RespawnEvent event) {
+    public static void initializeSkedaddleDisabledOnRespawn(ClientPlayerNetworkEvent.Clone event) {
         SkedaddleClientHelper.sendServerboundPacket(false);
+    }
+
+    @SubscribeEvent
+    public static void onKeyRegister(RegisterKeyMappingsEvent event) {
+        event.register(KeyBinding.TOGGLE_KEY);
     }
 
     @SubscribeEvent
@@ -51,7 +52,7 @@ public class SkedaddleClientEvents {
         if (event.phase == TickEvent.Phase.END) {
             LocalPlayer localPlayer = Minecraft.getInstance().player;
             if (localPlayer != null) {
-                boolean pressed = KeyInit.toggleSkedaddleKeyMapping.isDown();
+                boolean pressed = KeyBinding.TOGGLE_KEY.isDown();
                 if (pressed && !skedaddleToggleKeyAlreadyPressed) {
                     skedaddleToggleKeyAlreadyPressed = true;
                     SkedaddleClientHelper.sendServerboundPacket(!skedaddleEnabled);
@@ -67,7 +68,7 @@ public class SkedaddleClientEvents {
     }
 
     @SubscribeEvent
-    public static void startOrStopSkedaddle(InputEvent.KeyInputEvent event) {
+    public static void startOrStopSkedaddle(InputEvent.Key event) {
         LocalPlayer localPlayer = Minecraft.getInstance().player;
         if (localPlayer != null) {
             if (event.getKey() == InputConstants.KEY_W && event.getAction() == GLFW.GLFW_PRESS) {
@@ -90,11 +91,11 @@ public class SkedaddleClientEvents {
     }
 
     @SubscribeEvent
-    public static void cancelFOVChangeUponSkedaddleCharging(FOVModifierEvent event) {
-        if (event.getNewFov() < 1) {
+    public static void cancelFOVChangeUponSkedaddleCharging(ComputeFovModifierEvent event) {
+        if (event.getNewFovModifier() < 1) {
             event.getPlayer().getCapability(ModCapabilities.SKEDADDLE_CAPABILITY).ifPresent(iSkedaddle -> {
                 Skedaddle skedaddle = (Skedaddle) iSkedaddle;
-                if (skedaddle.charging) event.setNewFov(1);
+                if (skedaddle.charging) event.setNewFovModifier(1);
             });
         }
     }

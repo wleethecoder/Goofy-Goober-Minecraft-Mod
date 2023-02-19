@@ -1,7 +1,7 @@
 package com.leecrafts.goofygoober.client.events;
 
 import com.leecrafts.goofygoober.GoofyGoober;
-import com.leecrafts.goofygoober.client.keys.KeyInit;
+import com.leecrafts.goofygoober.client.keys.KeyBinding;
 import com.leecrafts.goofygoober.client.renderers.SteakRenderer;
 import com.leecrafts.goofygoober.client.renderers.models.SteakModel;
 import com.leecrafts.goofygoober.common.entities.ModEntities;
@@ -14,10 +14,10 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 @Mod.EventBusSubscriber(modid = GoofyGoober.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ModClientEvents {
 
-    @SubscribeEvent
-    public static void clientSetup(FMLClientSetupEvent event) {
-        KeyInit.init();
-    }
+//    @SubscribeEvent
+//    public static void clientSetup(FMLClientSetupEvent event) {
+//        KeyBinding.init();
+//    }
 
     @SubscribeEvent
     public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {

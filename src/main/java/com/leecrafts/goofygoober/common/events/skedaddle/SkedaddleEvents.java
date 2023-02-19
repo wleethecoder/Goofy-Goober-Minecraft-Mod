@@ -46,8 +46,8 @@ public class SkedaddleEvents {
     }
 
     @SubscribeEvent
-    public static void skedaddle(LivingEvent.LivingUpdateEvent event) {
-        if (event.getEntityLiving() instanceof Player player && !player.level.isClientSide()) {
+    public static void skedaddle(LivingEvent.LivingTickEvent event) {
+        if (event.getEntity() instanceof Player player && !player.level.isClientSide()) {
             player.getCapability(ModCapabilities.SKEDADDLE_CAPABILITY).ifPresent(iSkedaddle -> {
                 Skedaddle skedaddle = (Skedaddle) iSkedaddle;
                 // cooldown after running into wall
@@ -134,7 +134,7 @@ public class SkedaddleEvents {
     // The player just needs be at least 4 blocks from the enemy
     @SubscribeEvent
     public static void deviousWalk(LivingSetAttackTargetEvent event) {
-        if (event.getEntityLiving() instanceof Mob mob && event.getTarget() instanceof Player player && !player.level.isClientSide()) {
+        if (event.getEntity() instanceof Mob mob && event.getTarget() instanceof Player player && !player.level.isClientSide()) {
             player.getCapability(ModCapabilities.SKEDADDLE_CAPABILITY).ifPresent(iSkedaddle -> {
                 Skedaddle skedaddle = (Skedaddle) iSkedaddle;
                 if (skedaddle.deviousWalk && player.distanceTo(mob) >= 4) {
