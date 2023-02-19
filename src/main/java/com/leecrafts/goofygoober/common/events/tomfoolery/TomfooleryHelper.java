@@ -110,7 +110,7 @@ public class TomfooleryHelper {
             double spawnZ = serverLevel.random.nextInt((int) HORIZONTAL_RADIUS * 2) - (int) HORIZONTAL_RADIUS;
             BlockPos blockPos = spawnBlockPos(player, spawnX, spawnZ);
             if (blockPos != null) {
-                Mob mob = (Mob) mobType.create(serverLevel, null, null, null, blockPos, MobSpawnType.MOB_SUMMONED, false, false);
+                Mob mob = (Mob) mobType.create(serverLevel, null, null, blockPos, MobSpawnType.MOB_SUMMONED, false, false);
                 if (mob != null) {
                     if (mob.checkSpawnObstruction(serverLevel)) {
 

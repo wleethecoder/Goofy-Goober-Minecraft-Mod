@@ -102,7 +102,7 @@ public class ChangeMobHitboxSizeEvents {
                 Utilities.playSound(livingEntity, "doit");
             }
 
-            if (damageSource == DamageSource.ANVIL || damageSource == DamageSource.FALLING_STALACTITE) {
+            if (damageSource.getMsgId().equals("anvil") || damageSource.getMsgId().equals("fallingStalactite")) {
                 livingEntity.addEffect(new MobEffectInstance(ModEffects.SQUASHED.get(), 10 * 20, 0, false, false));
                 Utilities.playSound(livingEntity, "doit");
             }
