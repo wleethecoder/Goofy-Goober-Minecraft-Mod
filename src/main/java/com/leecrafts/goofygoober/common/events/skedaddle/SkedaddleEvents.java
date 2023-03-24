@@ -6,7 +6,6 @@ import com.leecrafts.goofygoober.common.capabilities.skedaddle.ISkedaddle;
 import com.leecrafts.goofygoober.common.capabilities.skedaddle.Skedaddle;
 import com.leecrafts.goofygoober.common.capabilities.skedaddle.SkedaddleProvider;
 import com.leecrafts.goofygoober.common.misc.Utilities;
-import com.leecrafts.goofygoober.common.sounds.ModSounds;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -14,8 +13,8 @@ import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
+import net.minecraftforge.event.entity.living.LivingChangeTargetEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
-import net.minecraftforge.event.entity.living.LivingSetAttackTargetEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -133,12 +132,15 @@ public class SkedaddleEvents {
     // When the player is sneaking while skedaddling, it can evade an enemy's detection, even when the enemy had already targeted the player
     // The player just needs be at least 4 blocks from the enemy
     @SubscribeEvent
-    public static void deviousWalk(LivingSetAttackTargetEvent event) {
-        if (event.getEntity() instanceof Mob mob && event.getTarget() instanceof Player player && !player.level.isClientSide()) {
+    public static void deviousWalk(LivingChangeTargetEvent event) {
+        System.out.println("new " + event.getNewTarget());
+        System.out.println("original " + event.getOriginalTarget());
+        if (event.getEntity() instanceof Mob mob && event.getNewTarget() instanceof Player player && !player.level.isClientSide()) {
             player.getCapability(ModCapabilities.SKEDADDLE_CAPABILITY).ifPresent(iSkedaddle -> {
                 Skedaddle skedaddle = (Skedaddle) iSkedaddle;
                 if (skedaddle.deviousWalk && player.distanceTo(mob) >= 4) {
                     mob.setTarget(null);
+                    event.setCanceled(true);
                 }
             });
         }

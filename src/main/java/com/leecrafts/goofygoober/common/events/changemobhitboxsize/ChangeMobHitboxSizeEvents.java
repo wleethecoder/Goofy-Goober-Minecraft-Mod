@@ -3,9 +3,7 @@ package com.leecrafts.goofygoober.common.events.changemobhitboxsize;
 import com.leecrafts.goofygoober.GoofyGoober;
 import com.leecrafts.goofygoober.common.effects.ModEffects;
 import com.leecrafts.goofygoober.common.misc.Utilities;
-import com.leecrafts.goofygoober.common.sounds.ModSounds;
 import net.minecraft.core.Direction;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -17,7 +15,6 @@ import net.minecraft.world.entity.animal.IronGolem;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.common.extensions.IForgeItem;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
@@ -124,7 +121,7 @@ public class ChangeMobHitboxSizeEvents {
     @SubscribeEvent
     public static void crashSmashElytra(LivingHurtEvent event) {
         LivingEntity livingEntity = event.getEntity();
-        if (!livingEntity.level.isClientSide() && event.getSource() == DamageSource.FLY_INTO_WALL) {
+        if (!livingEntity.level.isClientSide() && event.getSource() == livingEntity.damageSources().flyIntoWall()) {
             Direction direction = livingEntity.getDirection();
             float damage = event.getAmount();
             int duration = (int) (damage * (18/10) * 20);
@@ -216,7 +213,7 @@ public class ChangeMobHitboxSizeEvents {
     public static void preventSquashedLivingEntityFromUnexpectedSuffocationDamage(LivingHurtEvent event) {
         LivingEntity livingEntity = event.getEntity();
         if (!livingEntity.level.isClientSide() && livingEntity.getActiveEffectsMap() != null && livingEntity.hasEffect(ModEffects.SQUASHED.get())) {
-            if (event.getSource() == DamageSource.IN_WALL) {
+            if (event.getSource() == livingEntity.damageSources().inWall()) {
                 if (livingEntity.level.noCollision(livingEntity.getBoundingBox())) {
                     event.setCanceled(true);
                 }

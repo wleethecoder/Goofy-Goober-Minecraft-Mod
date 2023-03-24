@@ -85,7 +85,9 @@ public class SkedaddleClientEvents {
         if (event.getEntity() instanceof Player player) {
             player.getCapability(ModCapabilities.SKEDADDLE_CAPABILITY).ifPresent(iSkedaddle -> {
                 Skedaddle skedaddle = (Skedaddle) iSkedaddle;
-                if (skedaddle.shouldAnimateOnClient) player.animationSpeed = 3;
+                if (skedaddle.shouldAnimateOnClient) {
+                    player.walkAnimation.setSpeed(3.0f);
+                }
             });
         }
     }

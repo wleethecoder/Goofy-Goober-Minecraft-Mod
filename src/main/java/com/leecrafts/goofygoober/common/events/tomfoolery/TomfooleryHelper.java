@@ -33,7 +33,7 @@ public class TomfooleryHelper {
     private static ArrayList<EntityType<?>> summonableMobs;
 
     private static final double HORIZONTAL_RADIUS = 4;
-    private static final double VERTICAL_RADIUS = 2;
+    private static final int VERTICAL_RADIUS = 2;
     public static final int NUM_NEARBY_MOBS = 3;
     public static final int NUM_MOBS_TO_SUMMON = 5;
     private static final int NUM_SPAWN_ATTEMPTS = 10;
@@ -105,9 +105,9 @@ public class TomfooleryHelper {
         ServerLevel serverLevel = (ServerLevel) player.level;
         int j = 0;
         while (!success && j < NUM_SPAWN_ATTEMPTS) {
-            double spawnX = serverLevel.random.nextInt((int) HORIZONTAL_RADIUS * 2) - (int) HORIZONTAL_RADIUS;
-//            double spawnY = serverLevel.random.nextInt((int) VERTICAL_RADIUS * 2) - (int) VERTICAL_RADIUS;
-            double spawnZ = serverLevel.random.nextInt((int) HORIZONTAL_RADIUS * 2) - (int) HORIZONTAL_RADIUS;
+            int spawnX = serverLevel.random.nextInt((int) HORIZONTAL_RADIUS * 2) - (int) HORIZONTAL_RADIUS;
+//            int spawnY = serverLevel.random.nextInt((int) VERTICAL_RADIUS * 2) - (int) VERTICAL_RADIUS;
+            int spawnZ = serverLevel.random.nextInt((int) HORIZONTAL_RADIUS * 2) - (int) HORIZONTAL_RADIUS;
             BlockPos blockPos = spawnBlockPos(player, spawnX, spawnZ);
             if (blockPos != null) {
                 Mob mob = (Mob) mobType.create(serverLevel, null, null, blockPos, MobSpawnType.MOB_SUMMONED, false, false);
@@ -155,12 +155,12 @@ public class TomfooleryHelper {
         return success;
     }
 
-    public static BlockPos spawnBlockPos(Player player, double spawnX, double spawnZ) {
+    public static BlockPos spawnBlockPos(Player player, int spawnX, int spawnZ) {
         BlockPos blockPos = player.blockPosition().offset(spawnX, VERTICAL_RADIUS, spawnZ);
         BlockState blockState = player.level.getBlockState(blockPos);
         boolean spawnPositionFound = false;
-        int k = (int) VERTICAL_RADIUS;
-        while (!spawnPositionFound && k >= (int) -VERTICAL_RADIUS) {
+        int k = VERTICAL_RADIUS;
+        while (!spawnPositionFound && k >= -VERTICAL_RADIUS) {
             BlockPos tempBlockPos = blockPos;
             BlockState tempBlockState = blockState;
             blockPos = blockPos.below();

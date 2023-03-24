@@ -31,7 +31,7 @@ public class ServerboundSkedaddleBumpPacket {
                     if (this.bump && skedaddle.takeoff) {
                         skedaddle.reset(sender);
                         skedaddle.wham = true;
-                        sender.hurt(DamageSource.FLY_INTO_WALL, 6);
+                        sender.hurt(sender.damageSources().flyIntoWall(), 6);
                     }
                 });
             }
