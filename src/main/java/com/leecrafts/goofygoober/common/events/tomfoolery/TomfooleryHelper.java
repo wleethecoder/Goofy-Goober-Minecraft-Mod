@@ -72,7 +72,7 @@ public class TomfooleryHelper {
         double x = player.getX();
         double y = player.getY();
         double z = player.getZ();
-        List<Entity> list = player.level.getEntities(player, new AABB(
+        List<Entity> list = player.level().getEntities(player, new AABB(
                 x + HORIZONTAL_RADIUS,
                 y + VERTICAL_RADIUS,
                 z + HORIZONTAL_RADIUS,
@@ -102,7 +102,7 @@ public class TomfooleryHelper {
     // returns whether the spawn attempt is successful
     public static boolean spawnMob(Player player, EntityType<?> mobType) throws InvocationTargetException, IllegalAccessException {
         boolean success = false;
-        ServerLevel serverLevel = (ServerLevel) player.level;
+        ServerLevel serverLevel = (ServerLevel) player.level();
         int j = 0;
         while (!success && j < NUM_SPAWN_ATTEMPTS) {
             int spawnX = serverLevel.random.nextInt((int) HORIZONTAL_RADIUS * 2) - (int) HORIZONTAL_RADIUS;
@@ -139,7 +139,7 @@ public class TomfooleryHelper {
                         }
 
                         // Trust me, nobody wants zombified piglins to aggro towards players--especially when unprovoked.
-                        if (!(mob instanceof ZombifiedPiglin) || player.level.dimension() != Level.NETHER) mob.targetSelector.addGoal(prioritizeMobsOverPlayers ? 2 : 1, new NearestAttackableTargetGoal<>(mob, Player.class, true));
+                        if (!(mob instanceof ZombifiedPiglin) || player.level().dimension() != Level.NETHER) mob.targetSelector.addGoal(prioritizeMobsOverPlayers ? 2 : 1, new NearestAttackableTargetGoal<>(mob, Player.class, true));
 
                         success = true;
                     }
@@ -157,15 +157,15 @@ public class TomfooleryHelper {
 
     public static BlockPos spawnBlockPos(Player player, int spawnX, int spawnZ) {
         BlockPos blockPos = player.blockPosition().offset(spawnX, VERTICAL_RADIUS, spawnZ);
-        BlockState blockState = player.level.getBlockState(blockPos);
+        BlockState blockState = player.level().getBlockState(blockPos);
         boolean spawnPositionFound = false;
         int k = VERTICAL_RADIUS;
         while (!spawnPositionFound && k >= -VERTICAL_RADIUS) {
             BlockPos tempBlockPos = blockPos;
             BlockState tempBlockState = blockState;
             blockPos = blockPos.below();
-            blockState = player.level.getBlockState(blockPos);
-            if ((tempBlockState.isAir() || tempBlockState.getMaterial().isLiquid()) && blockState.getMaterial().isSolid()) {
+            blockState = player.level().getBlockState(blockPos);
+            if ((tempBlockState.isAir() || tempBlockState.liquid()) && blockState.isSolid()) {
                 blockPos = tempBlockPos;
                 spawnPositionFound = true;
             }
@@ -196,7 +196,7 @@ public class TomfooleryHelper {
         double y = (attacker.getY() + target.getY()) / 2 + 1;
         double z = (attacker.getZ() + target.getZ()) / 2;
 
-        ServerLevel level = (ServerLevel) attacker.level;
+        ServerLevel level = (ServerLevel) attacker.level();
         level.sendParticles(ParticleTypes.CAMPFIRE_COSY_SMOKE, x, y, z,
                 particleCount, 1.25, 1, 1.25, 0);
         level.sendParticles(ParticleTypes.CRIT, x, y, z,

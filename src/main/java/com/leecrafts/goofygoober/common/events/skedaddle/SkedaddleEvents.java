@@ -46,7 +46,7 @@ public class SkedaddleEvents {
 
     @SubscribeEvent
     public static void skedaddle(LivingEvent.LivingTickEvent event) {
-        if (event.getEntity() instanceof Player player && !player.level.isClientSide()) {
+        if (event.getEntity() instanceof Player player && !player.level().isClientSide()) {
             player.getCapability(ModCapabilities.SKEDADDLE_CAPABILITY).ifPresent(iSkedaddle -> {
                 Skedaddle skedaddle = (Skedaddle) iSkedaddle;
                 // cooldown after running into wall
@@ -121,7 +121,7 @@ public class SkedaddleEvents {
 
     @SubscribeEvent
     public static void onPlayerTrackingEvent(PlayerEvent.StartTracking event) {
-        if (event.getTarget() instanceof Player target && !target.level.isClientSide()) {
+        if (event.getTarget() instanceof Player target && !target.level().isClientSide()) {
             target.getCapability(ModCapabilities.SKEDADDLE_CAPABILITY).ifPresent(iSkedaddle -> {
                 Skedaddle skedaddle = (Skedaddle) iSkedaddle;
                 skedaddle.sendClientboundPacket(target, skedaddle.charging, skedaddle.shouldAnimateOnClient);
@@ -135,7 +135,7 @@ public class SkedaddleEvents {
     public static void deviousWalk(LivingChangeTargetEvent event) {
         System.out.println("new " + event.getNewTarget());
         System.out.println("original " + event.getOriginalTarget());
-        if (event.getEntity() instanceof Mob mob && event.getNewTarget() instanceof Player player && !player.level.isClientSide()) {
+        if (event.getEntity() instanceof Mob mob && event.getNewTarget() instanceof Player player && !player.level().isClientSide()) {
             player.getCapability(ModCapabilities.SKEDADDLE_CAPABILITY).ifPresent(iSkedaddle -> {
                 Skedaddle skedaddle = (Skedaddle) iSkedaddle;
                 if (skedaddle.deviousWalk && player.distanceTo(mob) >= 4) {

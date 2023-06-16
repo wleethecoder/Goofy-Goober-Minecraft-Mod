@@ -103,7 +103,7 @@ public class TomfooleryEvents {
 
         // To make it fairer, smaller slimes and magma cubes are ineligible to summon nearby mobs by default
         // MagmaCube extends Slime
-        if (event.getEntity() instanceof Slime slime && !slime.level.isClientSide() && slime.getSize() <= 2) {
+        if (event.getEntity() instanceof Slime slime && !slime.level().isClientSide() && slime.getSize() <= 2) {
             TomfooleryHelper.revokeEligibility(slime);
         }
 //        }
@@ -112,7 +112,7 @@ public class TomfooleryEvents {
     // player tick update
     @SubscribeEvent
     public static void playerTick(LivingEvent.LivingTickEvent event) {
-        if (event.getEntity() instanceof Player player && !player.level.isClientSide()) {
+        if (event.getEntity() instanceof Player player && !player.level().isClientSide()) {
             player.getCapability(ModCapabilities.TOMFOOLERY_PLAYER_CAPABILITY).ifPresent(iTomfooleryPlayer -> {
                 TomfooleryPlayer tomfooleryPlayer = (TomfooleryPlayer) iTomfooleryPlayer;
                 if (tomfooleryPlayer.counter >= tomfooleryPlayer.LIMIT) {
@@ -153,7 +153,7 @@ public class TomfooleryEvents {
     // mob tick update
     @SubscribeEvent
     public static void mobTick(LivingEvent.LivingTickEvent event) {
-        if (event.getEntity() instanceof Mob mob && !mob.level.isClientSide()) {
+        if (event.getEntity() instanceof Mob mob && !mob.level().isClientSide()) {
             LivingEntity target = mob.getTarget();
             if (target != null && !target.isRemoved()) {
                 mob.getCapability(ModCapabilities.TOMFOOLERY_MOB_CAPABILITY).ifPresent(iTomfooleryMob -> {
@@ -192,7 +192,7 @@ public class TomfooleryEvents {
     @SubscribeEvent
     public static void livingEntityTick(LivingEvent.LivingTickEvent event) {
         LivingEntity livingEntity = event.getEntity();
-        if (!livingEntity.level.isClientSide()) {
+        if (!livingEntity.level().isClientSide()) {
             livingEntity.getCapability(ModCapabilities.TOMFOOLERY_LIVING_ENTITY_CAPABILITY).ifPresent(iTomfooleryLivingEntity -> {
                 TomfooleryLivingEntity tomfooleryLivingEntity = (TomfooleryLivingEntity) iTomfooleryLivingEntity;
                 // using Iterator to avoid ConcurrentModificationExceptions
@@ -214,7 +214,7 @@ public class TomfooleryEvents {
     // special case for slimes and magma cubes because they cannot normally damage any mobs besides players and iron golems
     @SubscribeEvent
     public static void slimeMagmaCubeDamage(LivingEvent.LivingTickEvent event) {
-        if (event.getEntity() instanceof Slime slime && !slime.level.isClientSide()) { // MagmaCube extends Slime
+        if (event.getEntity() instanceof Slime slime && !slime.level().isClientSide()) { // MagmaCube extends Slime
             slime.getCapability(ModCapabilities.TOMFOOLERY_MOB_CAPABILITY).ifPresent(iTomfooleryMob -> {
                 TomfooleryMob tomfooleryMob = (TomfooleryMob) iTomfooleryMob;
                 if (tomfooleryMob.isSummoned()) {
@@ -222,7 +222,7 @@ public class TomfooleryEvents {
                     AABB aabb = slime.getBoundingBox();
                     int size = slime.getSize();
                     double offset = size * 0.6 - aabb.getXsize() * Math.pow(2, (size - 1)) / 2;
-                    List<Entity> list = slime.level.getEntities(slime, aabb.inflate(offset));
+                    List<Entity> list = slime.level().getEntities(slime, aabb.inflate(offset));
                     for (Entity entity : list) {
                         if (entity instanceof LivingEntity livingEntity && livingEntity.equals(slime.getTarget())) {
 //                            dealDamageMethod.setAccessible(true);

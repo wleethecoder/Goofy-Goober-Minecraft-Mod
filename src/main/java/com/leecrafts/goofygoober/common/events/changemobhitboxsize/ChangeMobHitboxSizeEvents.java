@@ -40,7 +40,7 @@ public class ChangeMobHitboxSizeEvents {
     @SubscribeEvent
     public static void gorge(LivingEntityUseItemEvent.Finish event) {
         Entity entity = event.getEntity();
-        if (entity instanceof Player player && !player.level.isClientSide()) {
+        if (entity instanceof Player player && !player.level().isClientSide()) {
             ItemStack previousItemStack = event.getItem();
             ItemStack currentItemStack = event.getResultStack();
             if (previousItemStack.isEdible()) {
@@ -91,7 +91,7 @@ public class ChangeMobHitboxSizeEvents {
     @SubscribeEvent
     public static void squash(LivingHurtEvent event) {
         LivingEntity livingEntity = event.getEntity();
-        if (!livingEntity.level.isClientSide()) {
+        if (!livingEntity.level().isClientSide()) {
             DamageSource damageSource = event.getSource();
             if (damageSource.getDirectEntity() instanceof IronGolem) {
                 livingEntity.setDeltaMovement(livingEntity.getDeltaMovement().subtract(0, 1.5, 0));
@@ -109,7 +109,7 @@ public class ChangeMobHitboxSizeEvents {
     @SubscribeEvent
     public static void squashFall(LivingFallEvent event) {
         LivingEntity livingEntity = event.getEntity();
-        if (!livingEntity.level.isClientSide()) {
+        if (!livingEntity.level().isClientSide()) {
             float distance = event.getDistance();
             if (distance >= 20F) {
                 livingEntity.addEffect(new MobEffectInstance(ModEffects.SQUASHED.get(), (int) (distance / 2 * 20), 0, false, false));
@@ -121,7 +121,7 @@ public class ChangeMobHitboxSizeEvents {
     @SubscribeEvent
     public static void crashSmashElytra(LivingHurtEvent event) {
         LivingEntity livingEntity = event.getEntity();
-        if (!livingEntity.level.isClientSide() && event.getSource() == livingEntity.damageSources().flyIntoWall()) {
+        if (!livingEntity.level().isClientSide() && event.getSource() == livingEntity.damageSources().flyIntoWall()) {
             Direction direction = livingEntity.getDirection();
             float damage = event.getAmount();
             int duration = (int) (damage * (18/10) * 20);
@@ -199,7 +199,7 @@ public class ChangeMobHitboxSizeEvents {
     public static void preventSquashedPlayerFromCrawling(LivingEvent.LivingTickEvent event) {
         if (event.getEntity() instanceof Player player && /*!player.level.isClientSide() && */player.getActiveEffectsMap() != null) {
             if (player.hasEffect(ModEffects.SQUASHED.get())) {
-                boolean solidAbove = !player.level.noCollision(player.getBoundingBox().expandTowards(0, 1.5, 0));
+                boolean solidAbove = !player.level().noCollision(player.getBoundingBox().expandTowards(0, 1.5, 0));
                 if (solidAbove) {
                     if (player.getForcedPose() == null) player.setForcedPose(Pose.STANDING);
                 }
@@ -212,9 +212,9 @@ public class ChangeMobHitboxSizeEvents {
     @SubscribeEvent
     public static void preventSquashedLivingEntityFromUnexpectedSuffocationDamage(LivingHurtEvent event) {
         LivingEntity livingEntity = event.getEntity();
-        if (!livingEntity.level.isClientSide() && livingEntity.getActiveEffectsMap() != null && livingEntity.hasEffect(ModEffects.SQUASHED.get())) {
+        if (!livingEntity.level().isClientSide() && livingEntity.getActiveEffectsMap() != null && livingEntity.hasEffect(ModEffects.SQUASHED.get())) {
             if (event.getSource() == livingEntity.damageSources().inWall()) {
-                if (livingEntity.level.noCollision(livingEntity.getBoundingBox())) {
+                if (livingEntity.level().noCollision(livingEntity.getBoundingBox())) {
                     event.setCanceled(true);
                 }
             }

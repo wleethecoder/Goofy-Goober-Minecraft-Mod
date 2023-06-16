@@ -19,7 +19,7 @@ public class SmashedEffect extends MobEffect {
 
     @Override
     public void addAttributeModifiers(@NotNull LivingEntity pLivingEntity, @NotNull AttributeMap pAttributeMap, int pAmplifier) {
-        if (!pLivingEntity.level.isClientSide()) {
+        if (!pLivingEntity.level().isClientSide()) {
             MobEffectInstance mobEffectInstance = pLivingEntity.getEffect(ModEffects.SMASHED.get());
             if (mobEffectInstance != null) {
                 PacketDistributor.TRACKING_ENTITY.with(() -> pLivingEntity).send(
@@ -33,7 +33,7 @@ public class SmashedEffect extends MobEffect {
 
     @Override
     public void removeAttributeModifiers(@NotNull LivingEntity pLivingEntity, @NotNull AttributeMap pAttributeMap, int pAmplifier) {
-        if (!pLivingEntity.level.isClientSide()) {
+        if (!pLivingEntity.level().isClientSide()) {
             PacketDistributor.TRACKING_ENTITY.with(() -> pLivingEntity).send(
                     new ClientboundRemoveMobEffectPacket(pLivingEntity.getId(), ModEffects.SMASHED.get())
             );

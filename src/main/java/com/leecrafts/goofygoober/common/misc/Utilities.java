@@ -21,8 +21,8 @@ public class Utilities {
 
     private static void playLocalSound(Entity entity, String soundEvent, float pitchLow, float pitchHigh) {
         // this would be reaching across logical sides
-//        if (Minecraft.getInstance().level != null) {
-//            Minecraft.getInstance().level.playLocalSound(entity.getX(), entity.getY(), entity.getZ(), soundEvent, soundSource, volume, pitchLow + random.nextFloat(pitchHigh - pitchLow), false);
+//        if (Minecraft.getInstance().level() != null) {
+//            Minecraft.getInstance().level().playLocalSound(entity.getX(), entity.getY(), entity.getZ(), soundEvent, soundSource, volume, pitchLow + random.nextFloat(pitchHigh - pitchLow), false);
 //        }
         PacketHandler.INSTANCE.send(
                 PacketDistributor.TRACKING_ENTITY_AND_SELF.with(() -> entity),

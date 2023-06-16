@@ -20,7 +20,7 @@ public class SkedaddleClientHelper {
     public static void handleSkedaddlePacket(UUID uuid, boolean charging, boolean shouldAnimateOnClient) {
         LocalPlayer thisPlayer = Minecraft.getInstance().player;
         if (thisPlayer != null) {
-            Player trackedPlayer = thisPlayer.level.getPlayerByUUID(uuid);
+            Player trackedPlayer = thisPlayer.level().getPlayerByUUID(uuid);
             if (trackedPlayer != null) {
                 trackedPlayer.getCapability(ModCapabilities.SKEDADDLE_CAPABILITY).ifPresent(iSkedaddle -> {
                     Skedaddle skedaddle = (Skedaddle) iSkedaddle;

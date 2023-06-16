@@ -53,7 +53,7 @@ public class SkedaddleHelper {
     }
 
     public static void dustParticles(Player player) {
-        ServerLevel serverLevel = (ServerLevel) player.level;
+        ServerLevel serverLevel = (ServerLevel) player.level();
         serverLevel.sendParticles(
                 ParticleTypes.CAMPFIRE_COSY_SMOKE,
                 player.getX(),
@@ -65,9 +65,9 @@ public class SkedaddleHelper {
                 0.3,
                 0
         );
-        if (player.isOnGround()) {
+        if (player.onGround()) {
             BlockPos blockPos = player.blockPosition();
-            BlockState blockState = player.level.getBlockState(blockPos);
+            BlockState blockState = player.level().getBlockState(blockPos);
             serverLevel.sendParticles(
                     new BlockParticleOption(ParticleTypes.BLOCK, blockState).setPos(blockPos),
                     player.getX(),

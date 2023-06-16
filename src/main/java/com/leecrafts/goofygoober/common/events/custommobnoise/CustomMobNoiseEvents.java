@@ -44,7 +44,7 @@ public class CustomMobNoiseEvents {
     @SubscribeEvent
     public static void scream(LivingDamageEvent event) {
         LivingEntity livingEntity = event.getEntity();
-        if (!livingEntity.level.isClientSide() && !(livingEntity instanceof IronGolem)) {
+        if (!livingEntity.level().isClientSide() && !(livingEntity instanceof IronGolem)) {
             CustomMobNoiseHelper.scream(livingEntity, event.getSource().getMsgId());
         }
     }
@@ -53,14 +53,14 @@ public class CustomMobNoiseEvents {
     @SubscribeEvent
     public static void tick(LivingEvent.LivingTickEvent event) {
         LivingEntity livingEntity = event.getEntity();
-        if (!livingEntity.level.isClientSide()) {
+        if (!livingEntity.level().isClientSide()) {
             CustomMobNoiseHelper.ambient(livingEntity);
         }
     }
 
     @SubscribeEvent
     public static void sleepEvent(EntityEvent.Size event) {
-        if (event.getEntity() instanceof LivingEntity livingEntity && !livingEntity.level.isClientSide() && livingEntity.getPose() == Pose.SLEEPING) {
+        if (event.getEntity() instanceof LivingEntity livingEntity && !livingEntity.level().isClientSide() && livingEntity.getPose() == Pose.SLEEPING) {
             livingEntity.getCapability(ModCapabilities.AMBIENT_COUNTER_CAPABILITY).ifPresent(iAmbientCounter -> {
                 AmbientCounter ambientCounter = (AmbientCounter) iAmbientCounter;
                 ambientCounter.rollSleepingNoise();

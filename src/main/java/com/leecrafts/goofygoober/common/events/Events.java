@@ -20,14 +20,14 @@ public class Events {
 
     @SubscribeEvent
     public static void onPlayerDeath(LivingDeathEvent event) {
-        if (event.getEntity() instanceof Player player && !player.level.isClientSide()) {
+        if (event.getEntity() instanceof Player player && !player.level().isClientSide()) {
             Utilities.playSound(player, "fail");
         }
     }
 
     @SubscribeEvent
     public static void hallucinate(LivingEvent.LivingTickEvent event) {
-        if (event.getEntity() instanceof Player player && !player.level.isClientSide() && player.getActiveEffectsMap() != null) {
+        if (event.getEntity() instanceof Player player && !player.level().isClientSide() && player.getActiveEffectsMap() != null) {
             // to prevent the effect from being applied every tick
             boolean isSoHungryThatItCouldEatAHorse = player.getFoodData().getFoodLevel() < 10;
             boolean isHallucinating = player.hasEffect(ModEffects.HALLUCINATING.get());
