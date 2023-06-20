@@ -133,8 +133,6 @@ public class SkedaddleEvents {
     // The player just needs be at least 4 blocks from the enemy
     @SubscribeEvent
     public static void deviousWalk(LivingChangeTargetEvent event) {
-        System.out.println("new " + event.getNewTarget());
-        System.out.println("original " + event.getOriginalTarget());
         if (event.getEntity() instanceof Mob mob && event.getNewTarget() instanceof Player player && !player.level.isClientSide()) {
             player.getCapability(ModCapabilities.SKEDADDLE_CAPABILITY).ifPresent(iSkedaddle -> {
                 Skedaddle skedaddle = (Skedaddle) iSkedaddle;
