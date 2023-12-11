@@ -39,14 +39,11 @@ public class ChangeMobHitboxSizeEvents {
     @SubscribeEvent
     public static void mobEffectAddedEvent(MobEffectEvent.Added event) {
         LivingEntity livingEntity = event.getEntity();
-        if (!livingEntity.level().isClientSide()) {
-            MobEffectInstance mobEffectInstance = event.getEffectInstance();
-            MobEffect mobEffect = mobEffectInstance.getEffect();
-            if (isSizeChangingEffect(mobEffect)) {
-                PacketDistributor.TRACKING_ENTITY.with(livingEntity).send(
-                        new ClientboundUpdateMobEffectPacket(livingEntity.getId(), mobEffectInstance)
-                );
-            }
+        MobEffectInstance mobEffectInstance = event.getEffectInstance();
+        if (!livingEntity.level().isClientSide() && isSizeChangingEffect(mobEffectInstance.getEffect())) {
+            PacketDistributor.TRACKING_ENTITY.with(livingEntity).send(
+                    new ClientboundUpdateMobEffectPacket(livingEntity.getId(), mobEffectInstance)
+            );
 //            pLivingEntity.refreshDimensions();
         }
     }
@@ -58,6 +55,20 @@ public class ChangeMobHitboxSizeEvents {
         if (!livingEntity.level().isClientSide() && isSizeChangingEffect(mobEffect)) {
             PacketDistributor.TRACKING_ENTITY.with(livingEntity).send(
                     new ClientboundRemoveMobEffectPacket(livingEntity.getId(), mobEffect)
+            );
+//            pLivingEntity.refreshDimensions();
+        }
+    }
+
+    @SubscribeEvent
+    public static void mobEffectExpiredEvent(MobEffectEvent.Expired event) {
+        LivingEntity livingEntity = event.getEntity();
+        MobEffectInstance mobEffectInstance = event.getEffectInstance();
+        if (mobEffectInstance != null &&
+                !livingEntity.level().isClientSide() &&
+                isSizeChangingEffect(mobEffectInstance.getEffect())) {
+            PacketDistributor.TRACKING_ENTITY.with(livingEntity).send(
+                    new ClientboundRemoveMobEffectPacket(livingEntity.getId(), mobEffectInstance.getEffect())
             );
 //            pLivingEntity.refreshDimensions();
         }
