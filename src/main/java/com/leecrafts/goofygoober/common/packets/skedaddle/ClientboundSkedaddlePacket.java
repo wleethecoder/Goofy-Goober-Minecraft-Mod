@@ -3,11 +3,10 @@ package com.leecrafts.goofygoober.common.packets.skedaddle;
 import com.leecrafts.goofygoober.client.events.skedaddle.SkedaddleClientHelper;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.event.network.CustomPayloadEvent;
 import net.minecraftforge.fml.DistExecutor;
-import net.minecraftforge.network.NetworkEvent;
 
 import java.util.UUID;
-import java.util.function.Supplier;
 
 public class ClientboundSkedaddlePacket {
 
@@ -31,12 +30,12 @@ public class ClientboundSkedaddlePacket {
         buffer.writeBoolean(this.shouldAnimateOnClient);
     }
 
-    public void handle(Supplier<NetworkEvent.Context> ctx) {
-        ctx.get().enqueueWork(() -> {
+    public void handle(CustomPayloadEvent.Context ctx) {
+        ctx.enqueueWork(() -> {
             DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () ->
                     SkedaddleClientHelper.handleSkedaddlePacket(this.uuid, this.charging, this.shouldAnimateOnClient));
         });
-        ctx.get().setPacketHandled(true);
+        ctx.setPacketHandled(true);
     }
 
 }

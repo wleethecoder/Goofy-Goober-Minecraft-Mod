@@ -42,6 +42,18 @@ public class CustomMobNoiseHelper {
     public static void ambient(LivingEntity livingEntity) {
         livingEntity.getCapability(ModCapabilities.AMBIENT_COUNTER_CAPABILITY).ifPresent(iAmbientCounter -> {
             AmbientCounter ambientCounter = (AmbientCounter) iAmbientCounter;
+
+            if (livingEntity.isSleeping() && !ambientCounter.wasSleeping) {
+                ambientCounter.rollSleepingNoise();
+                snore(livingEntity, ambientCounter.sleepingNoise);
+                ambientCounter.resetCounter();
+                ambientCounter.rollLimit();
+                ambientCounter.wasSleeping = true;
+            }
+            else if (!livingEntity.isSleeping() && ambientCounter.wasSleeping) {
+                ambientCounter.wasSleeping = false;
+            }
+
             ambientCounter.incrementCounter();
             if (ambientCounter.counter >= ambientCounter.limit) {
 

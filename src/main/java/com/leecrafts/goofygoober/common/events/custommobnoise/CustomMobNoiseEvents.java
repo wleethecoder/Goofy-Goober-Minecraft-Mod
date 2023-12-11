@@ -29,10 +29,11 @@ public class CustomMobNoiseEvents {
 
     @SubscribeEvent
     public static void onAttachCapabilitiesEvent(AttachCapabilitiesEvent<Entity> event) {
-        if (event.getObject() instanceof LivingEntity livingEntity && !livingEntity.getCommandSenderWorld().isClientSide()) {
+        if (event.getObject() instanceof LivingEntity livingEntity &&
+                !livingEntity.getCommandSenderWorld().isClientSide() &&
+                !livingEntity.getCapability(ModCapabilities.AMBIENT_COUNTER_CAPABILITY).isPresent()) {
             AmbientCounterProvider ambientCounterProvider = new AmbientCounterProvider();
-            event.addCapability(new ResourceLocation(GoofyGoober.MOD_ID, "ambient_counter"), ambientCounterProvider);
-            event.addCapability(new ResourceLocation(GoofyGoober.MOD_ID, "ambient_counter_limit"), ambientCounterProvider);
+            event.addCapability(new ResourceLocation(GoofyGoober.MOD_ID, "ambient"), ambientCounterProvider);
             if (!(livingEntity instanceof Player)) {
                 event.addListener(ambientCounterProvider::invalidate);
             }
@@ -58,17 +59,18 @@ public class CustomMobNoiseEvents {
         }
     }
 
-    @SubscribeEvent
-    public static void sleepEvent(EntityEvent.Size event) {
-        if (event.getEntity() instanceof LivingEntity livingEntity && !livingEntity.level().isClientSide() && livingEntity.getPose() == Pose.SLEEPING) {
-            livingEntity.getCapability(ModCapabilities.AMBIENT_COUNTER_CAPABILITY).ifPresent(iAmbientCounter -> {
-                AmbientCounter ambientCounter = (AmbientCounter) iAmbientCounter;
-                ambientCounter.rollSleepingNoise();
-                CustomMobNoiseHelper.snore(livingEntity, ambientCounter.sleepingNoise);
-                ambientCounter.resetCounter();
-                ambientCounter.rollLimit();
-            });
-        }
-    }
+    // EntityEvent.Size event was removed without warning in 1.20.2
+//    @SubscribeEvent
+//    public static void sleepEvent(EntityEvent.Size event) {
+//        if (event.getEntity() instanceof LivingEntity livingEntity && !livingEntity.level().isClientSide() && livingEntity.getPose() == Pose.SLEEPING) {
+//            livingEntity.getCapability(ModCapabilities.AMBIENT_COUNTER_CAPABILITY).ifPresent(iAmbientCounter -> {
+//                AmbientCounter ambientCounter = (AmbientCounter) iAmbientCounter;
+//                ambientCounter.rollSleepingNoise();
+//                CustomMobNoiseHelper.snore(livingEntity, ambientCounter.sleepingNoise);
+//                ambientCounter.resetCounter();
+//                ambientCounter.rollLimit();
+//            });
+//        }
+//    }
 
 }

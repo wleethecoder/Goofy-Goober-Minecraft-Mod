@@ -24,16 +24,24 @@ public class Utilities {
 //        if (Minecraft.getInstance().level() != null) {
 //            Minecraft.getInstance().level().playLocalSound(entity.getX(), entity.getY(), entity.getZ(), soundEvent, soundSource, volume, pitchLow + random.nextFloat(pitchHigh - pitchLow), false);
 //        }
+//        PacketHandler.INSTANCE.send(
+//                PacketDistributor.TRACKING_ENTITY_AND_SELF.with(() -> entity),
+//                new ClientboundSoundPacket(entity.blockPosition(), soundEvent, pitchLow + random.nextFloat(pitchHigh - pitchLow))
+//        );
         PacketHandler.INSTANCE.send(
-                PacketDistributor.TRACKING_ENTITY_AND_SELF.with(() -> entity),
-                new ClientboundSoundPacket(entity.blockPosition(), soundEvent, pitchLow + random.nextFloat(pitchHigh - pitchLow))
+                new ClientboundSoundPacket(entity.blockPosition(), soundEvent, pitchLow + random.nextFloat(pitchHigh - pitchLow)),
+                PacketDistributor.TRACKING_ENTITY_AND_SELF.with(entity)
         );
     }
 
     private static void playLocalSound(Entity entity, String soundEvent, float pitch) {
+//        PacketHandler.INSTANCE.send(
+//                PacketDistributor.TRACKING_ENTITY_AND_SELF.with(() -> entity),
+//                new ClientboundSoundPacket(entity.blockPosition(), soundEvent, pitch)
+//        );
         PacketHandler.INSTANCE.send(
-                PacketDistributor.TRACKING_ENTITY_AND_SELF.with(() -> entity),
-                new ClientboundSoundPacket(entity.blockPosition(), soundEvent, pitch)
+                new ClientboundSoundPacket(entity.blockPosition(), soundEvent, pitch),
+                PacketDistributor.TRACKING_ENTITY_AND_SELF.with(entity)
         );
     }
 

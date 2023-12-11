@@ -4,9 +4,7 @@ import com.leecrafts.goofygoober.common.capabilities.ModCapabilities;
 import com.leecrafts.goofygoober.common.capabilities.skedaddle.Skedaddle;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraftforge.network.NetworkEvent;
-
-import java.util.function.Supplier;
+import net.minecraftforge.event.network.CustomPayloadEvent;
 
 public class ServerboundSkedaddleWKeyPacket {
 
@@ -18,9 +16,9 @@ public class ServerboundSkedaddleWKeyPacket {
 
     public void encode(FriendlyByteBuf buffer) { buffer.writeBoolean(this.wPressed); }
 
-    public void handle(Supplier<NetworkEvent.Context> ctx) {
-        ctx.get().enqueueWork(() -> {
-            ServerPlayer sender = ctx.get().getSender();
+    public void handle(CustomPayloadEvent.Context ctx) {
+        ctx.enqueueWork(() -> {
+            ServerPlayer sender = ctx.getSender();
             if (sender != null) {
                 sender.getCapability(ModCapabilities.SKEDADDLE_CAPABILITY).ifPresent(iSkedaddle -> {
                     Skedaddle skedaddle = (Skedaddle) iSkedaddle;
@@ -29,7 +27,7 @@ public class ServerboundSkedaddleWKeyPacket {
                 });
             }
         });
-        ctx.get().setPacketHandled(true);
+        ctx.setPacketHandled(true);
     }
 
 }

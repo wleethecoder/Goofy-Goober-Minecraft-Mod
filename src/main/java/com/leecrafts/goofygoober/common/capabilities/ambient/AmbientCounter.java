@@ -9,11 +9,13 @@ public class AmbientCounter implements IAmbientCounter {
     public int counter;
     public int limit;
     public String sleepingNoise;
+    public boolean wasSleeping;
 
     public AmbientCounter() {
         this.counter = 0;
         this.rollLimit();
         this.rollSleepingNoise();
+        this.wasSleeping = false;
     }
 
     @Override

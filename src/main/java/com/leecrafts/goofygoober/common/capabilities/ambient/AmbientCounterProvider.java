@@ -27,6 +27,7 @@ public class AmbientCounterProvider implements ICapabilitySerializable<CompoundT
         if (ModCapabilities.AMBIENT_COUNTER_CAPABILITY == null) return nbt;
         nbt.putInt("ambient_counter", ambientCounter.counter);
         nbt.putInt("ambient_counter_limit", ambientCounter.limit);
+        nbt.putBoolean("was_sleeping", ambientCounter.wasSleeping);
         return nbt;
     }
 
@@ -35,6 +36,7 @@ public class AmbientCounterProvider implements ICapabilitySerializable<CompoundT
         if (ModCapabilities.AMBIENT_COUNTER_CAPABILITY != null) {
             ambientCounter.counter = nbt.getInt("ambient_counter");
             ambientCounter.limit = nbt.getInt("ambient_counter_limit");
+            ambientCounter.wasSleeping = nbt.getBoolean("was_sleeping");
         }
     }
 

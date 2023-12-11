@@ -21,6 +21,7 @@ import net.minecraftforge.client.event.*;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.network.PacketDistributor;
 import org.lwjgl.glfw.GLFW;
 
 @Mod.EventBusSubscriber(modid = GoofyGoober.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
@@ -72,10 +73,12 @@ public class SkedaddleClientEvents {
         LocalPlayer localPlayer = Minecraft.getInstance().player;
         if (localPlayer != null) {
             if (event.getKey() == InputConstants.KEY_W && event.getAction() == GLFW.GLFW_PRESS) {
-                PacketHandler.INSTANCE.sendToServer(new ServerboundSkedaddleWKeyPacket(true));
+//                PacketHandler.INSTANCE.sendToServer(new ServerboundSkedaddleWKeyPacket(true));
+                PacketHandler.INSTANCE.send(new ServerboundSkedaddleWKeyPacket(true), PacketDistributor.SERVER.noArg());
             }
             else if (event.getKey() == InputConstants.KEY_W && event.getAction() == GLFW.GLFW_RELEASE) {
-                PacketHandler.INSTANCE.sendToServer(new ServerboundSkedaddleWKeyPacket(false));
+//                PacketHandler.INSTANCE.sendToServer(new ServerboundSkedaddleWKeyPacket(false));
+                PacketHandler.INSTANCE.send(new ServerboundSkedaddleWKeyPacket(false), PacketDistributor.SERVER.noArg());
             }
         }
     }
@@ -118,7 +121,8 @@ public class SkedaddleClientEvents {
                     boolean headOn = ((direction == Direction.NORTH || direction == Direction.SOUTH) && deltaMovement.z() == 0)
                             || ((direction == Direction.WEST || direction == Direction.EAST) && deltaMovement.x() == 0);
                     if (correctAngle && headOn) {
-                        PacketHandler.INSTANCE.sendToServer(new ServerboundSkedaddleBumpPacket(true));
+//                        PacketHandler.INSTANCE.sendToServer(new ServerboundSkedaddleBumpPacket(true));
+                        PacketHandler.INSTANCE.send(new ServerboundSkedaddleBumpPacket(true), PacketDistributor.SERVER.noArg());
                     }
                 }
                 else if (!localPlayer.horizontalCollision && alreadyCollided) {

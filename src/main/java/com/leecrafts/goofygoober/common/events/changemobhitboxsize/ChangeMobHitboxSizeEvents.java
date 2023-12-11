@@ -4,7 +4,10 @@ import com.leecrafts.goofygoober.GoofyGoober;
 import com.leecrafts.goofygoober.common.effects.ModEffects;
 import com.leecrafts.goofygoober.common.misc.Utilities;
 import net.minecraft.core.Direction;
+import net.minecraft.network.protocol.game.ClientboundRemoveMobEffectPacket;
+import net.minecraft.network.protocol.game.ClientboundUpdateMobEffectPacket;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -15,13 +18,11 @@ import net.minecraft.world.entity.animal.IronGolem;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
-import net.minecraftforge.event.entity.living.LivingEvent;
-import net.minecraftforge.event.entity.living.LivingFallEvent;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.living.*;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.util.ObfuscationReflectionHelper;
+import net.minecraftforge.network.PacketDistributor;
 
 import java.lang.reflect.Field;
 
@@ -33,6 +34,40 @@ public class ChangeMobHitboxSizeEvents {
 
     public ChangeMobHitboxSizeEvents() {
         dimensionsField.setAccessible(true);
+    }
+
+    @SubscribeEvent
+    public static void mobEffectAddedEvent(MobEffectEvent.Added event) {
+        LivingEntity livingEntity = event.getEntity();
+        if (!livingEntity.level().isClientSide()) {
+            MobEffectInstance mobEffectInstance = event.getEffectInstance();
+            MobEffect mobEffect = mobEffectInstance.getEffect();
+            if (isSizeChangingEffect(mobEffect)) {
+                PacketDistributor.TRACKING_ENTITY.with(livingEntity).send(
+                        new ClientboundUpdateMobEffectPacket(livingEntity.getId(), mobEffectInstance)
+                );
+            }
+//            pLivingEntity.refreshDimensions();
+        }
+    }
+
+    @SubscribeEvent
+    public static void mobEffectRemovedEvent(MobEffectEvent.Remove event) {
+        LivingEntity livingEntity = event.getEntity();
+        MobEffect mobEffect = event.getEffect();
+        if (!livingEntity.level().isClientSide() && isSizeChangingEffect(mobEffect)) {
+            PacketDistributor.TRACKING_ENTITY.with(livingEntity).send(
+                    new ClientboundRemoveMobEffectPacket(livingEntity.getId(), mobEffect)
+            );
+//            pLivingEntity.refreshDimensions();
+        }
+    }
+
+    private static boolean isSizeChangingEffect(MobEffect mobEffect) {
+        return mobEffect == ModEffects.FAT.get() ||
+                mobEffect == ModEffects.CRASHED.get() ||
+                mobEffect == ModEffects.SMASHED.get() ||
+                mobEffect == ModEffects.SQUASHED.get();
     }
 
     // player eats all the food at once

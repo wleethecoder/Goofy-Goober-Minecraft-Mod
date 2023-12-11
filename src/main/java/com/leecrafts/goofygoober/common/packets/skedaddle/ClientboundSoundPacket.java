@@ -4,10 +4,8 @@ import com.leecrafts.goofygoober.client.sounds.SoundClientHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.event.network.CustomPayloadEvent;
 import net.minecraftforge.fml.DistExecutor;
-import net.minecraftforge.network.NetworkEvent;
-
-import java.util.function.Supplier;
 
 public class ClientboundSoundPacket {
 
@@ -33,12 +31,12 @@ public class ClientboundSoundPacket {
         buffer.writeFloat(this.pPitch);
     }
 
-    public void handle(Supplier<NetworkEvent.Context> ctx) {
-        ctx.get().enqueueWork(() -> {
+    public void handle(CustomPayloadEvent.Context ctx) {
+        ctx.enqueueWork(() -> {
             DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () ->
                     SoundClientHelper.handleSoundPacket(this.pPos, this.pSound, this.pPitch));
         });
-        ctx.get().setPacketHandled(true);
+        ctx.setPacketHandled(true);
     }
 
 }

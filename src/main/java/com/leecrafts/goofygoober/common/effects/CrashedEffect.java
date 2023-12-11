@@ -15,31 +15,31 @@ public class CrashedEffect extends MobEffect {
     public CrashedEffect(MobEffectCategory mobEffectCategory, int color) { super(mobEffectCategory, color); }
 
     @Override
-    public boolean isDurationEffectTick(int pDuration, int pAmplifier) { return true; }
+    public boolean shouldApplyEffectTickThisTick(int pDuration, int pAmplifier) { return true; }
 
-    @Override
-    public void addAttributeModifiers(@NotNull LivingEntity pLivingEntity, @NotNull AttributeMap pAttributeMap, int pAmplifier) {
-        if (!pLivingEntity.level().isClientSide()) {
-            MobEffectInstance mobEffectInstance = pLivingEntity.getEffect(ModEffects.CRASHED.get());
-            if (mobEffectInstance != null) {
-                PacketDistributor.TRACKING_ENTITY.with(() -> pLivingEntity).send(
-                        new ClientboundUpdateMobEffectPacket(pLivingEntity.getId(), mobEffectInstance)
-                );
-            }
-//            pLivingEntity.refreshDimensions();
-        }
-        super.addAttributeModifiers(pLivingEntity, pAttributeMap, pAmplifier);
-    }
-
-    @Override
-    public void removeAttributeModifiers(@NotNull LivingEntity pLivingEntity, @NotNull AttributeMap pAttributeMap, int pAmplifier) {
-        if (!pLivingEntity.level().isClientSide()) {
-            PacketDistributor.TRACKING_ENTITY.with(() -> pLivingEntity).send(
-                    new ClientboundRemoveMobEffectPacket(pLivingEntity.getId(), ModEffects.CRASHED.get())
-            );
-//            pLivingEntity.refreshDimensions();
-        }
-        super.removeAttributeModifiers(pLivingEntity, pAttributeMap, pAmplifier);
-    }
+//    @Override
+//    public void addAttributeModifiers(@NotNull LivingEntity pLivingEntity, @NotNull AttributeMap pAttributeMap, int pAmplifier) {
+//        if (!pLivingEntity.level().isClientSide()) {
+//            MobEffectInstance mobEffectInstance = pLivingEntity.getEffect(ModEffects.CRASHED.get());
+//            if (mobEffectInstance != null) {
+//                PacketDistributor.TRACKING_ENTITY.with(() -> pLivingEntity).send(
+//                        new ClientboundUpdateMobEffectPacket(pLivingEntity.getId(), mobEffectInstance)
+//                );
+//            }
+////            pLivingEntity.refreshDimensions();
+//        }
+//        super.addAttributeModifiers(pLivingEntity, pAttributeMap, pAmplifier);
+//    }
+//
+//    @Override
+//    public void removeAttributeModifiers(@NotNull LivingEntity pLivingEntity, @NotNull AttributeMap pAttributeMap, int pAmplifier) {
+//        if (!pLivingEntity.level().isClientSide()) {
+//            PacketDistributor.TRACKING_ENTITY.with(() -> pLivingEntity).send(
+//                    new ClientboundRemoveMobEffectPacket(pLivingEntity.getId(), ModEffects.CRASHED.get())
+//            );
+////            pLivingEntity.refreshDimensions();
+//        }
+//        super.removeAttributeModifiers(pLivingEntity, pAttributeMap, pAmplifier);
+//    }
 
 }

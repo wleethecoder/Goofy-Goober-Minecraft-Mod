@@ -8,6 +8,6 @@ public class HallucinatingEffect extends MobEffect {
     public HallucinatingEffect(MobEffectCategory mobEffectCategory, int color) { super(mobEffectCategory, color); }
 
     @Override
-    public boolean isDurationEffectTick(int pDuration, int pAmplifier) { return true; }
+    public boolean shouldApplyEffectTickThisTick(int pDuration, int pAmplifier) { return true; }
 
 }

@@ -7,6 +7,7 @@ import com.leecrafts.goofygoober.common.packets.skedaddle.ServerboundSkedaddleTo
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.world.entity.player.Player;
+import net.minecraftforge.network.PacketDistributor;
 
 import java.util.UUID;
 
@@ -14,7 +15,8 @@ public class SkedaddleClientHelper {
 
     public static void sendServerboundPacket(boolean enabled) {
         SkedaddleClientEvents.skedaddleEnabled = enabled;
-        PacketHandler.INSTANCE.sendToServer(new ServerboundSkedaddleTogglePacket(SkedaddleClientEvents.skedaddleEnabled));
+//        PacketHandler.INSTANCE.sendToServer(new ServerboundSkedaddleTogglePacket(SkedaddleClientEvents.skedaddleEnabled));
+        PacketHandler.INSTANCE.send(new ServerboundSkedaddleTogglePacket(SkedaddleClientEvents.skedaddleEnabled), PacketDistributor.SERVER.noArg());
     }
 
     public static void handleSkedaddlePacket(UUID uuid, boolean charging, boolean shouldAnimateOnClient) {

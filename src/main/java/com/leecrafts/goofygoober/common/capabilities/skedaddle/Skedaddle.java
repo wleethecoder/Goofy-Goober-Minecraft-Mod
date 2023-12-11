@@ -83,9 +83,13 @@ public class Skedaddle implements ISkedaddle {
     public void sendClientboundPacket(Player sender, boolean charging, boolean shouldAnimateOnClient) {
         this.charging = charging;
         this.shouldAnimateOnClient = shouldAnimateOnClient;
+//        PacketHandler.INSTANCE.send(
+//                PacketDistributor.TRACKING_ENTITY_AND_SELF.with(() -> sender),
+//                new ClientboundSkedaddlePacket(sender.getUUID(), charging, shouldAnimateOnClient)
+//        );
         PacketHandler.INSTANCE.send(
-                PacketDistributor.TRACKING_ENTITY_AND_SELF.with(() -> sender),
-                new ClientboundSkedaddlePacket(sender.getUUID(), charging, shouldAnimateOnClient)
+                new ClientboundSkedaddlePacket(sender.getUUID(), charging, shouldAnimateOnClient),
+                PacketDistributor.TRACKING_ENTITY_AND_SELF.with(sender)
         );
     }
 

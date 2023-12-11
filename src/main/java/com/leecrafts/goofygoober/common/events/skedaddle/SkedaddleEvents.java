@@ -29,18 +29,9 @@ public class SkedaddleEvents {
 
     @SubscribeEvent
     public static void onAttachCapabilitiesEventCooldownCounter(AttachCapabilitiesEvent<Entity> event) {
-        if (event.getObject() instanceof Player) {
+        if (event.getObject() instanceof Player player && !player.getCapability(ModCapabilities.SKEDADDLE_CAPABILITY).isPresent()) {
             SkedaddleProvider skedaddleProvider = new SkedaddleProvider();
-            event.addCapability(new ResourceLocation(GoofyGoober.MOD_ID, "skedaddle_enabled"), skedaddleProvider);
-            event.addCapability(new ResourceLocation(GoofyGoober.MOD_ID, "skedaddle_counter"), skedaddleProvider);
-            event.addCapability(new ResourceLocation(GoofyGoober.MOD_ID, "skedaddle_charging"), skedaddleProvider);
-            event.addCapability(new ResourceLocation(GoofyGoober.MOD_ID, "skedaddle_takeoff"), skedaddleProvider);
-            event.addCapability(new ResourceLocation(GoofyGoober.MOD_ID, "skedaddle_finished"), skedaddleProvider);
-            event.addCapability(new ResourceLocation(GoofyGoober.MOD_ID, "skedaddle_devious_walk"), skedaddleProvider);
-            event.addCapability(new ResourceLocation(GoofyGoober.MOD_ID, "w_pressed"), skedaddleProvider);
-            event.addCapability(new ResourceLocation(GoofyGoober.MOD_ID, "skedaddle_should_animate_on_client"), skedaddleProvider);
-            event.addCapability(new ResourceLocation(GoofyGoober.MOD_ID, "in_water"), skedaddleProvider);
-            event.addCapability(new ResourceLocation(GoofyGoober.MOD_ID, "wham"), skedaddleProvider);
+            event.addCapability(new ResourceLocation(GoofyGoober.MOD_ID, "skedaddle"), skedaddleProvider);
         }
     }
 
